@@ -1,0 +1,1462 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "anvil",
+      "created": "2026-11-09T09:42:55.241046665Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:5df310ad8f5b0f51d95a705b129882852bc170f0d79827f08020a3050b177061",
+      "image_id": "sha256:daff0fe3a8aa8abb2776203b46241b70dfc65f532fbe7b8a0bcd6625b6f70e47",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-11-09T09:20:50.575Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "6165f031d0cdb8395b9359e999f0e7d52e3a0105",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "nightly"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:nightly"
+    },
+    "anvil_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "anvil",
+      "created": "2026-11-02T21:12:49.584294343Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:3a392c18f9b16e665e932de159fb6fa9ed972c4b4352f2f76a1a8c7ca9b57d39",
+      "image_id": "sha256:672435f31bdacba2ed960af202177cf62793c95ce46007a483ce172dd410e0d7",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-11-02T20:50:49.140Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "6056c5845d34205a83cf7108042adb137325c9df",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "v1.9.0"
+      },
+      "release": {
+        "published_at": "2026-11-02T21:28:02Z",
+        "tag": "v1.9.0",
+        "url": "https://github.com/foundry-rs/foundry/releases/tag/v1.9.0"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:v1.9.0"
+    },
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-11-09T12:07:36.028762308Z",
+      "digest": "hyperledger/besu@sha256:ab947377b3a7fa64df601d869b7f178720110451a873c2bc6705ea19740c13d8",
+      "image_id": "sha256:3576e91466c1b613e074523de083d74c2b34223bd6c5576432dd08067c21a0eb",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "3f41096a6635a5e50ef99223d9f469ff5d91b1b8",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    },
+    "besu_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "besu",
+      "created": "2026-11-02T10:43:55.970684499Z",
+      "digest": "hyperledger/besu@sha256:3d6ac0368d449c13c4ba075acac90d6b96afa5b3113295385d88c4d5122c8808",
+      "image_id": "sha256:a02e74df151e9801d0da883a4390b8bafae54d554eede88a6489a3bbd6d5d7eb",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "0e595f9eaf4b760ee7069fcdf8d901685f1641eb",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "26.11.0"
+      },
+      "release": {
+        "published_at": "2026-11-02T10:46:13Z",
+        "tag": "26.11.0",
+        "url": "https://github.com/besu-eth/besu/releases/tag/26.11.0"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:26.11.0"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-11-09T10:01:47.499860241Z",
+      "digest": "erigontech/erigon@sha256:5bdd8b200d28f381507703f26c01d465e89b0f1d9617c2cf743f2b8ebd633b9e",
+      "image_id": "sha256:41347fa7832506be6e5ac89206e718e0948bdc643ed4b4bf32e6cf98853afa39",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-11-09T10:00:14Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "cf91acee1ed42caa54df22773f8de8eda3a4fd4d",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "cf91ace",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "cf91acee1ed42caa54df22773f8de8eda3a4fd4d"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "erigon_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "erigon",
+      "created": "2026-10-23T13:19:58.334508156Z",
+      "digest": "erigontech/erigon@sha256:314e4fef11cf061008b050eb83ccac18fd564115b36bf7a0b91d9609d21d5a67",
+      "image_id": "sha256:7e8e463aee90f54622c1853a547f146d887b929c3934331c1fb8988bfdf05b8c",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:12-slim",
+        "org.opencontainers.image.created": "2026-10-23T13:17:40Z",
+        "org.opencontainers.image.description": "Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/tree/release/3.8",
+        "org.opencontainers.image.vcs-ref-short": "",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "v3.8.1"
+      },
+      "release": {
+        "published_at": "2026-10-23T21:30:00Z",
+        "tag": "v3.8.1",
+        "url": "https://github.com/erigontech/erigon/releases/tag/v3.8.1"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:v3.8.1"
+    },
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:469c9ea410b9215eaee7976ba6c0639039b444be8e5d638f7abbada189971eb2",
+        "binary_sha256": "c149d241dcdd671157800e9b2d5a86c27f76dd2a01205b014fad34da33b6b674",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:469c9ea410b9215eaee7976ba6c0639039b444be8e5d638f7abbada189971eb2\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:bb10002652cd15bc731bfb64e6c8a3e2e95386c22fd950c93800bc34cd75e48d",
+      "local_image": "trace-interop/geth-source:c149d241dcdd671157800e9b2d5a86c27f76dd2a01205b014fad34da33b6b674",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "e487da1e90e14d8bf0fb530da581d7ab51fc11e8",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "4ca54b2b64e01ae378c33143afc908c0fa42257d4a9ac7588b80d0fe570ad5d5"
+      }
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-11-09T11:27:54Z",
+      "digest": "nethermindeth/nethermind@sha256:4e7596f9b0f74d0dbf2658440d99e14e83382482039962ead9ff2d763c38a696",
+      "image_id": "sha256:5b08bf037a549eaf0c72ffbb5605bd95233fba5e7d465f848849402fc1ba665f",
+      "labels": {
+        "org.opencontainers.image.created": "2026-11-09T11:27:54Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "4079edfafb743a2ce3f6b04a24d66c7410566035",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.3.0-preview"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "nethermind_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "nethermind",
+      "created": "2026-10-26T15:33:41Z",
+      "digest": "nethermind/nethermind@sha256:57df9bfaaf4d577919b35a2c7b1582ee5bd1812b36a812bdf8ac88ff7dba524d",
+      "image_id": "sha256:1c25df926e1db143d8e37bbd3e4b3a19cc48782488b892c3bcfdf942c59120a1",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-26T15:33:41Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "be201120899ea9cdaab1444b89878c56d1a5a4ad",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.2.2"
+      },
+      "release": {
+        "published_at": "2026-10-26T16:59:58Z",
+        "tag": "2.2.2",
+        "url": "https://github.com/NethermindEth/nethermind/releases/tag/2.2.2"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermind/nethermind:2.2.2"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-11-09T01:18:15.434097375Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:b0ff6b40abf335d6ac8e3ca37eca2b16a87338e8c6b1afb9b2735aad7473ae3b",
+      "image_id": "sha256:141f6d205a33e965bbe3336a1625e12f212218de6129c34e4db717b2269ffcc4",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-11-06T18:40:54.053247801Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:5637e3e2f6a88fb63512dd8837b254aa55a71132e3ac3587bbc797de7609f818",
+      "image_id": "sha256:e8ff37f566c0af97219bb46be65edff13ab6da734cbf6d1d1bf7c8d73205078d",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-11-06T18:53:31Z",
+        "tag": "v2.10.1",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.10.1"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.10.1"
+    }
+  },
+  "corpus": "precompiles",
+  "finished_at": "2026-11-09T13:38:43.066393+00:00",
+  "fixture_manifest_sha256": "ac3921d8209134c736c41e28e85be1dfab0fb745934309c0dc50f1adc1a40dd9",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x199876",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0xf618",
+    "hash": "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x30",
+    "parentBeaconBlockRoot": "0x5b5b49487967b3b60bd859ba2fb13290c6eaf67e97e9f9f9dda935c08564b5f6",
+    "parentHash": "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3",
+    "receiptsRoot": "0x4b7fefa97a453e0ee0cea1d51ca4ab3729f3a2a6a8388a5a3b13765eec3720b7",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0xbce840ac9806ecb3d791bf55bfcfa9460ff3275996aff265fc75e2a2f3efdb26",
+    "timestamp": "0x1e0",
+    "transactionsRoot": "0x3d96f46f0efae36059fcba93396d90ed19260e009e9dac0057a1d87e66dc17d0",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "017fbac5668c3de545446c5d31b053c3ea0e1bd723df9f2e6447dc03aca0b316",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "replica": {
+    "anvil_development": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d",
+          "number": "0x1",
+          "same_hash": true
+        },
+        {
+          "differs": [],
+          "hash": "0x6d50d80e1c4e19d9844a78a5b375c847255f07d1e52935c71bf0386d3e777e25",
+          "number": "0x2",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x30eacea7b1f967922cb82e42ed5590bdec861165d0d8396242ca4b2affb2c389",
+          "number": "0x3",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7403be946f9e36eb5898f353f1664af17caa290c9bb905ca75f17ed19d60df53",
+          "number": "0x4",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xf6ff810ff34e470a445a5468d7173cd794f3b466b925d3ab430d27b666e0c844",
+          "number": "0x5",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd3e5361b92c544cedcb41fbfa630b9d58ecacb6c1f51112ef088f1bbe146e88a",
+          "number": "0x6",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe0bc128bc208c30ff989eb653ece443d114d46d320847711bffdc08b26480bb8",
+          "number": "0x7",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x2d30a12aeb52de1d26560cbbc5f6e82f2a475e2154bdae977853c52447207b97",
+          "number": "0x8",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa7ff8df8bb9c8d570e09a34cbf7455cefe1e71d702a277f703ad2827dfd7102a",
+          "number": "0x9",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8cc25d6d2f491a91e6eb22c1e56460a4085222dfcef89b16dcc4e3ddde3000dd",
+          "number": "0xa",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xea16a5e535ca83fccdd4f8146508d7ef1e58ecc6c46e4fc04b0134c9ff664880",
+          "number": "0xb",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x91f9153a7ab102596966dfe03770b99f5cd6a5102716390ff4ed81aa08c66b55",
+          "number": "0xc",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x6c49f7cbb77af8216e8708c9c0c76ddd80a11a6a93127a9b8bdf4ddceacb9517",
+          "number": "0xd",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x5d55e1252ca2493161762678f0ebfbd0b581da5b563e34ece06598b05ec1c903",
+          "number": "0xe",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x80ab162e694f84d388acbdb66c15fd1d2401c9d0b12613ec5171d5a3b6609a95",
+          "number": "0xf",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x50cf02b9327563f9f08b4fd051be529e0e0d8726bdb1102c7e1d4d88312569f8",
+          "number": "0x10",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9bf3b0e17ff3d191f3389635ad1f2c85ba8d5fdef84e953335a7e542ff8f8d8f",
+          "number": "0x11",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x05ebf11cca4f8bc67516521e222d007288fbb2a5c53956c643c855395cdecd86",
+          "number": "0x12",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xed97d29159c480eb3107b01c008d3a6292fb03e6a61df648561ae4d0a4642a16",
+          "number": "0x13",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7cc59d39262b5a4ea4999f31619aeb90d875f24ee843d1b74faeeaf3aa8b2250",
+          "number": "0x14",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xbaaa7869bdbad59e944433e21f97a1df59839d8881974a5729811bb269b30f41",
+          "number": "0x15",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0dff9ee71662ac8c2cd38d2827bd22e93d94416df008fe5ba2337ab521ab32dc",
+          "number": "0x16",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x948b45d652e6f248b6c42f822b993ba896c46b6d67d3d6b505525f5511055b35",
+          "number": "0x17",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xb37e068252c5d9d402e5aea9b82621dc95139b0fcbe3ace48a6f6e749cd1b6fd",
+          "number": "0x18",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa118f37354cf798f06b2504cf75a902e87f480a10fd3fbbb2c269da291f2c24d",
+          "number": "0x19",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x2978fd20ad61676e58b636ecd5343d34aaf6250cb77c76c2c0a1e02e067a257d",
+          "number": "0x1a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8098dccbc2ff4bcb1f891f16cf728598a9fde01600b04f05fc72ab136f6dc4dd",
+          "number": "0x1b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xab27ca5f94ff6427850f2289e4ecb2fd34b6a1576d9df3eca6e9b6c568685a59",
+          "number": "0x1c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x5d927362a59d4cf6a3b5844e3a6d88219b7bee2033b82a11ef3ce22cbc73fd38",
+          "number": "0x1d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xc6aaa3570e3ef80a5ca1b7df56c45cec39a559be70863cd87ee02bb204e94190",
+          "number": "0x1e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xeecd9c432c988904be894d6540de6470a07684fbda2a2461b083fb49df59a67d",
+          "number": "0x1f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xbc08909b3f284ba41fae9419ee0a976bd09ca399f0578063eaaad07a76ca2521",
+          "number": "0x20",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd6821652069eb58202a5c50f30d716e5fbd630b65a5cacf77bfb0e66681a7e43",
+          "number": "0x21",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa8530f3bae7384493e05e770aaa2ab3f2046aa4e145fdc493af2db1b37e75d83",
+          "number": "0x22",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x496c4b7cde2d2b75c45edcb3ccb48ebc8795c09fc567a1034c2afca9421e59c1",
+          "number": "0x23",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0ef994614d9460fbed4e9c8ab618f0cf5e26f3a475d0adf706ae97054d8b5752",
+          "number": "0x24",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xdd4ab16826eea308704aa23aad020a3632326f6cf08c79105e571ab2094d91dc",
+          "number": "0x25",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9969334c94d2179893738e014db4bf2a0f6b8157c196aa1ca02547155f841968",
+          "number": "0x26",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x23753fcbd6700bfeb6fc56ffca5b4035ea0d648877bd8f1896af57c33d83b307",
+          "number": "0x27",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x97bf3d5ac41d169ba30f93048449472b7b7fb6f8347f65f5fd877111083d3c60",
+          "number": "0x28",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7b705443d480c2f8ef3f247473b4862e42bd8870816c863f2bfb7287fe2a7bf7",
+          "number": "0x29",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x579cf97fa7a1a688efc80b87c42c730cbe116dfaebe04af6afdc2c7f8462a0ac",
+          "number": "0x2a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x6a39af6868d051f31b1c416db9b7f1066691f42cbbe9e6e70c402b6fb5f59b0b",
+          "number": "0x2b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe283c7a214f8eae62d58aa091aaa16750b4b9856762019595a885ec79806a11e",
+          "number": "0x2c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd6b3f770b0687f686d1a79e8d56c4f66c55c46a060afd2bbd4fd06a7e06cf28e",
+          "number": "0x2d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9d3b7d0f71ffe730ed5380a028f33f379a85a8f62e5a29276cf0042936391448",
+          "number": "0x2e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x09229ace78bf8a6edbe606b84e6491f45a7be974fb5fb7ad71d6316be54114dd",
+          "number": "0x2f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9d52a7706e77531482be48fc2068d161cd81659de3719a2e6885725a1e2ebe54",
+          "number": "0x30",
+          "same_hash": false
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--accounts",
+        "0",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x01ba2f0e16a94e375a460eb303af615daf77ddfac7cc9d9cef96f22a6a095364": "0x30eacea7b1f967922cb82e42ed5590bdec861165d0d8396242ca4b2affb2c389",
+        "0x06fd46927f6e154ef94151d5afde7bc9b6d17cd70a7a9070e4f40f571b50d3ce": "0x8098dccbc2ff4bcb1f891f16cf728598a9fde01600b04f05fc72ab136f6dc4dd",
+        "0x0fee7fc3240fcec38a9b265023190fa9245d9a789891fe9033e720bd1123bd3d": "0xb37e068252c5d9d402e5aea9b82621dc95139b0fcbe3ace48a6f6e749cd1b6fd",
+        "0x10a37b5bd7d15f0555029a996d80824971783f9d2b4aac5546a2c33a3f74dda1": "0x5d927362a59d4cf6a3b5844e3a6d88219b7bee2033b82a11ef3ce22cbc73fd38",
+        "0x217dd7b307533f1d65d0c3b51ea2139a3ac06af543dc16d47e8d74e687f04a3d": "0x91f9153a7ab102596966dfe03770b99f5cd6a5102716390ff4ed81aa08c66b55",
+        "0x21b97ffe62f1407b38129baa263ddf8ab3b8013c443df1aa91c7277bccc24cbc": "0xeecd9c432c988904be894d6540de6470a07684fbda2a2461b083fb49df59a67d",
+        "0x22e2ead849ff9db68101af1688033db50b248e6714b9799708c8e9a40bb2680a": "0x7cc59d39262b5a4ea4999f31619aeb90d875f24ee843d1b74faeeaf3aa8b2250",
+        "0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe": "0x6a39af6868d051f31b1c416db9b7f1066691f42cbbe9e6e70c402b6fb5f59b0b",
+        "0x295bc90ed458851bf2e726e1abe3a1f19ce4e1f7240103d39e9fa9ddcf2080eb": "0x7403be946f9e36eb5898f353f1664af17caa290c9bb905ca75f17ed19d60df53",
+        "0x34be6bd065846a11277de524946df948ca21c45c9bb8a2642596918a3b0c61cc": "0xc6aaa3570e3ef80a5ca1b7df56c45cec39a559be70863cd87ee02bb204e94190",
+        "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582": "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582",
+        "0x3ab0f68caa7d6f855b842f3b19dcb3c990010ea411cd5fbf727eb56f82231fa0": "0x0ef994614d9460fbed4e9c8ab618f0cf5e26f3a475d0adf706ae97054d8b5752",
+        "0x3d6328336f661726778aad0b79ccdc26a5fd066314ec659b6b29ee9d4b19fe97": "0x948b45d652e6f248b6c42f822b993ba896c46b6d67d3d6b505525f5511055b35",
+        "0x46553218b056275d5bcd4ff36437971a37d495548b3a83704c97e2ff092cfaaa": "0x2d30a12aeb52de1d26560cbbc5f6e82f2a475e2154bdae977853c52447207b97",
+        "0x4eb4f8994cd37912093248c69d98603be1939a54dc6655a584fd70757a9d60bf": "0xf6ff810ff34e470a445a5468d7173cd794f3b466b925d3ab430d27b666e0c844",
+        "0x4f2c1d73a00090cff14bd8e0f9bb09a74aaf649f1ad92a765f22710680e9a008": "0xbc08909b3f284ba41fae9419ee0a976bd09ca399f0578063eaaad07a76ca2521",
+        "0x55445029cff2a6e61d40e9bd8c5db22aeef3da108734b872b64aec7ffbf44733": "0xa118f37354cf798f06b2504cf75a902e87f480a10fd3fbbb2c269da291f2c24d",
+        "0x5605a90911f4890d12d874329fe263802e99481c1c559169ba039977958d0750": "0x80ab162e694f84d388acbdb66c15fd1d2401c9d0b12613ec5171d5a3b6609a95",
+        "0x593764fd4a7be94bdeed2f435346a95f050b14ef9c2710e703dd3f4f1d7fe360": "0xe0bc128bc208c30ff989eb653ece443d114d46d320847711bffdc08b26480bb8",
+        "0x59f8e4bca341d6dbda0cd125f669ebdb912b3b1947d068f642e0790fe92a1383": "0x5d55e1252ca2493161762678f0ebfbd0b581da5b563e34ece06598b05ec1c903",
+        "0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8": "0x9d3b7d0f71ffe730ed5380a028f33f379a85a8f62e5a29276cf0042936391448",
+        "0x5ee8e728f51fcd565d3b3520b695c35b6e7736a84841e1124087c5a1a785995a": "0xed97d29159c480eb3107b01c008d3a6292fb03e6a61df648561ae4d0a4642a16",
+        "0x619ffc15441c4e4dcdf9c5623ce66f8a2c8cf0b75a655b27aba89796e8becd62": "0xea16a5e535ca83fccdd4f8146508d7ef1e58ecc6c46e4fc04b0134c9ff664880",
+        "0x6958756f1d3734c47583e01419ec0ba79fd2bc53ff7db662f76fe82b5a394235": "0x05ebf11cca4f8bc67516521e222d007288fbb2a5c53956c643c855395cdecd86",
+        "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434": "0x579cf97fa7a1a688efc80b87c42c730cbe116dfaebe04af6afdc2c7f8462a0ac",
+        "0x7002ae0faba2ba694e80d8c66b350f94237408e10732a6158e7d4f4fc0a41e3f": "0x8cc25d6d2f491a91e6eb22c1e56460a4085222dfcef89b16dcc4e3ddde3000dd",
+        "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d": "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d",
+        "0x815213de4432918e5129eac5ea0b1dfd0b9ad19b65b22f9f22c822bfa23169cd": "0xdd4ab16826eea308704aa23aad020a3632326f6cf08c79105e571ab2094d91dc",
+        "0x8cb5f6faba8fa4d2e000b4b3607fa353092516e78aa31a1fccdd9dd61498d94c": "0xd6821652069eb58202a5c50f30d716e5fbd630b65a5cacf77bfb0e66681a7e43",
+        "0x8ee9c89c042749060aa7225c9568cfbeb4ae658041f42cf5cfa90ef3cbc8c250": "0xe283c7a214f8eae62d58aa091aaa16750b4b9856762019595a885ec79806a11e",
+        "0x91a87855e0e1dca28427969d13729134eaf4abfc0c3233bba21480e7e87c731b": "0xa7ff8df8bb9c8d570e09a34cbf7455cefe1e71d702a277f703ad2827dfd7102a",
+        "0x92c135cd4f32e009aac8ecf746c5c0990280a3d5f8fe8020f0b923dca1f78413": "0xa8530f3bae7384493e05e770aaa2ab3f2046aa4e145fdc493af2db1b37e75d83",
+        "0x96c1e0e9af737ae7000afab010510bd7fe1aecbb04d9fd8b012b51ff7d3da4b7": "0x9bf3b0e17ff3d191f3389635ad1f2c85ba8d5fdef84e953335a7e542ff8f8d8f",
+        "0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c": "0xab27ca5f94ff6427850f2289e4ecb2fd34b6a1576d9df3eca6e9b6c568685a59",
+        "0x9bc6bd9fb238298cb6a4260fc4306ab426b3e2d41607e719dde8c4ca41817da7": "0x7b705443d480c2f8ef3f247473b4862e42bd8870816c863f2bfb7287fe2a7bf7",
+        "0xa1d784e9b2631c87fc0830304fae6a42711a8a9c798520f971d946175870d3d4": "0xbaaa7869bdbad59e944433e21f97a1df59839d8881974a5729811bb269b30f41",
+        "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3": "0x09229ace78bf8a6edbe606b84e6491f45a7be974fb5fb7ad71d6316be54114dd",
+        "0xaf738dc6e63939e3817a1897c38a1fc42c84f323e0be476d5aeab45896dd2874": "0x2978fd20ad61676e58b636ecd5343d34aaf6250cb77c76c2c0a1e02e067a257d",
+        "0xc0b79de4d53c816796fe57f84833f967baa01c2acb13077b4a4e88b311025aa8": "0x0dff9ee71662ac8c2cd38d2827bd22e93d94416df008fe5ba2337ab521ab32dc",
+        "0xc296d09534a512bd8c16504cc65eb80c9e2af55186122cbfb411256dd650bdcc": "0x50cf02b9327563f9f08b4fd051be529e0e0d8726bdb1102c7e1d4d88312569f8",
+        "0xc2b491822adbee13708d5083286e831a9d40f6dd23ee2440b02a27b284fdc835": "0xd3e5361b92c544cedcb41fbfa630b9d58ecacb6c1f51112ef088f1bbe146e88a",
+        "0xc50a23e040f3477a1182c603edfa17b13b4775797544f012ebff07feb8aa4c2a": "0x23753fcbd6700bfeb6fc56ffca5b4035ea0d648877bd8f1896af57c33d83b307",
+        "0xc51926a714d2b05a05ed1cbbd2fd0e9537b5bfa3a17151fcbb33d61c4f55e12a": "0x496c4b7cde2d2b75c45edcb3ccb48ebc8795c09fc567a1034c2afca9421e59c1",
+        "0xe00752f8a796288931a2709b4655198eacc8b64efc523bbbffbfe6d0773c54c9": "0x9969334c94d2179893738e014db4bf2a0f6b8157c196aa1ca02547155f841968",
+        "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d": "0xd6b3f770b0687f686d1a79e8d56c4f66c55c46a060afd2bbd4fd06a7e06cf28e",
+        "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84": "0x9d52a7706e77531482be48fc2068d161cd81659de3719a2e6885725a1e2ebe54",
+        "0xf0ec4973874d2124ed8b1a02a07e6c88031dff6f8f6375b37298f6afb8d1e99b": "0x6c49f7cbb77af8216e8708c9c0c76ddd80a11a6a93127a9b8bdf4ddceacb9517",
+        "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e": "0x6d50d80e1c4e19d9844a78a5b375c847255f07d1e52935c71bf0386d3e777e25",
+        "0xfc2b688f6d286950eff2cf6f1b10a6bf63e92a20fcdf8db7377ef647b154eb52": "0x97bf3d5ac41d169ba30f93048449472b7b7fb6f8347f65f5fd877111083d3c60"
+      },
+      "parent_beacon_roots": true,
+      "version": "anvil Version: 1.9.1-nightly+6165f031"
+    },
+    "anvil_release": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d",
+          "number": "0x1",
+          "same_hash": true
+        },
+        {
+          "differs": [],
+          "hash": "0x6d50d80e1c4e19d9844a78a5b375c847255f07d1e52935c71bf0386d3e777e25",
+          "number": "0x2",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x30eacea7b1f967922cb82e42ed5590bdec861165d0d8396242ca4b2affb2c389",
+          "number": "0x3",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7403be946f9e36eb5898f353f1664af17caa290c9bb905ca75f17ed19d60df53",
+          "number": "0x4",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xf6ff810ff34e470a445a5468d7173cd794f3b466b925d3ab430d27b666e0c844",
+          "number": "0x5",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd3e5361b92c544cedcb41fbfa630b9d58ecacb6c1f51112ef088f1bbe146e88a",
+          "number": "0x6",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe0bc128bc208c30ff989eb653ece443d114d46d320847711bffdc08b26480bb8",
+          "number": "0x7",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x2d30a12aeb52de1d26560cbbc5f6e82f2a475e2154bdae977853c52447207b97",
+          "number": "0x8",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa7ff8df8bb9c8d570e09a34cbf7455cefe1e71d702a277f703ad2827dfd7102a",
+          "number": "0x9",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8cc25d6d2f491a91e6eb22c1e56460a4085222dfcef89b16dcc4e3ddde3000dd",
+          "number": "0xa",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xea16a5e535ca83fccdd4f8146508d7ef1e58ecc6c46e4fc04b0134c9ff664880",
+          "number": "0xb",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x91f9153a7ab102596966dfe03770b99f5cd6a5102716390ff4ed81aa08c66b55",
+          "number": "0xc",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x6c49f7cbb77af8216e8708c9c0c76ddd80a11a6a93127a9b8bdf4ddceacb9517",
+          "number": "0xd",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x5d55e1252ca2493161762678f0ebfbd0b581da5b563e34ece06598b05ec1c903",
+          "number": "0xe",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x80ab162e694f84d388acbdb66c15fd1d2401c9d0b12613ec5171d5a3b6609a95",
+          "number": "0xf",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x50cf02b9327563f9f08b4fd051be529e0e0d8726bdb1102c7e1d4d88312569f8",
+          "number": "0x10",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9bf3b0e17ff3d191f3389635ad1f2c85ba8d5fdef84e953335a7e542ff8f8d8f",
+          "number": "0x11",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x05ebf11cca4f8bc67516521e222d007288fbb2a5c53956c643c855395cdecd86",
+          "number": "0x12",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xed97d29159c480eb3107b01c008d3a6292fb03e6a61df648561ae4d0a4642a16",
+          "number": "0x13",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7cc59d39262b5a4ea4999f31619aeb90d875f24ee843d1b74faeeaf3aa8b2250",
+          "number": "0x14",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xbaaa7869bdbad59e944433e21f97a1df59839d8881974a5729811bb269b30f41",
+          "number": "0x15",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0dff9ee71662ac8c2cd38d2827bd22e93d94416df008fe5ba2337ab521ab32dc",
+          "number": "0x16",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x948b45d652e6f248b6c42f822b993ba896c46b6d67d3d6b505525f5511055b35",
+          "number": "0x17",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xb37e068252c5d9d402e5aea9b82621dc95139b0fcbe3ace48a6f6e749cd1b6fd",
+          "number": "0x18",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa118f37354cf798f06b2504cf75a902e87f480a10fd3fbbb2c269da291f2c24d",
+          "number": "0x19",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x2978fd20ad61676e58b636ecd5343d34aaf6250cb77c76c2c0a1e02e067a257d",
+          "number": "0x1a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x8098dccbc2ff4bcb1f891f16cf728598a9fde01600b04f05fc72ab136f6dc4dd",
+          "number": "0x1b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xab27ca5f94ff6427850f2289e4ecb2fd34b6a1576d9df3eca6e9b6c568685a59",
+          "number": "0x1c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x5d927362a59d4cf6a3b5844e3a6d88219b7bee2033b82a11ef3ce22cbc73fd38",
+          "number": "0x1d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xc6aaa3570e3ef80a5ca1b7df56c45cec39a559be70863cd87ee02bb204e94190",
+          "number": "0x1e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xeecd9c432c988904be894d6540de6470a07684fbda2a2461b083fb49df59a67d",
+          "number": "0x1f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xbc08909b3f284ba41fae9419ee0a976bd09ca399f0578063eaaad07a76ca2521",
+          "number": "0x20",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd6821652069eb58202a5c50f30d716e5fbd630b65a5cacf77bfb0e66681a7e43",
+          "number": "0x21",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xa8530f3bae7384493e05e770aaa2ab3f2046aa4e145fdc493af2db1b37e75d83",
+          "number": "0x22",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x496c4b7cde2d2b75c45edcb3ccb48ebc8795c09fc567a1034c2afca9421e59c1",
+          "number": "0x23",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x0ef994614d9460fbed4e9c8ab618f0cf5e26f3a475d0adf706ae97054d8b5752",
+          "number": "0x24",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xdd4ab16826eea308704aa23aad020a3632326f6cf08c79105e571ab2094d91dc",
+          "number": "0x25",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9969334c94d2179893738e014db4bf2a0f6b8157c196aa1ca02547155f841968",
+          "number": "0x26",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x23753fcbd6700bfeb6fc56ffca5b4035ea0d648877bd8f1896af57c33d83b307",
+          "number": "0x27",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x97bf3d5ac41d169ba30f93048449472b7b7fb6f8347f65f5fd877111083d3c60",
+          "number": "0x28",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x7b705443d480c2f8ef3f247473b4862e42bd8870816c863f2bfb7287fe2a7bf7",
+          "number": "0x29",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x579cf97fa7a1a688efc80b87c42c730cbe116dfaebe04af6afdc2c7f8462a0ac",
+          "number": "0x2a",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x6a39af6868d051f31b1c416db9b7f1066691f42cbbe9e6e70c402b6fb5f59b0b",
+          "number": "0x2b",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xe283c7a214f8eae62d58aa091aaa16750b4b9856762019595a885ec79806a11e",
+          "number": "0x2c",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0xd6b3f770b0687f686d1a79e8d56c4f66c55c46a060afd2bbd4fd06a7e06cf28e",
+          "number": "0x2d",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9d3b7d0f71ffe730ed5380a028f33f379a85a8f62e5a29276cf0042936391448",
+          "number": "0x2e",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x09229ace78bf8a6edbe606b84e6491f45a7be974fb5fb7ad71d6316be54114dd",
+          "number": "0x2f",
+          "same_hash": false
+        },
+        {
+          "differs": [],
+          "hash": "0x9d52a7706e77531482be48fc2068d161cd81659de3719a2e6885725a1e2ebe54",
+          "number": "0x30",
+          "same_hash": false
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--accounts",
+        "0",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x01ba2f0e16a94e375a460eb303af615daf77ddfac7cc9d9cef96f22a6a095364": "0x30eacea7b1f967922cb82e42ed5590bdec861165d0d8396242ca4b2affb2c389",
+        "0x06fd46927f6e154ef94151d5afde7bc9b6d17cd70a7a9070e4f40f571b50d3ce": "0x8098dccbc2ff4bcb1f891f16cf728598a9fde01600b04f05fc72ab136f6dc4dd",
+        "0x0fee7fc3240fcec38a9b265023190fa9245d9a789891fe9033e720bd1123bd3d": "0xb37e068252c5d9d402e5aea9b82621dc95139b0fcbe3ace48a6f6e749cd1b6fd",
+        "0x10a37b5bd7d15f0555029a996d80824971783f9d2b4aac5546a2c33a3f74dda1": "0x5d927362a59d4cf6a3b5844e3a6d88219b7bee2033b82a11ef3ce22cbc73fd38",
+        "0x217dd7b307533f1d65d0c3b51ea2139a3ac06af543dc16d47e8d74e687f04a3d": "0x91f9153a7ab102596966dfe03770b99f5cd6a5102716390ff4ed81aa08c66b55",
+        "0x21b97ffe62f1407b38129baa263ddf8ab3b8013c443df1aa91c7277bccc24cbc": "0xeecd9c432c988904be894d6540de6470a07684fbda2a2461b083fb49df59a67d",
+        "0x22e2ead849ff9db68101af1688033db50b248e6714b9799708c8e9a40bb2680a": "0x7cc59d39262b5a4ea4999f31619aeb90d875f24ee843d1b74faeeaf3aa8b2250",
+        "0x22e8e9edaefc674ba389450dc41088e521fb2d33330a72c8b7aa2bf1b2281ffe": "0x6a39af6868d051f31b1c416db9b7f1066691f42cbbe9e6e70c402b6fb5f59b0b",
+        "0x295bc90ed458851bf2e726e1abe3a1f19ce4e1f7240103d39e9fa9ddcf2080eb": "0x7403be946f9e36eb5898f353f1664af17caa290c9bb905ca75f17ed19d60df53",
+        "0x34be6bd065846a11277de524946df948ca21c45c9bb8a2642596918a3b0c61cc": "0xc6aaa3570e3ef80a5ca1b7df56c45cec39a559be70863cd87ee02bb204e94190",
+        "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582": "0x3870d74fb940a1a64619292ab344fa0d5dad6d8617c9079356d6949ffc80d582",
+        "0x3ab0f68caa7d6f855b842f3b19dcb3c990010ea411cd5fbf727eb56f82231fa0": "0x0ef994614d9460fbed4e9c8ab618f0cf5e26f3a475d0adf706ae97054d8b5752",
+        "0x3d6328336f661726778aad0b79ccdc26a5fd066314ec659b6b29ee9d4b19fe97": "0x948b45d652e6f248b6c42f822b993ba896c46b6d67d3d6b505525f5511055b35",
+        "0x46553218b056275d5bcd4ff36437971a37d495548b3a83704c97e2ff092cfaaa": "0x2d30a12aeb52de1d26560cbbc5f6e82f2a475e2154bdae977853c52447207b97",
+        "0x4eb4f8994cd37912093248c69d98603be1939a54dc6655a584fd70757a9d60bf": "0xf6ff810ff34e470a445a5468d7173cd794f3b466b925d3ab430d27b666e0c844",
+        "0x4f2c1d73a00090cff14bd8e0f9bb09a74aaf649f1ad92a765f22710680e9a008": "0xbc08909b3f284ba41fae9419ee0a976bd09ca399f0578063eaaad07a76ca2521",
+        "0x55445029cff2a6e61d40e9bd8c5db22aeef3da108734b872b64aec7ffbf44733": "0xa118f37354cf798f06b2504cf75a902e87f480a10fd3fbbb2c269da291f2c24d",
+        "0x5605a90911f4890d12d874329fe263802e99481c1c559169ba039977958d0750": "0x80ab162e694f84d388acbdb66c15fd1d2401c9d0b12613ec5171d5a3b6609a95",
+        "0x593764fd4a7be94bdeed2f435346a95f050b14ef9c2710e703dd3f4f1d7fe360": "0xe0bc128bc208c30ff989eb653ece443d114d46d320847711bffdc08b26480bb8",
+        "0x59f8e4bca341d6dbda0cd125f669ebdb912b3b1947d068f642e0790fe92a1383": "0x5d55e1252ca2493161762678f0ebfbd0b581da5b563e34ece06598b05ec1c903",
+        "0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8": "0x9d3b7d0f71ffe730ed5380a028f33f379a85a8f62e5a29276cf0042936391448",
+        "0x5ee8e728f51fcd565d3b3520b695c35b6e7736a84841e1124087c5a1a785995a": "0xed97d29159c480eb3107b01c008d3a6292fb03e6a61df648561ae4d0a4642a16",
+        "0x619ffc15441c4e4dcdf9c5623ce66f8a2c8cf0b75a655b27aba89796e8becd62": "0xea16a5e535ca83fccdd4f8146508d7ef1e58ecc6c46e4fc04b0134c9ff664880",
+        "0x6958756f1d3734c47583e01419ec0ba79fd2bc53ff7db662f76fe82b5a394235": "0x05ebf11cca4f8bc67516521e222d007288fbb2a5c53956c643c855395cdecd86",
+        "0x6cb3089f8b5ff993ed24ed9ccbfa8bae322848d722842e6453576f30029b1434": "0x579cf97fa7a1a688efc80b87c42c730cbe116dfaebe04af6afdc2c7f8462a0ac",
+        "0x7002ae0faba2ba694e80d8c66b350f94237408e10732a6158e7d4f4fc0a41e3f": "0x8cc25d6d2f491a91e6eb22c1e56460a4085222dfcef89b16dcc4e3ddde3000dd",
+        "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d": "0x7874f1f567f61646332fe6bd6807b5f36f27f526844ce7b6ddd291a27d33971d",
+        "0x815213de4432918e5129eac5ea0b1dfd0b9ad19b65b22f9f22c822bfa23169cd": "0xdd4ab16826eea308704aa23aad020a3632326f6cf08c79105e571ab2094d91dc",
+        "0x8cb5f6faba8fa4d2e000b4b3607fa353092516e78aa31a1fccdd9dd61498d94c": "0xd6821652069eb58202a5c50f30d716e5fbd630b65a5cacf77bfb0e66681a7e43",
+        "0x8ee9c89c042749060aa7225c9568cfbeb4ae658041f42cf5cfa90ef3cbc8c250": "0xe283c7a214f8eae62d58aa091aaa16750b4b9856762019595a885ec79806a11e",
+        "0x91a87855e0e1dca28427969d13729134eaf4abfc0c3233bba21480e7e87c731b": "0xa7ff8df8bb9c8d570e09a34cbf7455cefe1e71d702a277f703ad2827dfd7102a",
+        "0x92c135cd4f32e009aac8ecf746c5c0990280a3d5f8fe8020f0b923dca1f78413": "0xa8530f3bae7384493e05e770aaa2ab3f2046aa4e145fdc493af2db1b37e75d83",
+        "0x96c1e0e9af737ae7000afab010510bd7fe1aecbb04d9fd8b012b51ff7d3da4b7": "0x9bf3b0e17ff3d191f3389635ad1f2c85ba8d5fdef84e953335a7e542ff8f8d8f",
+        "0x9901db3a31e7004c45911fca4480b7dce86a4baeab819eb4959d7316f687d54c": "0xab27ca5f94ff6427850f2289e4ecb2fd34b6a1576d9df3eca6e9b6c568685a59",
+        "0x9bc6bd9fb238298cb6a4260fc4306ab426b3e2d41607e719dde8c4ca41817da7": "0x7b705443d480c2f8ef3f247473b4862e42bd8870816c863f2bfb7287fe2a7bf7",
+        "0xa1d784e9b2631c87fc0830304fae6a42711a8a9c798520f971d946175870d3d4": "0xbaaa7869bdbad59e944433e21f97a1df59839d8881974a5729811bb269b30f41",
+        "0xaede89efdac80ce5f55b93ee934eddc67b5c8a4282b18a86ca635d69234301f3": "0x09229ace78bf8a6edbe606b84e6491f45a7be974fb5fb7ad71d6316be54114dd",
+        "0xaf738dc6e63939e3817a1897c38a1fc42c84f323e0be476d5aeab45896dd2874": "0x2978fd20ad61676e58b636ecd5343d34aaf6250cb77c76c2c0a1e02e067a257d",
+        "0xc0b79de4d53c816796fe57f84833f967baa01c2acb13077b4a4e88b311025aa8": "0x0dff9ee71662ac8c2cd38d2827bd22e93d94416df008fe5ba2337ab521ab32dc",
+        "0xc296d09534a512bd8c16504cc65eb80c9e2af55186122cbfb411256dd650bdcc": "0x50cf02b9327563f9f08b4fd051be529e0e0d8726bdb1102c7e1d4d88312569f8",
+        "0xc2b491822adbee13708d5083286e831a9d40f6dd23ee2440b02a27b284fdc835": "0xd3e5361b92c544cedcb41fbfa630b9d58ecacb6c1f51112ef088f1bbe146e88a",
+        "0xc50a23e040f3477a1182c603edfa17b13b4775797544f012ebff07feb8aa4c2a": "0x23753fcbd6700bfeb6fc56ffca5b4035ea0d648877bd8f1896af57c33d83b307",
+        "0xc51926a714d2b05a05ed1cbbd2fd0e9537b5bfa3a17151fcbb33d61c4f55e12a": "0x496c4b7cde2d2b75c45edcb3ccb48ebc8795c09fc567a1034c2afca9421e59c1",
+        "0xe00752f8a796288931a2709b4655198eacc8b64efc523bbbffbfe6d0773c54c9": "0x9969334c94d2179893738e014db4bf2a0f6b8157c196aa1ca02547155f841968",
+        "0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d": "0xd6b3f770b0687f686d1a79e8d56c4f66c55c46a060afd2bbd4fd06a7e06cf28e",
+        "0xf0b1510b2a9c8d4c4bd1ff2c578ddbffc04741aa06b3cc8680a343741ef15e84": "0x9d52a7706e77531482be48fc2068d161cd81659de3719a2e6885725a1e2ebe54",
+        "0xf0ec4973874d2124ed8b1a02a07e6c88031dff6f8f6375b37298f6afb8d1e99b": "0x6c49f7cbb77af8216e8708c9c0c76ddd80a11a6a93127a9b8bdf4ddceacb9517",
+        "0xf5de2a84c954882baa45ac90c79baa2a966ddf7d8ea14d8a87e1e17c449d123e": "0x6d50d80e1c4e19d9844a78a5b375c847255f07d1e52935c71bf0386d3e777e25",
+        "0xfc2b688f6d286950eff2cf6f1b10a6bf63e92a20fcdf8db7377ef647b154eb52": "0x97bf3d5ac41d169ba30f93048449472b7b7fb6f8347f65f5fd877111083d3c60"
+      },
+      "parent_beacon_roots": true,
+      "version": "anvil Version: 1.9.0+6056c584"
+    }
+  },
+  "replica_sha256": "2bee51bb825cf7cac318e4fa25afbf3000af43b5f5c027bb11e62bb4912d4e96",
+  "runner_exit_code": 1,
+  "runner_sha256": "ef650033c017892a38e6cb1f3fed4a2e55ccf013d8189fdb0e333ad7008bf6a9",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x30",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-call-value0-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6000600052604060006080600060006006620186a0f15060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-call-value0-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a600052604060006080600060006006620186a0f15060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-call-value1-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6000600052604060006080600060016006620186a0f15060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-call-value1-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a600052604060006080600060016006620186a0f15060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-staticcall-value0-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x600060005260406000608060006006620186a0fa5060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-staticcall-value0-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260406000608060006006620186a0fa5060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-delegatecall-value0-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x600060005260406000608060006006620186a0f45060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-delegatecall-value0-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260406000608060006006620186a0f45060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-delegatecall-value1-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x600060005260406000608060006006620186a0f45060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-delegatecall-value1-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a60005260406000608060006006620186a0f45060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-callcode-value0-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6000600052604060006080600060006006620186a0f25060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-callcode-value0-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a600052604060006080600060006006620186a0f25060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x0"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-callcode-value1-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x6000600052604060006080600060016006620186a0f25060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "nested-callcode-value1-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x602a600052604060006080600060016006620186a0f25060006000f3",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "value": "0x1"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "root-success",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "to": "0x0000000000000000000000000000000000000006"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    },
+    {
+      "category": "precompile",
+      "name": "root-failed",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_call",
+        "params": [
+          {
+            "data": "0x000000000000000000000000000000000000000000000000000000000000002a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "from": "0x7435ed30a8b4aeb0877cef0c6e8cffe834eb865f",
+            "gas": "0x100000",
+            "gasPrice": "0x3b9aca00",
+            "to": "0x0000000000000000000000000000000000000006"
+          },
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ],
+          "latest"
+        ]
+      }
+    }
+  ],
+  "source_commit": "09e214ab493d49741b08887b47ee01251e3d60ec",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "794b655decb8980df6f02427f7e99a225d9eb46d",
+    "generated_sha256": "8826676898e13053b960ee3b133c94bead03d8883c906b231355a89a57383ef6",
+    "notes_sha256": "51893d5137591cc05448d680d489e9372699352e90b24d7065a47209f1b57185",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-11-09T13:37:43.378005+00:00"
+}

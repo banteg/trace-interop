@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.10.2 · d3e1aea7](../../../clients/besu_release.md) | 50 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-10-29/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-29/eval/reorg-safe/manifest.json) |
-| [Besu · 26.10-develop · 7f08e68a](../../../clients/besu_development.md) | 50 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-10-29/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-29/eval/reorg-safe/manifest.json) |
-| [Erigon · 3.8.1 · cf6f1413](../../../clients/erigon_release.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-29/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-29/eval/reorg-safe/manifest.json) |
-| [Erigon · 3.9.0-dev · 6955d198](../../../clients/erigon_development.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-29/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-29/eval/reorg-safe/manifest.json) |
-| [Geth draft fork · 1.17.11-unstable · 0f1fb2ae](../../../clients/go-ethereum_trace.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-29/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-29/eval/reorg-safe/manifest.json) |
-| [Nethermind · 2.2.2 · be201120](../../../clients/nethermind_release.md) | 41 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-10-29/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-29/eval/reorg-safe/manifest.json) |
-| [Nethermind · 2.3.0-preview · fc9abf09](../../../clients/nethermind_development.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-29/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-29/eval/reorg-safe/manifest.json) |
-| [Reth · 2.9.0 · c9a780f4](../../../clients/reth_release.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-29/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-29/eval/reorg-safe/manifest.json) |
-| [Reth · 2.8.1 · 966010c9](../../../clients/reth_development.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-10-29/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-10-29/eval/reorg-safe/manifest.json) |
+| [Besu · 26.11.0 · 0e595f9e](../../../clients/besu_release.md) | 50 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
+| [Besu · 26.11-develop · 3f41096a](../../../clients/besu_development.md) | 50 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
+| [Erigon · 3.8.1 · cf6f1413](../../../clients/erigon_release.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
+| [Erigon · 3.9.0-dev · cf91acee](../../../clients/erigon_development.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
+| [Geth draft fork · 1.17.11-unstable · e487da1e](../../../clients/go-ethereum_trace.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
+| [Nethermind · 2.2.2 · be201120](../../../clients/nethermind_release.md) | 41 records | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
+| [Nethermind · 2.3.0-preview · 4079edfa](../../../clients/nethermind_development.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
+| [Reth · 2.10.1 · 58ebce14](../../../clients/reth_release.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
+| [Reth · 2.10.1 · 5efe80f5](../../../clients/reth_development.md) | 41 records | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -32,7 +32,7 @@
 }
 ```
 
-**Besu · 26.10-develop · 7f08e68a** (`besu/v26.10-develop-7f08e68/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11-develop · 3f41096a** (`besu/v26.11-develop-3f41096/linux-x86_64/openjdk-java-25`)
 
 - [H09](../../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
@@ -45,7 +45,7 @@
 - Result shape at `35`: {'action': {'callType': 'staticcall', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x0'}, 'blockHash': '0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8', 'blockNumber': 46, 'erro
 - Result shape at `38`: {'action': {'creationMethod': 'create', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0x6d70b', 'init': '0x5b646368696c6460006000a133ff', 'value': '0x0'}, 'blockHash': '0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8', 'blockNumber': 46, 'result': {'address': '0x9e
 
-**Besu · 26.10.2 · d3e1aea7** (`besu/v26.10.2/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11.0 · 0e595f9e** (`besu/v26.11.0/linux-x86_64/openjdk-java-25`)
 
 - [H09](../../../decisions/H09.md): A REVERT frame keeps result {gasUsed, output}; a reverted CREATE has no address or code. First at traceAddress []: error 'Reverted', result null.
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
@@ -58,7 +58,7 @@
 - Result shape at `35`: {'action': {'callType': 'staticcall', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x0'}, 'blockHash': '0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8', 'blockNumber': 46, 'erro
 - Result shape at `38`: {'action': {'creationMethod': 'create', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0x6d70b', 'init': '0x5b646368696c6460006000a133ff', 'value': '0x0'}, 'blockHash': '0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8', 'blockNumber': 46, 'result': {'address': '0x9e
 
-**Erigon · 3.9.0-dev · 6955d198** (`3.9.0-dev-6955d198`)
+**Erigon · 3.9.0-dev · cf91acee** (`3.9.0-dev-cf91acee`)
 
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
@@ -66,11 +66,11 @@
 
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Geth draft fork · 1.17.11-unstable · 0f1fb2ae** (`Geth/v1.17.11-unstable-0f1fb2ae-2026-10-28/linux-amd64/go1.26.1`)
+**Geth draft fork · 1.17.11-unstable · e487da1e** (`Geth/v1.17.11-unstable-e487da1e-2026-11-01/linux-amd64/go1.26.1`)
 
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Nethermind · 2.3.0-preview · fc9abf09** (`2.3.0-preview+fc9abf09`)
+**Nethermind · 2.3.0-preview · 4079edfa** (`2.3.0-preview+4079edfa`)
 
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
@@ -84,11 +84,11 @@
 - Result shape at `29`: {'action': {'callType': 'staticcall', 'from': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0', 'gas': '0xea60', 'input': '0x', 'to': '0x7dcd17433742f4c0ca53122ab541d0ba67fc27df', 'value': '0x0'}, 'blockHash': '0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8', 'blockNumber': 46, 'erro
 - Result shape at `33`: {'action': {'address': '0x9ee5c90ad0a83dd07800c64adb87c584092f8e37', 'balance': '0x0', 'refundAddress': '0x9dcd17433742f4c0ca53122ab541d0ba67fc27d0'}, 'blockHash': '0x5b3627e612c821267b54826693cfde431298fd7cdb8f8ec6ea90d952c494e7e8', 'blockNumber': 46, 'subtraces': 0, 'traceAddress': [6, 0], 'transa
 
-**Reth · 2.8.1 · 966010c9** (`Reth Version: 2.8.1+966010c9`)
+**Reth · 2.10.1 · 5efe80f5** (`Reth Version: 2.10.1+5efe80f5`)
 
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Reth · 2.9.0 · c9a780f4** (`Reth Version: 2.9.0+c9a780f4`)
+**Reth · 2.10.1 · 58ebce14** (`Reth Version: 2.10.1+58ebce14`)
 
 - [H33](../../../decisions/H33.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 

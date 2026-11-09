@@ -10,16 +10,16 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 
 | Law | Statement | Pairs checked | Builds with violations |
 | --- | --- | --- | --- |
-| **L01** Tree shape | Every frame list is a preorder tree: one root, unique dense paths, subtraces equal to the number of children, and no frame using more gas than it was given. | 8409 | Besu 26.10-develop · 7f08e68a, Besu 26.10.2 · d3e1aea7 |
-| **L02** Changed values | A stateDiff `*` entry changes its value: `from` differs from `to`. | 15371 | — |
-| **L03** Root output | A successful root call frame reports the envelope output. | 1563 | Besu 26.10-develop · 7f08e68a, Besu 26.10.2 · d3e1aea7 |
-| **L04** Selection is a projection | Requests that differ only in their trace types return the same output and the same value for every component both select. | 28579 | — |
-| **L05** trace_get selects from trace_transaction | A record trace_get returns is one of the trace_transaction records, unchanged; under the trace profile it is the requested traceAddress, or null for an absent path. | 91 | — |
-| **L06** trace_transaction is a slice of trace_block | trace_transaction(tx) equals the trace_block records carrying its hash, in order. | 145 | — |
-| **L07** Stored and replayed frames agree | The frames of trace_transaction and trace_block equal the replayed trace of the same transaction, apart from localization fields. | 760 | Nethermind 2.2.2 · be201120 |
-| **L08** Single and block replay agree | trace_replayTransaction(tx) equals the block replay envelope of that transaction for every shared selected component; under the trace profile that envelope must exist at its transaction index and carry its hash. | 196 | — |
-| **L09** A bundle item is a call | trace_callMany items equal the same items replayed as a shorter bundle, and a first item equals trace_call on the same block. | 4602 | — |
-| **L10** Filters select block records | trace_filter over an explicit range returns block records, unchanged and in block order; without addresses or paging it returns all of them. | 748 | Besu 26.10-develop · 7f08e68a, Besu 26.10.2 · d3e1aea7 |
+| **L01** Tree shape | Every frame list is a preorder tree: one root, unique dense paths, subtraces equal to the number of children, and no frame using more gas than it was given. | 8363 | Besu 26.11-develop · 3f41096a, Besu 26.11.0 · 0e595f9e |
+| **L02** Changed values | A stateDiff `*` entry changes its value: `from` differs from `to`. | 15322 | — |
+| **L03** Root output | A successful root call frame reports the envelope output. | 1593 | Besu 26.11-develop · 3f41096a, Besu 26.11.0 · 0e595f9e |
+| **L04** Selection is a projection | Requests that differ only in their trace types return the same output and the same value for every component both select. | 28059 | — |
+| **L05** trace_get selects from trace_transaction | A record trace_get returns is one of the trace_transaction records, unchanged; under the trace profile it is the requested traceAddress, or null for an absent path. | 90 | — |
+| **L06** trace_transaction is a slice of trace_block | trace_transaction(tx) equals the trace_block records carrying its hash, in order. | 154 | — |
+| **L07** Stored and replayed frames agree | The frames of trace_transaction and trace_block equal the replayed trace of the same transaction, apart from localization fields. | 822 | Nethermind 2.2.2 · be201120 |
+| **L08** Single and block replay agree | trace_replayTransaction(tx) equals the block replay envelope of that transaction for every shared selected component; under the trace profile that envelope must exist at its transaction index and carry its hash. | 230 | — |
+| **L09** A bundle item is a call | trace_callMany items equal the same items replayed as a shorter bundle, and a first item equals trace_call on the same block. | 4498 | — |
+| **L10** Filters select block records | trace_filter over an explicit range returns block records, unchanged and in block order; without addresses or paging it returns all of them. | 755 | Besu 26.11-develop · 3f41096a, Besu 26.11.0 · 0e595f9e |
 | **L11** Paging slices the filter | trace_filter with after and count returns that slice of the same filter without them. | 110 | — |
 | **L12** Equivalent block and address spellings | The same request, or one that differs only in address letter case or in naming one block by number, hash or head tag, returns the same result. | 11 | — |
 
@@ -29,15 +29,15 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 
 | Build | Violations | Cause | Examples |
 | --- | --- | --- | --- |
-| Besu 26.10-develop · 7f08e68a | 2 | Found by this law. At the call depth limit (`probes-forks/depth-limit`) the successful CREATE at depth 1 reports gasUsed 2^64 − 25357 and the phantom CREATE at depth 1025 reports 2^64 − 22239: negative gas wrapped to unsigned. The H29 depth probe records the phantom frame but no assertion checks its gas. | [depth-limit](cases/probes-forks/depth-limit.md): `[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, … 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas` · [depth-limit-precompile](cases/probes-forks/depth-limit-precompile.md): `[0] (create) reports gasUsed 18446744073709528071 of 1976632 gas` |
-| Besu 26.10.2 · d3e1aea7 | 2 | The same wrapped gasUsed as the development build. | [depth-limit](cases/probes-forks/depth-limit.md): `[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, … 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas` · [depth-limit-precompile](cases/probes-forks/depth-limit-precompile.md): `[0] (create) reports gasUsed 18446744073709528071 of 1976632 gas` |
+| Besu 26.11-develop · 3f41096a | 2 | Found by this law. At the call depth limit (`probes-forks/depth-limit`) the successful CREATE at depth 1 reports gasUsed 2^64 − 25357 and the phantom CREATE at depth 1025 reports 2^64 − 22239: negative gas wrapped to unsigned. The H29 depth probe records the phantom frame but no assertion checks its gas. | [depth-limit](cases/probes-forks/depth-limit.md): `[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, … 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas` · [depth-limit-precompile](cases/probes-forks/depth-limit-precompile.md): `[0] (create) reports gasUsed 18446744073709528071 of 1976632 gas` |
+| Besu 26.11.0 · 0e595f9e | 2 | The same wrapped gasUsed as the development build. | [depth-limit](cases/probes-forks/depth-limit.md): `[0] (create) reports gasUsed 18446744073709526259 of 1977046 gas; [1, … 1025 deep] (create) reports gasUsed 18446744073709529377 of 1401257 gas` · [depth-limit-precompile](cases/probes-forks/depth-limit-precompile.md): `[0] (create) reports gasUsed 18446744073709528071 of 1976632 gas` |
 
 ### L03 Root output
 
 | Build | Violations | Cause | Examples |
 | --- | --- | --- | --- |
-| Besu 26.10-develop · 7f08e68a | 3 | H22: a root call to a precompile reports empty frame output while the envelope carries the precompile’s return bytes. | [call-identity](cases/initial/call-identity.md): `root output 0x vs envelope "0x11223344"` · [root-failed](cases/precompiles/root-failed.md): `root output 0x vs envelope "0x6572726f72"` |
-| Besu 26.10.2 · d3e1aea7 | 3 | H22, as in the development build. | [call-identity](cases/initial/call-identity.md): `root output 0x vs envelope "0x11223344"` · [root-failed](cases/precompiles/root-failed.md): `root output 0x vs envelope "0x6572726f72"` |
+| Besu 26.11-develop · 3f41096a | 3 | H22: a root call to a precompile reports empty frame output while the envelope carries the precompile’s return bytes. | [call-identity](cases/initial/call-identity.md): `root output 0x vs envelope "0x11223344"` · [root-failed](cases/precompiles/root-failed.md): `root output 0x vs envelope "0x6572726f72"` |
+| Besu 26.11.0 · 0e595f9e | 3 | H22, as in the development build. | [call-identity](cases/initial/call-identity.md): `root output 0x vs envelope "0x11223344"` · [root-failed](cases/precompiles/root-failed.md): `root output 0x vs envelope "0x6572726f72"` |
 
 ### L07 Stored and replayed frames agree
 
@@ -49,5 +49,5 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 
 | Build | Violations | Cause | Examples |
 | --- | --- | --- | --- |
-| Besu 26.10-develop · 7f08e68a | 5 | H27: range filters across a fork boundary (blocks 35–36, 55–56 and 59–60, and 2–5 across the Homestead transition at block 4) differ from the same blocks’ traces. | [filter-across-36](cases/forks/filter-across-36.md) vs [block-35](cases/forks/block-35.md) (1 more): `list has 8 vs 16 entries` · [filter-across-56](cases/forks/filter-across-56.md) vs [block-55](cases/forks/block-55.md) (1 more): `[3].action.gas present on one side only` |
-| Besu 26.10.2 · d3e1aea7 | 5 | H27, as in the development build. | [filter-across-36](cases/forks/filter-across-36.md) vs [block-35](cases/forks/block-35.md) (1 more): `list has 8 vs 16 entries` · [filter-across-56](cases/forks/filter-across-56.md) vs [block-55](cases/forks/block-55.md) (1 more): `[3].action.gas present on one side only` |
+| Besu 26.11-develop · 3f41096a | 5 | H27: range filters across a fork boundary (blocks 35–36, 55–56 and 59–60, and 2–5 across the Homestead transition at block 4) differ from the same blocks’ traces. | [filter-across-36](cases/forks/filter-across-36.md) vs [block-35](cases/forks/block-35.md) (1 more): `list has 8 vs 16 entries` · [filter-across-56](cases/forks/filter-across-56.md) vs [block-55](cases/forks/block-55.md) (1 more): `[3].action.gas present on one side only` |
+| Besu 26.11.0 · 0e595f9e | 5 | H27, as in the development build. | [filter-across-36](cases/forks/filter-across-36.md) vs [block-35](cases/forks/block-35.md) (1 more): `list has 8 vs 16 entries` · [filter-across-56](cases/forks/filter-across-56.md) vs [block-55](cases/forks/block-55.md) (1 more): `[3].action.gas present on one side only` |

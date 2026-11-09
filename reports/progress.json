@@ -3,32 +3,32 @@
     {
       "builds": {
         "development": {
-          "agree": 8,
+          "agree": 15,
           "build": [
-            "26.10-develop \u00b7 7f08e68a"
+            "26.11-develop \u00b7 3f41096a"
           ],
-          "gained": 0,
+          "gained": 7,
           "lost": 0
         },
         "release": {
           "agree": 8,
           "build": [
-            "26.10.2 \u00b7 d3e1aea7"
+            "26.11.0 \u00b7 0e595f9e"
           ],
-          "gained": 2,
+          "gained": 0,
           "lost": 0
         }
       },
       "client": "besu",
       "counts": {
-        "agree": 8,
-        "converged": 13,
-        "fix": 6,
+        "agree": 15,
+        "converged": 11,
+        "fix": 5,
         "policy": 0,
         "review": 0,
-        "unmeasured": 6
+        "unmeasured": 2
       },
-      "dev_only": 0,
+      "dev_only": 7,
       "name": "Besu",
       "prs": {
         "merged": 12,
@@ -40,7 +40,7 @@
         "development": {
           "agree": 32,
           "build": [
-            "3.9.0-dev \u00b7 6955d198"
+            "3.9.0-dev \u00b7 cf91acee"
           ],
           "gained": 0,
           "lost": 0
@@ -75,7 +75,7 @@
         "development": {
           "agree": 33,
           "build": [
-            "2.3.0-preview \u00b7 fc9abf09"
+            "2.3.0-preview \u00b7 4079edfa"
           ],
           "gained": 0,
           "lost": 0
@@ -110,18 +110,18 @@
         "development": {
           "agree": 25,
           "build": [
-            "2.8.1 \u00b7 966010c9"
+            "2.10.1 \u00b7 5efe80f5"
           ],
-          "gained": 1,
-          "lost": 1
+          "gained": 0,
+          "lost": 0
         },
         "release": {
           "agree": 25,
           "build": [
-            "2.9.0 \u00b7 c9a780f4"
+            "2.10.1 \u00b7 58ebce14"
           ],
-          "gained": 1,
-          "lost": 1
+          "gained": 0,
+          "lost": 0
         }
       },
       "client": "reth",
@@ -143,32 +143,32 @@
     {
       "builds": {
         "development": {
-          "agree": 27,
+          "agree": 28,
           "build": [
-            "1.8.7-nightly \u00b7 716e795c"
+            "1.9.1-nightly \u00b7 6165f031"
           ],
-          "gained": 0,
+          "gained": 1,
           "lost": 0
         },
         "release": {
-          "agree": 18,
+          "agree": 28,
           "build": [
-            "1.8.6 \u00b7 6bad0a66"
+            "1.9.0 \u00b7 6056c584"
           ],
-          "gained": 0,
+          "gained": 10,
           "lost": 0
         }
       },
       "client": "anvil",
       "counts": {
-        "agree": 27,
+        "agree": 28,
         "converged": 5,
-        "fix": 1,
+        "fix": 0,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
       },
-      "dev_only": 9,
+      "dev_only": 0,
       "name": "Anvil",
       "prs": {
         "merged": 16,

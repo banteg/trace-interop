@@ -29,6 +29,12 @@
       "repository": "https://github.com/paradigmxyz/reth",
       "commit": "c9a780f4f23d6752ca299b104c93b7f099673c80",
       "committed_at": "2026-10-29T11:02:54Z"
+    },
+    {
+      "version": "Reth Version: 2.10.1+58ebce14",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "58ebce14ae63dab040beae301e1578cd0dc55e8a",
+      "committed_at": "2026-11-06T17:41:17Z"
     }
   ],
   "reth_development": [
@@ -139,6 +145,12 @@
       "repository": "https://github.com/paradigmxyz/reth",
       "commit": "966010c905449163ef161530a5ee95ac1e0c8487",
       "committed_at": "2026-10-28T16:31:35Z"
+    },
+    {
+      "version": "Reth Version: 2.10.1+5efe80f5",
+      "repository": "https://github.com/paradigmxyz/reth",
+      "commit": "5efe80f515c96fa34b569a22fb810b54f914cfb0",
+      "committed_at": "2026-11-08T15:13:14Z"
     }
   ],
   "erigon_release": [
@@ -299,6 +311,12 @@
       "repository": "https://github.com/erigontech/erigon",
       "commit": "6955d1985e90b0dc1646e1ea68beb9aae1d3b2c4",
       "committed_at": "2026-10-29T10:16:34Z"
+    },
+    {
+      "version": "3.9.0-dev-cf91acee",
+      "repository": "https://github.com/erigontech/erigon",
+      "commit": "cf91acee1ed42caa54df22773f8de8eda3a4fd4d",
+      "committed_at": "2026-11-09T05:59:04Z"
     }
   ],
   "besu_release": [
@@ -331,6 +349,12 @@
       "repository": "https://github.com/besu-eth/besu",
       "commit": "d3e1aea7326960c317def66074037e7f67892ac4",
       "committed_at": "2026-10-26T14:46:37Z"
+    },
+    {
+      "version": "besu/v26.11.0/linux-x86_64/openjdk-java-25",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "0e595f9eaf4b760ee7069fcdf8d901685f1641eb",
+      "committed_at": "2026-10-30T15:58:03Z"
     }
   ],
   "besu_development": [
@@ -435,6 +459,12 @@
       "repository": "https://github.com/besu-eth/besu",
       "commit": "7f08e68a3cc891a3b642f8353b9770cf6ba7d5a0",
       "committed_at": "2026-10-29T10:46:31Z"
+    },
+    {
+      "version": "besu/v26.11-develop-3f41096/linux-x86_64/openjdk-java-25",
+      "repository": "https://github.com/besu-eth/besu",
+      "commit": "3f41096a6635a5e50ef99223d9f469ff5d91b1b8",
+      "committed_at": "2026-11-09T11:53:24Z"
     }
   ],
   "nethermind_release": [
@@ -625,6 +655,12 @@
       "repository": "https://github.com/NethermindEth/nethermind",
       "commit": "fc9abf09fa8eaaf291edba560073514743facadc",
       "committed_at": "2026-10-29T12:14:46Z"
+    },
+    {
+      "version": "2.3.0-preview+4079edfa",
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "commit": "4079edfafb743a2ce3f6b04a24d66c7410566035",
+      "committed_at": "2026-11-09T11:27:54Z"
     }
   ],
   "go-ethereum_trace": [
@@ -705,6 +741,12 @@
       "repository": "https://github.com/banteg/go-ethereum",
       "commit": "0f1fb2ae59dba1a24f6345578e11e6611a39495e",
       "committed_at": "2026-10-28T17:29:01Z"
+    },
+    {
+      "version": "Geth/v1.17.11-unstable-e487da1e-2026-11-01/linux-amd64/go1.26.1",
+      "repository": "https://github.com/banteg/go-ethereum",
+      "commit": "e487da1e90e14d8bf0fb530da581d7ab51fc11e8",
+      "committed_at": "2026-11-01T10:58:56Z"
     }
   ],
   "anvil_release": [
@@ -731,6 +773,12 @@
       "repository": "https://github.com/foundry-rs/foundry",
       "commit": "6bad0a66de7c83f7b33695044138f0f5fa4c5990",
       "committed_at": "2026-10-21T17:31:50Z"
+    },
+    {
+      "version": "anvil Version: 1.9.0+6056c584",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "6056c5845d34205a83cf7108042adb137325c9df",
+      "committed_at": "2026-11-02T18:15:17Z"
     }
   ],
   "anvil_development": [
@@ -823,6 +871,12 @@
       "repository": "https://github.com/foundry-rs/foundry",
       "commit": "716e795cea18c9706f021ea692dd7d1ff76b63b1",
       "committed_at": "2026-10-29T04:24:53Z"
+    },
+    {
+      "version": "anvil Version: 1.9.1-nightly+6165f031",
+      "repository": "https://github.com/foundry-rs/foundry",
+      "commit": "6165f031d0cdb8395b9359e999f0e7d52e3a0105",
+      "committed_at": "2026-11-09T05:59:22Z"
     }
   ]
 }

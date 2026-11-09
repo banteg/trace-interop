@@ -90,8 +90,8 @@
 <text class="n-agree" x="488.5" y="257" text-anchor="middle">#27367</text>
 <rect class="pr edge partial" x="522" y="244" width="55" height="18" rx="4"/>
 <text class="label" x="549.5" y="257" text-anchor="middle">#27378</text>
-<rect class="b-fix edge partial" x="583" y="244" width="55" height="18" rx="4"/>
-<text class="n-fix" x="610.5" y="257" text-anchor="middle">#28160</text>
+<rect class="b-agree edge partial" x="583" y="244" width="55" height="18" rx="4"/>
+<text class="n-agree" x="610.5" y="257" text-anchor="middle">#28160</text>
 <rect class="b-converged" x="16" y="268" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="281" text-anchor="middle">H14</text>
 <text class="label" x="70" y="281">Invalid parameters and rejected calls</text>

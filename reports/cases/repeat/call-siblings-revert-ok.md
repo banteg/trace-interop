@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.6 · 6bad0a66](../../clients/anvil_release.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
-| [Anvil · 1.8.7-nightly · 716e795c](../../clients/anvil_development.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
-| [Besu · 26.10.2 · d3e1aea7](../../clients/besu_release.md) | 3 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
-| [Besu · 26.10-develop · 7f08e68a](../../clients/besu_development.md) | 3 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
-| [Erigon · 3.8.1 · cf6f1413](../../clients/erigon_release.md) | 3 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
-| [Erigon · 3.9.0-dev · 6955d198](../../clients/erigon_development.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
-| [Geth draft fork · 1.17.11-unstable · 0f1fb2ae](../../clients/go-ethereum_trace.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
-| [Nethermind · 2.2.2 · be201120](../../clients/nethermind_release.md) | 3 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
-| [Nethermind · 2.3.0-preview · fc9abf09](../../clients/nethermind_development.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
-| [Reth · 2.9.0 · c9a780f4](../../clients/reth_release.md) | 3 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
-| [Reth · 2.8.1 · 966010c9](../../clients/reth_development.md) | 3 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-10-29/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/repeat/manifest.json) |
+| [Anvil · 1.9.0 · 6056c584](../../clients/anvil_release.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
+| [Anvil · 1.9.1-nightly · 6165f031](../../clients/anvil_development.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
+| [Besu · 26.11.0 · 0e595f9e](../../clients/besu_release.md) | 3 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
+| [Besu · 26.11-develop · 3f41096a](../../clients/besu_development.md) | 3 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
+| [Erigon · 3.8.1 · cf6f1413](../../clients/erigon_release.md) | 3 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
+| [Erigon · 3.9.0-dev · cf91acee](../../clients/erigon_development.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
+| [Geth draft fork · 1.17.11-unstable · e487da1e](../../clients/go-ethereum_trace.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
+| [Nethermind · 2.2.2 · be201120](../../clients/nethermind_release.md) | 3 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
+| [Nethermind · 2.3.0-preview · 4079edfa](../../clients/nethermind_development.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
+| [Reth · 2.10.1 · 58ebce14](../../clients/reth_release.md) | 3 call frames; output `0x` | ⚠️ Differs | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
+| [Reth · 2.10.1 · 5efe80f5](../../clients/reth_development.md) | 3 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/repeat/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/repeat/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -43,7 +43,7 @@
 }
 ```
 
-**Besu · 26.10-develop · 7f08e68a** (`besu/v26.10-develop-7f08e68/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11-develop · 3f41096a** (`besu/v26.11-develop-3f41096/linux-x86_64/openjdk-java-25`)
 
 - [H24](../../decisions/H24.md): The successful second sibling retains its output and has no error.
 - [H21](../../decisions/H21.md): Every operation names its op and has only the specified members; stack words and storage operands use minimal hex quantities at every depth. First at root pc 0: members ['cost', 'ex', 'pc', 'sub'] (28 in total).
@@ -53,7 +53,7 @@
 - Result shape at `trace/2`: {'action': {'callType': 'call', 'from': '0x0000000000000000000000000000000000001005', 'gas': '0xea60', 'input': '0x', 'to': '0x0000000000000000000000000000000000001002', 'value': '0x0'}, 'error': 'Reverted', 'subtraces': 0, 'traceAddress': [1], 'type': 'call'} is not valid under any of the given sch
 - Result shape at `vmTrace`: {'code': '0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x20'], 'store': None, 'used': 578997}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x0'], 'store': None, 'used': 578994}, 'pc': 2, 'sub': N
 
-**Besu · 26.10.2 · d3e1aea7** (`besu/v26.10.2/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11.0 · 0e595f9e** (`besu/v26.11.0/linux-x86_64/openjdk-java-25`)
 
 - [H24](../../decisions/H24.md): The successful second sibling retains its output and has no error.
 - [H21](../../decisions/H21.md): Every operation names its op and has only the specified members; stack words and storage operands use minimal hex quantities at every depth. First at root pc 0: members ['cost', 'ex', 'pc', 'sub'] (28 in total).
@@ -73,11 +73,7 @@
 - [H21](../../decisions/H21.md): Every operation names its op and has only the specified members; stack words and storage operands use minimal hex quantities at every depth. First at root pc 0: members ['cost', 'ex', 'pc', 'sub'] (28 in total).
 - Result shape at `vmTrace`: {'code': '0x6020600060006000600061100361ea60f1506020600060006000600061100261ea60f15000', 'ops': [{'cost': 3, 'ex': {'mem': None, 'push': ['0x20'], 'store': None, 'used': 578997}, 'pc': 0, 'sub': None}, {'cost': 3, 'ex': {'mem': None, 'push': ['0x0'], 'store': None, 'used': 578994}, 'pc': 2, 'sub': N
 
-**Reth · 2.8.1 · 966010c9** (`Reth Version: 2.8.1+966010c9`)
-
-- [H20](../../decisions/H20.md): At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover or, entering no frame, includes the gas it forwarded, subtraces appear only on calls and creations, MLOAD mem is its loaded word, call mem is the output window or the copied return data, and RETURN/REVERT report no mem. operation 7 post-step gas does not deduct its cost and return the child leftover; operation 16 post-step gas does not deduct its cost and return the child leftover
-
-**Reth · 2.9.0 · c9a780f4** (`Reth Version: 2.9.0+c9a780f4`)
+**Reth · 2.10.1 · 58ebce14** (`Reth Version: 2.10.1+58ebce14`)
 
 - [H20](../../decisions/H20.md): At every VM depth, every pc lies inside the code, PUSH matches bytecode, each step deducts its cost and a call or creation also receives its child leftover or, entering no frame, includes the gas it forwarded, subtraces appear only on calls and creations, MLOAD mem is its loaded word, call mem is the output window or the copied return data, and RETURN/REVERT report no mem. operation 7 post-step gas does not deduct its cost and return the child leftover; operation 16 post-step gas does not deduct its cost and return the child leftover
 

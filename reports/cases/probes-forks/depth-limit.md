@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.10.2 · d3e1aea7](../../clients/besu_release.md) | 1027 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
-| [Besu · 26.10-develop · 7f08e68a](../../clients/besu_development.md) | 1027 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
-| [Erigon · 3.8.1 · cf6f1413](../../clients/erigon_release.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
-| [Erigon · 3.9.0-dev · 6955d198](../../clients/erigon_development.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
-| [Geth draft fork · 1.17.11-unstable · 0f1fb2ae](../../clients/go-ethereum_trace.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
-| [Nethermind · 2.2.2 · be201120](../../clients/nethermind_release.md) | 1028 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
-| [Nethermind · 2.3.0-preview · fc9abf09](../../clients/nethermind_development.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
-| [Reth · 2.9.0 · c9a780f4](../../clients/reth_release.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
-| [Reth · 2.8.1 · 966010c9](../../clients/reth_development.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/probes-forks/manifest.json) |
+| [Besu · 26.11.0 · 0e595f9e](../../clients/besu_release.md) | 1027 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-11-09/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-forks/manifest.json) |
+| [Besu · 26.11-develop · 3f41096a](../../clients/besu_development.md) | 1027 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-11-09/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-forks/manifest.json) |
+| [Erigon · 3.8.1 · cf6f1413](../../clients/erigon_release.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-forks/manifest.json) |
+| [Erigon · 3.9.0-dev · cf91acee](../../clients/erigon_development.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-forks/manifest.json) |
+| [Geth draft fork · 1.17.11-unstable · e487da1e](../../clients/go-ethereum_trace.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.2.2 · be201120](../../clients/nethermind_release.md) | 1028 call frames; output `0x` | ⚠️ Differs; ⚠️ result shape differs | [Response](../../../evidence/2026-11-09/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-forks/manifest.json) |
+| [Nethermind · 2.3.0-preview · 4079edfa](../../clients/nethermind_development.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-forks/manifest.json) |
+| [Reth · 2.10.1 · 58ebce14](../../clients/reth_release.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-forks/manifest.json) |
+| [Reth · 2.10.1 · 5efe80f5](../../clients/reth_development.md) | 1028 call frames; output `0x` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/probes-forks/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-forks/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -38,7 +38,7 @@
 }
 ```
 
-**Besu · 26.10-develop · 7f08e68a** (`besu/v26.10-develop-7f08e68/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11-develop · 3f41096a** (`besu/v26.11-develop-3f41096/linux-x86_64/openjdk-java-25`)
 
 - [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress []: creationMethod null
 - [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress [0]: creationMethod null
@@ -49,7 +49,7 @@
 - Result shape at `trace/1`: {'action': {'from': '0x3cf2e7052ebd484a8d6fbca579ddb3cf920de9d3', 'gas': '0x1e2ad6', 'init': '0x601e80600b6000396000f360006000600060006000306102005a03f1601c57600060006000f0505b00', 'value': '0x0'}, 'result': {'address': '0xb56c1cce8dc86e312b79166e061a8398544480b4', 'code': '0x60006000600060006000306
 - Result shape at `trace/1026`: {'action': {'from': '0x3cf2e7052ebd484a8d6fbca579ddb3cf920de9d3', 'gas': '0x1561a9', 'init': '0x60006000600060006000306102005a03f1601c57600060006000f0505b00', 'value': '0x0'}, 'result': {'address': '0xb56c1cce8dc86e312b79166e061a8398544480b4', 'code': '0x', 'gasUsed': '0xffffffffffffa921'}, 'subtrac
 
-**Besu · 26.10.2 · d3e1aea7** (`besu/v26.10.2/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11.0 · 0e595f9e** (`besu/v26.11.0/linux-x86_64/openjdk-java-25`)
 
 - [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress []: creationMethod null
 - [H10](../../decisions/H10.md): Every creation names its creationMethod; a successful one uses address, code and gasUsed. traceAddress [0]: creationMethod null

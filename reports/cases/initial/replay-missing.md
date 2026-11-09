@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.8.6 · 6bad0a66](../../clients/anvil_release.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
-| [Anvil · 1.8.7-nightly · 716e795c](../../clients/anvil_development.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
-| [Besu · 26.10.2 · d3e1aea7](../../clients/besu_release.md) | Method unavailable `-32601` | ⛔ Method unavailable | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
-| [Besu · 26.10-develop · 7f08e68a](../../clients/besu_development.md) | Method unavailable `-32601` | ⛔ Method unavailable | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
-| [Erigon · 3.8.1 · cf6f1413](../../clients/erigon_release.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
-| [Erigon · 3.9.0-dev · 6955d198](../../clients/erigon_development.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
-| [Geth draft fork · 1.17.11-unstable · 0f1fb2ae](../../clients/go-ethereum_trace.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
-| [Nethermind · 2.2.2 · be201120](../../clients/nethermind_release.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
-| [Nethermind · 2.3.0-preview · fc9abf09](../../clients/nethermind_development.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
-| [Reth · 2.9.0 · c9a780f4](../../clients/reth_release.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
-| [Reth · 2.8.1 · 966010c9](../../clients/reth_development.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-10-29/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-10-29/eval/initial/manifest.json) |
+| [Anvil · 1.9.0 · 6056c584](../../clients/anvil_release.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
+| [Anvil · 1.9.1-nightly · 6165f031](../../clients/anvil_development.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
+| [Besu · 26.11.0 · 0e595f9e](../../clients/besu_release.md) | Method unavailable `-32601` | ⛔ Method unavailable | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
+| [Besu · 26.11-develop · 3f41096a](../../clients/besu_development.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
+| [Erigon · 3.8.1 · cf6f1413](../../clients/erigon_release.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
+| [Erigon · 3.9.0-dev · cf91acee](../../clients/erigon_development.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
+| [Geth draft fork · 1.17.11-unstable · e487da1e](../../clients/go-ethereum_trace.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
+| [Nethermind · 2.2.2 · be201120](../../clients/nethermind_release.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
+| [Nethermind · 2.3.0-preview · 4079edfa](../../clients/nethermind_development.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
+| [Reth · 2.10.1 · 58ebce14](../../clients/reth_release.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
+| [Reth · 2.10.1 · 5efe80f5](../../clients/reth_development.md) | `null` | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/initial/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/initial/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -34,27 +34,25 @@
 }
 ```
 
-**Anvil · 1.8.7-nightly · 716e795c** (`anvil Version: 1.8.7-nightly+716e795c`)
+**Anvil · 1.9.1-nightly · 6165f031** (`anvil Version: 1.9.1-nightly+6165f031`)
 
 - [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Anvil · 1.8.6 · 6bad0a66** (`anvil Version: 1.8.6+6bad0a66`)
+**Anvil · 1.9.0 · 6056c584** (`anvil Version: 1.9.0+6056c584`)
 
 - [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Besu · 26.10-develop · 7f08e68a** (`besu/v26.10-develop-7f08e68/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11-develop · 3f41096a** (`besu/v26.11-develop-3f41096/linux-x86_64/openjdk-java-25`)
+
+- [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
+
+**Besu · 26.11.0 · 0e595f9e** (`besu/v26.11.0/linux-x86_64/openjdk-java-25`)
 
 - [H01](../../decisions/H01.md): trace_replayTransaction Method coverage remains a profile decision.
 - [H06](../../decisions/H06.md): Assess the declared property. Cannot inspect this property: unsupported.
 - [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Besu · 26.10.2 · d3e1aea7** (`besu/v26.10.2/linux-x86_64/openjdk-java-25`)
-
-- [H01](../../decisions/H01.md): trace_replayTransaction Method coverage remains a profile decision.
-- [H06](../../decisions/H06.md): Assess the declared property. Cannot inspect this property: unsupported.
-- [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
-
-**Erigon · 3.9.0-dev · 6955d198** (`3.9.0-dev-6955d198`)
+**Erigon · 3.9.0-dev · cf91acee** (`3.9.0-dev-cf91acee`)
 
 - [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
@@ -62,11 +60,11 @@
 
 - [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Geth draft fork · 1.17.11-unstable · 0f1fb2ae** (`Geth/v1.17.11-unstable-0f1fb2ae-2026-10-28/linux-amd64/go1.26.1`)
+**Geth draft fork · 1.17.11-unstable · e487da1e** (`Geth/v1.17.11-unstable-e487da1e-2026-11-01/linux-amd64/go1.26.1`)
 
 - [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Nethermind · 2.3.0-preview · fc9abf09** (`2.3.0-preview+fc9abf09`)
+**Nethermind · 2.3.0-preview · 4079edfa** (`2.3.0-preview+4079edfa`)
 
 - [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
@@ -74,11 +72,11 @@
 
 - [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Reth · 2.8.1 · 966010c9** (`Reth Version: 2.8.1+966010c9`)
+**Reth · 2.10.1 · 5efe80f5** (`Reth Version: 2.10.1+5efe80f5`)
 
 - [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Reth · 2.9.0 · c9a780f4** (`Reth Version: 2.9.0+c9a780f4`)
+**Reth · 2.10.1 · 58ebce14** (`Reth Version: 2.10.1+58ebce14`)
 
 - [H07](../../decisions/H07.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 

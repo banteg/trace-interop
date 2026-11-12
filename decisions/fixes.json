@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-09",
+  "checked_at": "2026-11-12",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -100,9 +100,16 @@
       "decisions": [
         "H24"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-11-10T06:11:44Z",
+      "uptake": {
+        "merge_commit": "8319b70214146a2eac0bcd79d164f377a41ec53e",
+        "builds": {
+          "3f41096a6635a5e50ef99223d9f469ff5d91b1b8": false,
+          "0e595f9eaf4b760ee7069fcdf8d901685f1641eb": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11346",
@@ -2365,10 +2372,17 @@
       "partial": [
         "H13"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "Latest main reproductions confirm signed gas clamping, high-s admission and empty type-4 admission. Executes the original transaction with strict fork validation; 28 new HTTP regressions and 1,291 focused tests passed, one skipped. Signed off with the requested GitHub noreply identity."
+      "merged_at": "2026-11-10T00:59:34Z",
+      "note": "Latest main reproductions confirm signed gas clamping, high-s admission and empty type-4 admission. Executes the original transaction with strict fork validation; 28 new HTTP regressions and 1,291 focused tests passed, one skipped. Signed off with the requested GitHub noreply identity.",
+      "uptake": {
+        "merge_commit": "e746e04d4f700645a197061099ae13cc25f34e2d",
+        "builds": {
+          "3f41096a6635a5e50ef99223d9f469ff5d91b1b8": false,
+          "0e595f9eaf4b760ee7069fcdf8d901685f1641eb": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11401",
@@ -3376,6 +3390,23 @@
       "draft": false,
       "merged_at": null,
       "note": "ports alloy-evm#427 to reth-rpc-convert's CallFees after the move to evm2: ensure_fees resolves execution fees without maxFeePerBlobGas, so gasPrice with a blob cap runs at gasPrice instead of the misleading -32602 conflict, and a blob cap alone prices execution at 0 (H15); eth_simulateV1 builds transactions separately and still differs"
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/26090",
+      "title": "rpc, docs: report a non-canonical trace block hash as -32001 or 4444, not -32603",
+      "client": "erigon",
+      "decisions": [],
+      "state": "merged",
+      "draft": false,
+      "merged_at": "2026-11-11T10:46:38Z",
+      "note": "by lupin012, citing the #895 draft: a known non-canonical hash returned -32603 in trace_call, trace_callMany and trace_replayBlockTransactions; it now returns -32001 with requireCanonical and in trace_replayBlockTransactions, and 4444 otherwise, since Erigon keeps state only for the canonical chain",
+      "uptake": {
+        "merge_commit": "41ffd5d0faf29c56c5bd1defd4e1fe06c4a4a6fd",
+        "builds": {
+          "cf91acee1ed42caa54df22773f8de8eda3a4fd4d": false,
+          "cf6f14132ff042df33b8ce64b0114daeb0d15145": false
+        }
+      }
     }
   ]
 }

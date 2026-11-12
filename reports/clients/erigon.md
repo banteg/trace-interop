@@ -4,7 +4,7 @@ The development build agrees on tree lookup, default filter composition, MCOPY, 
 
 [All clients](../README.md) · [Client fixes](../../docs/client-fixes.md) · [Source guide](../sources.md)
 
-**Progress on 3.9.0-dev · cf91acee** (of 33 decisions): ✅ 32 agree · ⚠️ 1 with no fix yet (1 on converged decisions). 3 of these agreements are not yet in 3.8.1 · cf6f1413. Upstream fix PRs: 26 merged, 0 open ([client fixes](../../docs/client-fixes.md)).
+**Progress on 3.9.0-dev · cf91acee** (of 33 decisions): ✅ 32 agree · ⚠️ 1 with no fix yet (1 on converged decisions). 3 of these agreements are not yet in 3.8.1 · cf6f1413. Upstream fix PRs: 27 merged, 0 open ([client fixes](../../docs/client-fixes.md)).
 
 ![Erigon decisions by outcome, with fix PRs](erigon-work.svg)
 

@@ -41,8 +41,8 @@
 <rect class="b-fix" x="16" y="140" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="153" text-anchor="middle">H24</text>
 <text class="label" x="70" y="153">Sibling failure isolation</text>
-<rect class="pr" x="400" y="140" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="153" text-anchor="middle">#11345</text>
+<rect class="b-fix" x="400" y="140" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="153" text-anchor="middle">#11345</text>
 <rect class="b-fix" x="16" y="164" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="177" text-anchor="middle">H26</text>
 <text class="label" x="70" y="177">Account deletion across Cancun</text>
@@ -85,8 +85,8 @@
 <rect class="b-converged" x="16" y="364" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="377" text-anchor="middle">H13</text>
 <text class="label" x="70" y="377">Signed transaction execution validity</text>
-<rect class="pr edge partial" x="400" y="364" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="377" text-anchor="middle">#11395</text>
+<rect class="b-fix edge partial" x="400" y="364" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="377" text-anchor="middle">#11395</text>
 <rect class="b-converged" x="16" y="388" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="401" text-anchor="middle">H16</text>
 <text class="label" x="70" y="401">Fee accounting and sequential state diffs</text>

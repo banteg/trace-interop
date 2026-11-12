@@ -31,8 +31,8 @@
       "dev_only": 7,
       "name": "Besu",
       "prs": {
-        "merged": 12,
-        "open": 12
+        "merged": 14,
+        "open": 10
       }
     },
     {
@@ -66,7 +66,7 @@
       "dev_only": 3,
       "name": "Erigon",
       "prs": {
-        "merged": 26,
+        "merged": 27,
         "open": 0
       }
     },

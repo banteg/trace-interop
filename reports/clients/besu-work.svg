@@ -36,8 +36,8 @@
 <rect class="b-fix" x="16" y="116" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="129" text-anchor="middle">H22</text>
 <text class="label" x="70" y="129">Precompile return bytes</text>
-<rect class="pr" x="400" y="116" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="129" text-anchor="middle">#11346</text>
+<rect class="b-fix" x="400" y="116" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="129" text-anchor="middle">#11346</text>
 <rect class="b-fix" x="16" y="140" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="153" text-anchor="middle">H24</text>
 <text class="label" x="70" y="153">Sibling failure isolation</text>
@@ -46,8 +46,8 @@
 <rect class="b-fix" x="16" y="164" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="177" text-anchor="middle">H26</text>
 <text class="label" x="70" y="177">Account deletion across Cancun</text>
-<rect class="pr" x="400" y="164" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="177" text-anchor="middle">#11362</text>
+<rect class="b-fix" x="400" y="164" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="177" text-anchor="middle">#11362</text>
 <rect class="b-fix" x="16" y="188" width="44" height="18" rx="4"/>
 <text class="n-fix" x="38" y="201" text-anchor="middle">H27</text>
 <text class="label" x="70" y="201">Filter execution across fork boundaries</text>
@@ -78,8 +78,8 @@
 <rect class="b-converged" x="16" y="340" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="353" text-anchor="middle">H10</text>
 <text class="label" x="70" y="353">Creation result field names</text>
-<rect class="pr edge partial" x="400" y="340" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="353" text-anchor="middle">#11362</text>
+<rect class="b-fix edge partial" x="400" y="340" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="353" text-anchor="middle">#11362</text>
 <rect class="pr edge partial" x="461" y="340" width="55" height="18" rx="4"/>
 <text class="label" x="488.5" y="353" text-anchor="middle">#11435</text>
 <rect class="b-converged" x="16" y="364" width="44" height="18" rx="4"/>

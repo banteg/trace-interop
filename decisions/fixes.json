@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-12",
+  "checked_at": "2026-11-13",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -118,9 +118,16 @@
       "decisions": [
         "H22"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-11-13T07:30:55Z",
+      "uptake": {
+        "merge_commit": "65933a7c12fc5510ec492e27580652985bb34d7b",
+        "builds": {
+          "3f41096a6635a5e50ef99223d9f469ff5d91b1b8": false,
+          "0e595f9eaf4b760ee7069fcdf8d901685f1641eb": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11347",
@@ -204,9 +211,16 @@
       "partial": [
         "H10"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-11-13T08:12:33Z",
+      "uptake": {
+        "merge_commit": "72d78f2d9986d1de6eaa96cbdeb49db653b3069f",
+        "builds": {
+          "3f41096a6635a5e50ef99223d9f469ff5d91b1b8": false,
+          "0e595f9eaf4b760ee7069fcdf8d901685f1641eb": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11365",

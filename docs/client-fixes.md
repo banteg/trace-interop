@@ -1,6 +1,6 @@
 # Client fixes
 
-Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-11-12**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
+Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-11-13**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
 
 A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️, ⛔ or 🟡 for that build and decision; partial PRs are linked without replacing them. Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; dashed steps are pending, and a client with nothing left has none.
 
@@ -32,13 +32,13 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Besu #10953](https://github.com/besu-eth/besu/pull/10953) | Replay block pre-execution before tracing transactions | [H27](../reports/decisions/H27.md), [H28](../reports/decisions/H28.md) | — | — | — | — | — |
 | [Besu #11286](https://github.com/besu-eth/besu/pull/11286) | Include MCOPY memory updates in vmTrace | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 | [Besu #11345](https://github.com/besu-eth/besu/pull/11345) | Keep Parity trace failures local to their call frame | [H24](../reports/decisions/H24.md) | 2026-11-10 | — | — | — | — |
-| [Besu #11346](https://github.com/besu-eth/besu/pull/11346) | Retain precompile output in Parity call frames | [H22](../reports/decisions/H22.md) | — | — | — | — | — |
+| [Besu #11346](https://github.com/besu-eth/besu/pull/11346) | Retain precompile output in Parity call frames | [H22](../reports/decisions/H22.md) | 2026-11-13 | — | — | — | — |
 | [Besu #11347](https://github.com/besu-eth/besu/pull/11347) | Retain root precompile halt reasons | [H09](../reports/decisions/H09.md) (partial) | — | — | — | — | — |
 | [Besu #11350](https://github.com/besu-eth/besu/pull/11350) | Avoid attributing parent return memory to calls | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 | [Besu #11352](https://github.com/besu-eth/besu/pull/11352) | Retain VM frame positions across omitted opcodes | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 | [Besu #11353](https://github.com/besu-eth/besu/pull/11353) | Omit root out-of-gas execution effects | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 | [Besu #11360](https://github.com/besu-eth/besu/pull/11360) | Retain nonzero-value precompile trace frames; covers nested precompile frames only; the phantom frame of a CREATE that fails its balance precheck (B4) has no submitted fix | [H29](../reports/decisions/H29.md) (partial) | — | — | — | — | — |
-| [Besu #11362](https://github.com/besu-eth/besu/pull/11362) | Report empty code for self-destructing creations | [H10](../reports/decisions/H10.md) (partial), [H26](../reports/decisions/H26.md) | — | — | — | — | — |
+| [Besu #11362](https://github.com/besu-eth/besu/pull/11362) | Report empty code for self-destructing creations | [H10](../reports/decisions/H10.md) (partial), [H26](../reports/decisions/H26.md) | 2026-11-13 | — | — | — | — |
 | [Besu #11365](https://github.com/besu-eth/besu/pull/11365) | Start each trace_callMany call at a transaction boundary; A build at 1371e0ba agrees on probes-prague/many-original-value, H16's callMany case (evidence/2026-10-08/besu-1371e0ba) | [H16](../reports/decisions/H16.md) (partial) | 2026-10-07 | — | — | dev, stable | — |
 | [Besu #11379](https://github.com/besu-eth/besu/pull/11379) | Return null from trace_transaction for unknown hashes; moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06) | [H06](../reports/decisions/H06.md) (partial) | 2026-10-13 | — | — | dev, stable | — |
 | [Besu #11381](https://github.com/besu-eth/besu/pull/11381) | Return block not found from trace_block and block replays; trace_block and trace_replayBlockTransactions return block not found instead of null | [H06](../reports/decisions/H06.md) (partial) | 2026-10-12 | — | — | dev, stable | — |

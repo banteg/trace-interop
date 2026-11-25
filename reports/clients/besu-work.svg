@@ -73,15 +73,15 @@
 <rect class="b-converged" x="16" y="316" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="329" text-anchor="middle">H09</text>
 <text class="label" x="70" y="329">Failed frame results and error labels</text>
-<rect class="pr edge partial" x="400" y="316" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="329" text-anchor="middle">#11347</text>
+<rect class="b-fix edge partial" x="400" y="316" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="329" text-anchor="middle">#11347</text>
 <rect class="b-converged" x="16" y="340" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="353" text-anchor="middle">H10</text>
 <text class="label" x="70" y="353">Creation result field names</text>
 <rect class="b-fix edge partial" x="400" y="340" width="55" height="18" rx="4"/>
 <text class="n-fix" x="427.5" y="353" text-anchor="middle">#11362</text>
-<rect class="pr edge partial" x="461" y="340" width="55" height="18" rx="4"/>
-<text class="label" x="488.5" y="353" text-anchor="middle">#11435</text>
+<rect class="b-fix edge partial" x="461" y="340" width="55" height="18" rx="4"/>
+<text class="n-fix" x="488.5" y="353" text-anchor="middle">#11435</text>
 <rect class="b-converged" x="16" y="364" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="377" text-anchor="middle">H13</text>
 <text class="label" x="70" y="377">Signed transaction execution validity</text>
@@ -117,8 +117,8 @@
 <rect class="b-converged" x="16" y="484" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="497" text-anchor="middle">H29</text>
 <text class="label" x="70" y="497">Precompile call-frame inclusion</text>
-<rect class="pr edge partial" x="400" y="484" width="55" height="18" rx="4"/>
-<text class="label" x="427.5" y="497" text-anchor="middle">#11360</text>
+<rect class="b-fix edge partial" x="400" y="484" width="55" height="18" rx="4"/>
+<text class="n-fix" x="427.5" y="497" text-anchor="middle">#11360</text>
 <rect class="b-converged" x="16" y="508" width="44" height="18" rx="4"/>
 <text class="n-converged" x="38" y="521" text-anchor="middle">H33</text>
 <text class="label" x="70" y="521">Single-block hash selection in trace_filter</text>

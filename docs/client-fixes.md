@@ -1,6 +1,6 @@
 # Client fixes
 
-Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-11-13**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
+Upstream PRs for the measured differences, and how far each has travelled toward a verified build. Status checked **2026-11-25**. Generated from [fixes.json](../decisions/fixes.json); `uv run python scripts/refresh_fixes.py` refreshes its PR states and uptake facts.
 
 A library PR is **released** in the first tag containing it at each library hop, and **in client** from the commit where the client’s default-branch `Cargo.lock` first pins that release. Any PR is **in measured build** once a build the current reports assess contains it (its commit, or its lockfile), and **verified** once that build agrees on every decision the PR fully covers, or on its listed `verified_cases`. Until a non-partial PR is in a build, reports show 🛠️ Fix submitted instead of ⚠️, ⛔ or 🟡 for that build and decision; partial PRs are linked without replacing them. Diagrams show the remaining steps: PRs not yet in any measured build, with the prerequisites and release and bump steps they still wait on; dashed steps are pending, and a client with nothing left has none.
 
@@ -33,11 +33,11 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Besu #11286](https://github.com/besu-eth/besu/pull/11286) | Include MCOPY memory updates in vmTrace | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 | [Besu #11345](https://github.com/besu-eth/besu/pull/11345) | Keep Parity trace failures local to their call frame | [H24](../reports/decisions/H24.md) | 2026-11-10 | — | — | — | — |
 | [Besu #11346](https://github.com/besu-eth/besu/pull/11346) | Retain precompile output in Parity call frames | [H22](../reports/decisions/H22.md) | 2026-11-13 | — | — | — | — |
-| [Besu #11347](https://github.com/besu-eth/besu/pull/11347) | Retain root precompile halt reasons | [H09](../reports/decisions/H09.md) (partial) | — | — | — | — | — |
+| [Besu #11347](https://github.com/besu-eth/besu/pull/11347) | Retain root precompile halt reasons | [H09](../reports/decisions/H09.md) (partial) | 2026-11-24 | — | — | — | — |
 | [Besu #11350](https://github.com/besu-eth/besu/pull/11350) | Avoid attributing parent return memory to calls | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 | [Besu #11352](https://github.com/besu-eth/besu/pull/11352) | Retain VM frame positions across omitted opcodes | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
 | [Besu #11353](https://github.com/besu-eth/besu/pull/11353) | Omit root out-of-gas execution effects | [H20](../reports/decisions/H20.md) (partial) | — | — | — | — | — |
-| [Besu #11360](https://github.com/besu-eth/besu/pull/11360) | Retain nonzero-value precompile trace frames; covers nested precompile frames only; the phantom frame of a CREATE that fails its balance precheck (B4) has no submitted fix | [H29](../reports/decisions/H29.md) (partial) | — | — | — | — | — |
+| [Besu #11360](https://github.com/besu-eth/besu/pull/11360) | Retain nonzero-value precompile trace frames; covers nested precompile frames only; the phantom frame of a CREATE that fails its balance precheck (B4) has no submitted fix | [H29](../reports/decisions/H29.md) (partial) | 2026-11-18 | — | — | — | — |
 | [Besu #11362](https://github.com/besu-eth/besu/pull/11362) | Report empty code for self-destructing creations | [H10](../reports/decisions/H10.md) (partial), [H26](../reports/decisions/H26.md) | 2026-11-13 | — | — | — | — |
 | [Besu #11365](https://github.com/besu-eth/besu/pull/11365) | Start each trace_callMany call at a transaction boundary; A build at 1371e0ba agrees on probes-prague/many-original-value, H16's callMany case (evidence/2026-10-08/besu-1371e0ba) | [H16](../reports/decisions/H16.md) (partial) | 2026-10-07 | — | — | dev, stable | — |
 | [Besu #11379](https://github.com/besu-eth/besu/pull/11379) | Return null from trace_transaction for unknown hashes; moves [] to the draft's null; the null-versus-error choice for missing transactions is diverging (H06) | [H06](../reports/decisions/H06.md) (partial) | 2026-10-13 | — | — | dev, stable | — |
@@ -48,7 +48,7 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Besu #11406](https://github.com/besu-eth/besu/pull/11406) | Add trace_replayTransaction; Adds the missing method by reusing block replay's execution and result steps, so each result equals the trace_replayBlockTransactions entry for that transaction (L08). Unknown hash returns null; missing body, state or trie nodes return 4444. Inherits #10953's pre-block system calls through Tracer.processTracing. Remaining Besu trace work is tracked in besu-eth/besu#11405. | [H01](../reports/decisions/H01.md) | 2026-11-06 | — | — | dev | dev |
 | [Besu #11407](https://github.com/besu-eth/besu/pull/11407) | Select exactly the blockHash block in trace_filter; trace_filter reads the blockHash member it already parsed: rejects it beside non-null bounds (-32602), traces exactly the canonical block resolved by hash, and returns Block not found (-32000) for unknown or noncanonical hashes, 4444 for a missing body and World state unavailable for missing parent state, before count: 0. 7 new bonsai hash specs and 10 unit tests red before, green after.; a build at 1371e0ba agrees on 11 more H33 checks, leaving only filter-blockhash-union, blocked by trace_filter mode (evidence/2026-10-08/besu-1371e0ba) | [H33](../reports/decisions/H33.md) | 2026-10-06 | — | — | dev, stable | — |
 | [Besu #11432](https://github.com/besu-eth/besu/pull/11432) | Align trace_call and trace_callMany validation with the trace spec draft; trace_callMany names a rejected call’s reason, tip above cap is reported first, the blob rule (BLOBBASEFEE 0 for blob calls without a positive cap, shared with eth_call), and a supplied nonce is ignored in trace_call/callMany; an unpriced call without blobs still sees BLOBBASEFEE 1; since 2026-10-03 also H14's fee fields: gasPrice mixed with dynamic fees is rejected (-32602), gasPrice with an authorizationList prices both caps instead of -32603, and dynamic fees before London are rejected instead of dropped. Besu's other H14 differences (chainId mismatch, trace_filter parameter checks) remain; a build at its merge 1371e0ba agrees on 9 more H14 checks and 190 H15 checks, leaving H15 with no difference in the checked cases (evidence/2026-10-08/besu-1371e0ba) | [H14](../reports/decisions/H14.md) (partial), [H15](../reports/decisions/H15.md) (partial) | 2026-10-08 | — | — | dev, stable | — |
-| [Besu #11435](https://github.com/besu-eth/besu/pull/11435) | Report creationMethod on every create trace frame; creationMethod set per create frame from its own opcode (create for a creation transaction) in every trace method; trace_call/callMany/rawTransaction omitted it, and mined traces labelled every creation in a transaction create2 when any frame used CREATE2 | [H10](../reports/decisions/H10.md) (partial) | — | — | — | — | — |
+| [Besu #11435](https://github.com/besu-eth/besu/pull/11435) | Report creationMethod on every create trace frame; creationMethod set per create frame from its own opcode (create for a creation transaction) in every trace method; trace_call/callMany/rawTransaction omitted it, and mined traces labelled every creation in a transaction create2 when any frame used CREATE2 | [H10](../reports/decisions/H10.md) (partial) | 2026-11-16 | — | — | — | — |
 | [Besu #11436](https://github.com/besu-eth/besu/pull/11436) | Accept the trace_filter mode member; trace_filter accepts mode intersection (default, also for null) and union, rejects other values with -32602; block rewards match by author against toAddress, so a reward is selectable with fromAddress empty or in union mode; CREATE and SELFDESTRUCT address matching unchanged | [H03](../reports/decisions/H03.md), [H23](../reports/decisions/H23.md) (partial) | 2026-10-21 | — | — | dev, stable | dev, stable |
 | [Besu #11439](https://github.com/besu-eth/besu/pull/11439) | Reject malformed trace_filter members and legacy calls for another chain; trace_filter rejects a bare address string and negative after/count with -32602; a legacy call keeps a foreign chainId so validation rejects it (-32000) in trace_call and eth_call; trace_rawTransaction is left to #11395 | [H14](../reports/decisions/H14.md) (partial) | 2026-10-31 | — | — | dev | — |
 | [Besu #11440](https://github.com/besu-eth/besu/pull/11440) | Default the trace_callMany block to latest; trace_callMany accepts one argument and runs at latest, as trace_call does | [H31](../reports/decisions/H31.md) | 2026-10-21 | — | — | dev, stable | dev, stable |
@@ -85,6 +85,7 @@ A library PR is **released** in the first tag containing it at each library hop,
 | [Erigon #24990](https://github.com/erigontech/erigon/pull/24990) | Rpc/ethapi, rpc/jsonrpc: reject maxFeePerBlobGas without blob hashes in calls; CallArgs.ToMessage gives a call with maxFeePerBlobGas and no blobVersionedHashes an empty blob hash list, so every call method (eth_call, eth_estimateGas, eth_createAccessList, eth_callMany, debug_traceCall/CallMany, trace_call/CallMany) rejects it like an explicit empty list: ErrBlobTxnEmptyBlobs from Cancun, ErrBlobTxnPreCancun before; eth_simulateV1 clears a lone cap in sanitizeCall, and eth_fillTransaction estimates gas without it; follows ethereum/go-ethereum#35928 and execution-apis#939 for eth_call; covers Erigon development's last H14 difference in the 2026-10-17 eval (fork-blob-fee-only-before/-at) | [H14](../reports/decisions/H14.md) | 2026-10-18 | — | — | dev | — |
 | [Erigon #25030](https://github.com/erigontech/erigon/pull/25030) | Null reward localization, no vmTrace idx, -32001 for unknown trace blocks; forms pinned in execution-apis#895 (5e6717fe): null transactionHash and transactionPosition on reward records from the fast JSON writer; vmTrace operations drop idx; trace_call and trace_callMany return -32001 for an unknown block, and an unresolvable safe or finalized tag is -32001 in the trace methods. QA RPC integration fails until a release includes rpc-tests#631 and RPC_VERSION is bumped on this PR. Passes 22 of the 23 #895 trace fixtures in Hive; the last is the Amsterdam stateGasUsed member | [H05](../reports/decisions/H05.md), [H06](../reports/decisions/H06.md), [H21](../reports/decisions/H21.md) | 2026-10-20 | — | — | dev | dev |
 | [Erigon #26090](https://github.com/erigontech/erigon/pull/26090) | Rpc, docs: report a non-canonical trace block hash as -32001 or 4444, not -32603; by lupin012, citing the #895 draft: a known non-canonical hash returned -32603 in trace_call, trace_callMany and trace_replayBlockTransactions; it now returns -32001 with requireCanonical and in trace_replayBlockTransactions, and 4444 otherwise, since Erigon keeps state only for the canonical chain | — | 2026-11-11 | — | — | — | — |
+| [Erigon #26785](https://github.com/erigontech/erigon/pull/26785) | Accept a positional state override map in trace_call and trace_callMany; by lupin012, citing the #895 draft: a positional state override map decoded into an empty TraceConfig, so the call ran on unmodified state without an error; it now applies the map, keeps the stateOverrides wrapper, and rejects a map mixed with wrapper members with -32602. Positional block overrides and unknown wrapper members are left out | [H15](../reports/decisions/H15.md) (partial) | — | — | — | — | — |
 
 ## Geth draft fork
 
@@ -166,11 +167,13 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  Alloy_4257["Alloy #4257"]:::merged
+  Alloy_4257["Alloy #4257"]:::in_client
+  Alloy_v2_6_0(["Alloy v2.6.0"]):::done
+  Reth_takes_Alloy_v2_6_0[["Reth takes Alloy v2.6.0"]]:::done
+  Alloy_4274["Alloy #4274"]:::in_client
+  Alloy_4442["Alloy #4442"]:::open
   next_Alloy_release(["next Alloy release"]):::pending
   Reth_takes_next_Alloy_release[["Reth takes next Alloy release"]]:::pending
-  Alloy_4274["Alloy #4274"]:::merged
-  Alloy_4442["Alloy #4442"]:::open
   revm_3833["revm #3833"]:::open
   next_revm_release(["next revm release"]):::pending
   next_revm_inspectors_release(["next revm-inspectors release"]):::pending
@@ -188,10 +191,11 @@ flowchart LR
   Reth_takes_revm_inspectors_v0_44_1[["Reth takes revm-inspectors v0.44.1"]]:::pending
   revm_inspectors_532["revm-inspectors #532"]:::released
   revm_inspectors_533["revm-inspectors #533"]:::released
-  Alloy_4257 -.-> next_Alloy_release
-  next_Alloy_release -.-> Reth_takes_next_Alloy_release
-  Alloy_4274 -.-> next_Alloy_release
+  Alloy_4257 --> Alloy_v2_6_0
+  Alloy_v2_6_0 --> Reth_takes_Alloy_v2_6_0
+  Alloy_4274 --> Alloy_v2_6_0
   Alloy_4442 -.-> next_Alloy_release
+  next_Alloy_release -.-> Reth_takes_next_Alloy_release
   revm_3833 -.-> next_revm_release
   next_revm_release -.-> next_revm_inspectors_release
   next_revm_inspectors_release -.-> Reth_takes_next_revm_inspectors_release
@@ -207,8 +211,8 @@ flowchart LR
   revm_inspectors_532 --> revm_inspectors_v0_44_1
   revm_inspectors_533 --> revm_inspectors_v0_44_1
   classDef open fill:#f6f8fa,stroke:#8c959f,color:#1f2328
-  classDef merged fill:#ddf4ff,stroke:#0969da,color:#1f2328
   classDef released fill:#fbefff,stroke:#8250df,color:#1f2328
+  classDef in_client fill:#fff8c5,stroke:#9a6700,color:#1f2328
   classDef done fill:#ffffff,stroke:#1a7f37,color:#1f2328
   classDef pending fill:#ffffff,stroke:#8c959f,stroke-dasharray:4 3,color:#57606a
 ```
@@ -217,8 +221,8 @@ flowchart LR
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Alloy #4216](https://github.com/alloy-rs/alloy/pull/4216) | Default address filters to intersection | [H03](../reports/decisions/H03.md) | 2026-09-22 | [Alloy v2.5.0](https://github.com/alloy-rs/alloy/tree/v2.5.0) | [2026-09-23](https://github.com/paradigmxyz/reth/commit/458d609fb61d47eabc0ec1c027f1514ec405813c) | dev, stable | dev, stable |
 | [Alloy #4218](https://github.com/alloy-rs/alloy/pull/4218) | Serialize absent transaction fields as null | [H05](../reports/decisions/H05.md) | 2026-09-22 | [Alloy v2.5.0](https://github.com/alloy-rs/alloy/tree/v2.5.0) | [2026-09-23](https://github.com/paradigmxyz/reth/commit/458d609fb61d47eabc0ec1c027f1514ec405813c) | dev, stable | dev, stable |
-| [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257) | Treat null trace filter members as omitted | [H04](../reports/decisions/H04.md), [H14](../reports/decisions/H14.md) (partial) | 2026-09-26 | — | — | — | — |
-| [Alloy #4274](https://github.com/alloy-rs/alloy/pull/4274) | Add blockHash to TraceFilter; Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release. | [H33](../reports/decisions/H33.md) (partial) | 2026-10-01 | — | — | — | — |
+| [Alloy #4257](https://github.com/alloy-rs/alloy/pull/4257) | Treat null trace filter members as omitted | [H04](../reports/decisions/H04.md), [H14](../reports/decisions/H14.md) (partial) | 2026-09-26 | [Alloy v2.6.0](https://github.com/alloy-rs/alloy/tree/v2.6.0) | [2026-11-18](https://github.com/paradigmxyz/reth/commit/d830c36acc0cf892252474aea07f3fd64f315a6d) | — | — |
+| [Alloy #4274](https://github.com/alloy-rs/alloy/pull/4274) | Add blockHash to TraceFilter; Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release. | [H33](../reports/decisions/H33.md) (partial) | 2026-10-01 | [Alloy v2.6.0](https://github.com/alloy-rs/alloy/tree/v2.6.0) | [2026-11-18](https://github.com/paradigmxyz/reth/commit/d830c36acc0cf892252474aea07f3fd64f315a6d) | — | — |
 | [Alloy #4442](https://github.com/alloy-rs/alloy/pull/4442) | Accept block tags in TraceFilter bounds; TraceFilter fromBlock/toBlock become Option<BlockNumberOrTag>, so earliest, latest, safe and finalized deserialize; block_option() rejects pending. Reth and Anvil both reject tags today because they parse trace_filter params into this type; each then needs a handler that resolves the tags, Anvil included | [H32](../reports/decisions/H32.md) (partial) | — | — | — | — | — |
 | [evm2 #876](https://github.com/alloy-rs/evm2/pull/876) | Include forwarded gas in parity create step cost; evm2#744 (mattsse, merged 2026-10-29) made the step cost follow geth: CALL costs include the forwarded gas, CREATE costs leave it out in both struct logs and vmTrace; reworked on 2026-11-01 so the parity builder adds the child gas limit to a CREATE/CREATE2 cost (also after a failed precheck) and pairs steps only with children of their kind; Reth 2.10.1's pinned evm2 does not include #744, so its root CALL still costs 9,396 instead of 71,624; the Reth nightly 5efe80f5 takes evm2 past #744 and reports 71,624, while its CREATE still costs 32,002 instead of 480,269 | [H20](../reports/decisions/H20.md) | — | — | — | — | — |
 | [Reth #27213](https://github.com/paradigmxyz/reth/pull/27213) | Populate VM bytecode in block replay traces · after revm-inspectors #511 | [H19](../reports/decisions/H19.md) | 2026-09-25 | — | — | dev, stable | dev, stable |

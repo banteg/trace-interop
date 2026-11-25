@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-13",
+  "checked_at": "2026-11-25",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -139,9 +139,16 @@
       "partial": [
         "H09"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null
+      "merged_at": "2026-11-24T04:55:55Z",
+      "uptake": {
+        "merge_commit": "9001cd292ff00c81c2b76b569e9efa1e6dd54057",
+        "builds": {
+          "3f41096a6635a5e50ef99223d9f469ff5d91b1b8": false,
+          "0e595f9eaf4b760ee7069fcdf8d901685f1641eb": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11350",
@@ -195,10 +202,17 @@
       "partial": [
         "H29"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "covers nested precompile frames only; the phantom frame of a CREATE that fails its balance precheck (B4) has no submitted fix"
+      "merged_at": "2026-11-18T02:41:49Z",
+      "note": "covers nested precompile frames only; the phantom frame of a CREATE that fails its balance precheck (B4) has no submitted fix",
+      "uptake": {
+        "merge_commit": "a3931b070c914315e1f24559bf939f8b10033aee",
+        "builds": {
+          "3f41096a6635a5e50ef99223d9f469ff5d91b1b8": false,
+          "0e595f9eaf4b760ee7069fcdf8d901685f1641eb": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11362",
@@ -1095,8 +1109,20 @@
       "merged_at": "2026-09-26T09:09:53Z",
       "uptake": {
         "merge_commit": "38592dd503a43688d538e785aed138c89a510957",
-        "releases": [],
-        "client": null,
+        "releases": [
+          {
+            "repo": "alloy-rs/alloy",
+            "tag": "v2.6.0",
+            "date": "2026-11-16T14:27:43Z",
+            "crates": {
+              "alloy-rpc-types-trace": "2.6.0"
+            }
+          }
+        ],
+        "client": {
+          "commit": "d830c36acc0cf892252474aea07f3fd64f315a6d",
+          "date": "2026-11-18T14:22:15Z"
+        },
         "builds": {
           "5efe80f515c96fa34b569a22fb810b54f914cfb0": false,
           "58ebce14ae63dab040beae301e1578cd0dc55e8a": false
@@ -2627,8 +2653,20 @@
       "note": "Adds the blockHash member, its builder and block_option() with the bounds-conflict check to Alloy's TraceFilter. Reth and Anvil still need handler changes; Reth's canonical hash resolution is pushed as banteg/reth feat/trace-filter-block-hash and waits for an Alloy release.",
       "uptake": {
         "merge_commit": "9efe110486c1a6b285960f78188886ce778d6435",
-        "releases": [],
-        "client": null,
+        "releases": [
+          {
+            "repo": "alloy-rs/alloy",
+            "tag": "v2.6.0",
+            "date": "2026-11-16T14:27:43Z",
+            "crates": {
+              "alloy-rpc-types-trace": "2.6.0"
+            }
+          }
+        ],
+        "client": {
+          "commit": "d830c36acc0cf892252474aea07f3fd64f315a6d",
+          "date": "2026-11-18T14:22:15Z"
+        },
         "builds": {
           "5efe80f515c96fa34b569a22fb810b54f914cfb0": false,
           "58ebce14ae63dab040beae301e1578cd0dc55e8a": false
@@ -2708,10 +2746,17 @@
       "partial": [
         "H10"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "creationMethod set per create frame from its own opcode (create for a creation transaction) in every trace method; trace_call/callMany/rawTransaction omitted it, and mined traces labelled every creation in a transaction create2 when any frame used CREATE2"
+      "merged_at": "2026-11-16T02:48:00Z",
+      "note": "creationMethod set per create frame from its own opcode (create for a creation transaction) in every trace method; trace_call/callMany/rawTransaction omitted it, and mined traces labelled every creation in a transaction create2 when any frame used CREATE2",
+      "uptake": {
+        "merge_commit": "b6288afdd43579d63bab8e875e0398a0688e2ccc",
+        "builds": {
+          "3f41096a6635a5e50ef99223d9f469ff5d91b1b8": false,
+          "0e595f9eaf4b760ee7069fcdf8d901685f1641eb": false
+        }
+      }
     },
     {
       "url": "https://github.com/besu-eth/besu/pull/11436",
@@ -3421,6 +3466,21 @@
           "cf6f14132ff042df33b8ce64b0114daeb0d15145": false
         }
       }
+    },
+    {
+      "url": "https://github.com/erigontech/erigon/pull/26785",
+      "title": "rpc/jsonrpc: accept a positional state override map in trace_call and trace_callMany",
+      "client": "erigon",
+      "decisions": [
+        "H15"
+      ],
+      "partial": [
+        "H15"
+      ],
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "note": "by lupin012, citing the #895 draft: a positional state override map decoded into an empty TraceConfig, so the call ran on unmodified state without an error; it now applies the map, keeps the stateOverrides wrapper, and rejects a map mixed with wrapper members with -32602. Positional block overrides and unknown wrapper members are left out"
     }
   ]
 }

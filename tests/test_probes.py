@@ -697,6 +697,44 @@ class MemberCaseTests(Probe):
         self.assertTrue(errors({'unknownDiagnosticFlag': True}))
 
 
+class OverrideTests(Probe):
+    """Positional overrides take effect or are rejected, never ignored (H15)."""
+
+    def test_overrides_are_honored_or_rejected(self):
+        for name in ['override-state-code', 'override-state-balance', 'override-state-storage', 'override-block-number']:
+            case = PRAGUE[name]
+            self.assertMatches(case, result({'output': case['probes'][0]['expected'][0], 'trace': []}))
+            # Anvil and Nethermind reject the extra parameter.
+            self.assertMatches(case, rejected(-32602, 'invalid length 4, expected fewer elements in array'))
+        # Erigon decodes the map into an empty configuration; Besu 26.11 drops the parameter.
+        self.assertDiffers(PRAGUE['override-state-code'], result({'output': '0x', 'trace': []}))
+        self.assertDiffers(PRAGUE['override-block-number'], result({'output': '0x'+f'{2:064x}', 'trace': []}))
+
+    def test_call_many_overrides_apply_to_every_item(self):
+        case = PRAGUE['override-state-many']
+        word = case['probes'][0]['expected'][0]
+        self.assertMatches(case, result([{'output': word, 'trace': []}]*2))
+        # Reth's two-parameter trace_callMany ignores the trailing overrides.
+        self.assertDiffers(case, result([{'output': '0x', 'trace': []}]*2))
+
+    def test_a_rejected_call_many_override_has_no_envelopes_to_count(self):
+        from trace_interop.rules import evaluate
+        for name in ['override-state-many', 'override-block-number-many']:
+            checks = evaluate(dict(PRAGUE[name], context={}), rejected(-32602, 'too many arguments, want at most 2'), {})
+            self.assertNotIn('H16', [c['topic'] for c in checks], name)
+
+    def test_exclusive_state_forms_are_rejected(self):
+        from trace_interop.validation import request_errors
+        methods = {m['name']: m for m in read(ROOT/'spec/trace-openrpc.json')['methods']}
+        case = PRAGUE['override-state-exclusive']
+        self.assertTrue(request_errors(case['request'], methods))
+        for name in [n for n in PRAGUE if n.startswith('override-') and n != case['name']]:
+            self.assertEqual(request_errors(PRAGUE[name]['request'], methods), [], name)
+        self.assertMatches(case, rejected(-32602, "account has both 'state' and 'stateDiff'"))
+        # Nethermind 2.2.2 runs the code override and ignores the conflict.
+        self.assertDiffers(case, result({'output': '0x'+f'{42:064x}', 'trace': []}))
+
+
 class RawSelectorTests(Probe):
     """H12: which state and block environment a signed transaction ran against. The two-argument
     request must use latest; an explicit third selector is extension evidence, classified only."""

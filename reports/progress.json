@@ -3,32 +3,32 @@
     {
       "builds": {
         "development": {
-          "agree": 15,
+          "agree": 20,
           "build": [
-            "26.11-develop \u00b7 3f41096a"
+            "26.11-develop \u00b7 f58f40e2"
           ],
-          "gained": 7,
+          "gained": 5,
           "lost": 0
         },
         "release": {
-          "agree": 8,
+          "agree": 19,
           "build": [
-            "26.11.0 \u00b7 0e595f9e"
+            "26.11.2 \u00b7 09b9e94d"
           ],
-          "gained": 0,
+          "gained": 11,
           "lost": 0
         }
       },
       "client": "besu",
       "counts": {
-        "agree": 15,
-        "converged": 11,
-        "fix": 5,
+        "agree": 20,
+        "converged": 9,
+        "fix": 2,
         "policy": 0,
         "review": 0,
         "unmeasured": 2
       },
-      "dev_only": 7,
+      "dev_only": 1,
       "name": "Besu",
       "prs": {
         "merged": 19,
@@ -38,32 +38,32 @@
     {
       "builds": {
         "development": {
-          "agree": 32,
+          "agree": 31,
           "build": [
-            "3.9.0-dev \u00b7 cf91acee"
+            "3.9.0-dev \u00b7 e91aca7f"
           ],
           "gained": 0,
-          "lost": 0
+          "lost": 1
         },
         "release": {
-          "agree": 29,
+          "agree": 31,
           "build": [
-            "3.8.1 \u00b7 cf6f1413"
+            "3.8.2 \u00b7 8a3f3b2c"
           ],
-          "gained": 0,
-          "lost": 0
+          "gained": 3,
+          "lost": 1
         }
       },
       "client": "erigon",
       "counts": {
-        "agree": 32,
-        "converged": 1,
+        "agree": 31,
+        "converged": 2,
         "fix": 0,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
       },
-      "dev_only": 3,
+      "dev_only": 0,
       "name": "Erigon",
       "prs": {
         "merged": 27,
@@ -73,12 +73,12 @@
     {
       "builds": {
         "development": {
-          "agree": 33,
+          "agree": 32,
           "build": [
-            "2.3.0-preview \u00b7 4079edfa"
+            "2.4.0-preview \u00b7 e2f069a6"
           ],
           "gained": 0,
-          "lost": 0
+          "lost": 1
         },
         "release": {
           "agree": 27,
@@ -91,14 +91,14 @@
       },
       "client": "nethermind",
       "counts": {
-        "agree": 33,
-        "converged": 0,
+        "agree": 32,
+        "converged": 1,
         "fix": 0,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
       },
-      "dev_only": 6,
+      "dev_only": 5,
       "name": "Nethermind",
       "prs": {
         "merged": 51,
@@ -108,17 +108,17 @@
     {
       "builds": {
         "development": {
-          "agree": 25,
+          "agree": 28,
           "build": [
-            "2.10.1 \u00b7 5efe80f5"
+            "2.11.0 \u00b7 7f5e740c"
           ],
-          "gained": 0,
+          "gained": 3,
           "lost": 0
         },
         "release": {
           "agree": 25,
           "build": [
-            "2.10.1 \u00b7 58ebce14"
+            "2.11.0 \u00b7 b9abbcc1"
           ],
           "gained": 0,
           "lost": 0
@@ -126,14 +126,14 @@
       },
       "client": "reth",
       "counts": {
-        "agree": 25,
-        "converged": 5,
-        "fix": 3,
+        "agree": 28,
+        "converged": 4,
+        "fix": 1,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
       },
-      "dev_only": 0,
+      "dev_only": 3,
       "name": "Reth",
       "prs": {
         "merged": 25,
@@ -143,26 +143,26 @@
     {
       "builds": {
         "development": {
-          "agree": 28,
+          "agree": 30,
           "build": [
-            "1.9.1-nightly \u00b7 6165f031"
+            "1.10.1-nightly \u00b7 50d75f19"
           ],
-          "gained": 1,
-          "lost": 0
+          "gained": 3,
+          "lost": 1
         },
         "release": {
-          "agree": 28,
+          "agree": 30,
           "build": [
-            "1.9.0 \u00b7 6056c584"
+            "1.10.0 \u00b7 083e2299"
           ],
-          "gained": 10,
-          "lost": 0
+          "gained": 3,
+          "lost": 1
         }
       },
       "client": "anvil",
       "counts": {
-        "agree": 28,
-        "converged": 5,
+        "agree": 30,
+        "converged": 3,
         "fix": 0,
         "policy": 0,
         "review": 0,

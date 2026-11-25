@@ -6,8 +6,8 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Reth · 2.10.1 · 58ebce14](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/pruned/manifest.json) |
-| [Reth · 2.10.1 · 5efe80f5](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-11-09/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/pruned/manifest.json) |
+| [Reth · 2.11.0 · b9abbcc1](../../clients/reth_release.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-11-25/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/pruned/manifest.json) |
+| [Reth · 2.11.0 · 7f5e740c](../../clients/reth_development.md) | 1 call frames; nonempty output | ✅ Checked cases agree | [Response](../../../evidence/2026-11-25/eval/pruned/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/pruned/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -30,11 +30,11 @@
 }
 ```
 
-**Reth · 2.10.1 · 5efe80f5** (`Reth Version: 2.10.1+5efe80f5`)
+**Reth · 2.11.0 · 7f5e740c** (`Reth Version: 2.11.0+7f5e740c`)
 
 - [H06](../../decisions/H06.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 
-**Reth · 2.10.1 · 58ebce14** (`Reth Version: 2.10.1+58ebce14`)
+**Reth · 2.11.0 · b9abbcc1** (`Reth Version: 2.11.0+b9abbcc1`)
 
 - [H06](../../decisions/H06.md): Retain supporting reference evidence. Ledger reference; executable requirements are assessed by the linked topic cases.
 

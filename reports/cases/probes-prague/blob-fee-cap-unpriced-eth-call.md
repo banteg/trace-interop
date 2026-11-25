@@ -6,17 +6,17 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Anvil · 1.9.0 · 6056c584](../../clients/anvil_release.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
-| [Anvil · 1.9.1-nightly · 6165f031](../../clients/anvil_development.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
-| [Besu · 26.11.0 · 0e595f9e](../../clients/besu_release.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
-| [Besu · 26.11-develop · 3f41096a](../../clients/besu_development.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
-| [Erigon · 3.8.1 · cf6f1413](../../clients/erigon_release.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
-| [Erigon · 3.9.0-dev · cf91acee](../../clients/erigon_development.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
-| [Geth draft fork · 1.17.11-unstable · e487da1e](../../clients/go-ethereum_trace.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
-| [Nethermind · 2.2.2 · be201120](../../clients/nethermind_release.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
-| [Nethermind · 2.3.0-preview · 4079edfa](../../clients/nethermind_development.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
-| [Reth · 2.10.1 · 58ebce14](../../clients/reth_release.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
-| [Reth · 2.10.1 · 5efe80f5](../../clients/reth_development.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-09/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-09/eval/probes-prague/manifest.json) |
+| [Anvil · 1.10.0 · 083e2299](../../clients/anvil_release.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
+| [Anvil · 1.10.1-nightly · 50d75f19](../../clients/anvil_development.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
+| [Besu · 26.11.2 · 09b9e94d](../../clients/besu_release.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
+| [Besu · 26.11-develop · f58f40e2](../../clients/besu_development.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
+| [Erigon · 3.8.2 · 8a3f3b2c](../../clients/erigon_release.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
+| [Erigon · 3.9.0-dev · e91aca7f](../../clients/erigon_development.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
+| [Geth draft fork · 1.17.11-unstable · edbd5f17](../../clients/go-ethereum_trace.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
+| [Nethermind · 2.2.2 · be201120](../../clients/nethermind_release.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
+| [Nethermind · 2.4.0-preview · e2f069a6](../../clients/nethermind_development.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
+| [Reth · 2.11.0 · b9abbcc1](../../clients/reth_release.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
+| [Reth · 2.11.0 · 7f5e740c](../../clients/reth_development.md) | `0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223` | 🔎 Control / not applicable | [Response](../../../evidence/2026-11-25/eval/probes-prague/observations.json.gz) · [Build/run](../../../evidence/2026-11-25/eval/probes-prague/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -41,35 +41,35 @@
 }
 ```
 
-**Anvil · 1.9.1-nightly · 6165f031** (`anvil Version: 1.9.1-nightly+6165f031`)
+**Anvil · 1.10.1-nightly · 50d75f19** (`anvil Version: 1.10.1-nightly+50d75f19`)
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 
-**Anvil · 1.9.0 · 6056c584** (`anvil Version: 1.9.0+6056c584`)
+**Anvil · 1.10.0 · 083e2299** (`anvil Version: 1.10.0+083e2299`)
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 
-**Besu · 26.11-develop · 3f41096a** (`besu/v26.11-develop-3f41096/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11-develop · f58f40e2** (`besu/v26.11-develop-f58f40e/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 
-**Besu · 26.11.0 · 0e595f9e** (`besu/v26.11.0/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11.2 · 09b9e94d** (`besu/v26.11.2/linux-x86_64/openjdk-java-25`)
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 
-**Erigon · 3.9.0-dev · cf91acee** (`3.9.0-dev-cf91acee`)
+**Erigon · 3.9.0-dev · e91aca7f** (`3.9.0-dev-e91aca7f`)
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 
-**Erigon · 3.8.1 · cf6f1413** (`3.8.1-cf6f1413`)
+**Erigon · 3.8.2 · 8a3f3b2c** (`3.8.2-8a3f3b2c`)
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 
-**Geth draft fork · 1.17.11-unstable · e487da1e** (`Geth/v1.17.11-unstable-e487da1e-2026-11-01/linux-amd64/go1.26.1`)
+**Geth draft fork · 1.17.11-unstable · edbd5f17** (`Geth/v1.17.11-unstable-edbd5f17-2026-11-18/linux-amd64/go1.26.1`)
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 
-**Nethermind · 2.3.0-preview · 4079edfa** (`2.3.0-preview+4079edfa`)
+**Nethermind · 2.4.0-preview · e2f069a6** (`2.4.0-preview+e2f069a6`)
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 
@@ -77,11 +77,11 @@
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 
-**Reth · 2.10.1 · 5efe80f5** (`Reth Version: 2.10.1+5efe80f5`)
+**Reth · 2.11.0 · 7f5e740c** (`Reth Version: 2.11.0+7f5e740c`)
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 
-**Reth · 2.10.1 · 58ebce14** (`Reth Version: 2.10.1+58ebce14`)
+**Reth · 2.11.0 · b9abbcc1** (`Reth Version: 2.11.0+b9abbcc1`)
 
 - [H15](../../decisions/H15.md): A positive maxFeePerBlobGas on a call without execution fee fields keeps the selected block's BLOBBASEFEE. eth_call parity control for blob-fee-cap-unpriced. Observed: Expected [None]; got ['0xab5f25204fcd3dd3bdd4739b52bdeb75e30ed223']
 

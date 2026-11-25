@@ -1,0 +1,2144 @@
+{
+  "clients": {
+    "anvil_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "anvil",
+      "created": "2026-11-25T07:09:57.152490279Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:a46d49777f2a1280cb3a0a08d38581c03fbabc0302daea1a207df9858e895d5b",
+      "image_id": "sha256:609e847795462067f6096ad0d3241a21fde7355b6378a6d8f720de3f826d05c4",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-11-25T06:47:28.657Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "50d75f19dbd7ac88fba3013c93cf4e220b1aad6c",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "nightly"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:nightly"
+    },
+    "anvil_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "anvil",
+      "created": "2026-11-19T16:21:30.343164055Z",
+      "digest": "ghcr.io/foundry-rs/foundry@sha256:03ca6dc0accb53b6f67278b5a1c70bef984d5a2a2bcb197298c3b6f3b929c798",
+      "image_id": "sha256:40e460fcfff9f5d5d45e715589c92b60c54d9cc2ca235dbe9859dc9c0a5be012",
+      "labels": {
+        "org.label-schema.build-date": "",
+        "org.label-schema.description": "Foundry",
+        "org.label-schema.name": "Foundry",
+        "org.label-schema.schema-version": "1.0",
+        "org.label-schema.url": "https://getfoundry.sh",
+        "org.label-schema.vcs-ref": "",
+        "org.label-schema.vcs-url": "https://github.com/foundry-rs/foundry.git",
+        "org.label-schema.vendor": "Foundry-rs",
+        "org.label-schema.version": "",
+        "org.opencontainers.image.created": "2026-11-19T15:59:05.528Z",
+        "org.opencontainers.image.description": "Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.",
+        "org.opencontainers.image.licenses": "Apache-2.0",
+        "org.opencontainers.image.revision": "083e22994195d6a7e3ad3104d0b57f478c9b9062",
+        "org.opencontainers.image.source": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.title": "foundry",
+        "org.opencontainers.image.url": "https://github.com/foundry-rs/foundry",
+        "org.opencontainers.image.version": "v1.10.0"
+      },
+      "release": {
+        "published_at": "2026-11-19T16:41:30Z",
+        "tag": "v1.10.0",
+        "url": "https://github.com/foundry-rs/foundry/releases/tag/v1.10.0"
+      },
+      "repository": "https://github.com/foundry-rs/foundry",
+      "requested": "ghcr.io/foundry-rs/foundry:v1.10.0"
+    },
+    "besu_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "besu",
+      "created": "2026-11-25T14:02:02.741969676Z",
+      "digest": "hyperledger/besu@sha256:15a1bc70c6db3f1902db5f24f765770df7c7dcdfb960422a120b390b1a84ca09",
+      "image_id": "sha256:0fddc9e7026cce897f15078a6164f040040f949c99aa74b52b418ce3954bb2a4",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "f58f40e2095db8295b780f75e01aa2108716e5d9",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "develop"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:develop"
+    },
+    "besu_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "besu",
+      "created": "2026-11-23T16:40:24.502031073Z",
+      "digest": "hyperledger/besu@sha256:19d6cf7fffda207c814778b301b9d4eb8f6f2d7acaad7e4ca4a974784b4f8554",
+      "image_id": "sha256:3e14f20daffe6658fa0dbb5a14801b3ff60529dd3a5f3dc03098e581ff3da759",
+      "labels": {
+        "org.opencontainers.image.created": "",
+        "org.opencontainers.image.description": "Enterprise Ethereum client",
+        "org.opencontainers.image.licenses": "Apache 2.0",
+        "org.opencontainers.image.revision": "09b9e94dd585f2dc7174adcdeeac96590c0becd0",
+        "org.opencontainers.image.source": "https://github.com/besu-eth/besu.git",
+        "org.opencontainers.image.title": "Besu",
+        "org.opencontainers.image.url": "https://besu.hyperledger.org/",
+        "org.opencontainers.image.vendor": "Hyperledger",
+        "org.opencontainers.image.version": "26.11.2"
+      },
+      "release": {
+        "published_at": "2026-11-23T16:42:01Z",
+        "tag": "26.11.2",
+        "url": "https://github.com/besu-eth/besu/releases/tag/26.11.2"
+      },
+      "repository": "https://github.com/besu-eth/besu",
+      "requested": "hyperledger/besu:26.11.2"
+    },
+    "erigon_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "erigon",
+      "created": "2026-11-25T13:47:50.567026579Z",
+      "digest": "erigontech/erigon@sha256:e92192748bd902e1cc1dcce0aad298d672666cf4f14041b4fe1a7e5f73649322",
+      "image_id": "sha256:f173f9c6ef84ddd07b726cf110d54c7d4b8cebd4afdff15ae21e521cdc376674",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:13-slim",
+        "org.opencontainers.image.created": "2026-11-25T13:45:55Z",
+        "org.opencontainers.image.description": "[docker image built on the last commit id from the main branch] Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "e91aca7f9bfd776d4986b770e3914fe0e997f383",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/blob/refs/heads/main/Dockerfile",
+        "org.opencontainers.image.vcs-ref-short": "e91aca7",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "e91aca7f9bfd776d4986b770e3914fe0e997f383"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:main-latest"
+    },
+    "erigon_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "erigon",
+      "created": "2026-11-19T08:06:42.957232608Z",
+      "digest": "erigontech/erigon@sha256:465f6ccd21f6465629fd3197854f63df4cc21679536259d3f96de9d45c9c9fc6",
+      "image_id": "sha256:1ad3761935b08658e4aacea389e7a5d55a9aafecb961473192ec7b155b73e4e7",
+      "labels": {
+        "org.opencontainers.image.authors": "https://github.com/erigontech/erigon/graphs/contributors",
+        "org.opencontainers.image.base.name": "debian:12-slim",
+        "org.opencontainers.image.created": "2026-11-19T08:04:35Z",
+        "org.opencontainers.image.description": "Erigon is an implementation of Ethereum (execution layer with embeddable consensus layer), on the efficiency frontier. Archive Node by default.",
+        "org.opencontainers.image.documentation": "https://docs.erigon.tech/",
+        "org.opencontainers.image.revision": "",
+        "org.opencontainers.image.source": "https://github.com/erigontech/erigon",
+        "org.opencontainers.image.url": "https://github.com/erigontech/erigon/tree/release/3.8",
+        "org.opencontainers.image.vcs-ref-short": "",
+        "org.opencontainers.image.vendor": "erigontech",
+        "org.opencontainers.image.version": "v3.8.2"
+      },
+      "release": {
+        "published_at": "2026-11-19T13:33:00Z",
+        "tag": "v3.8.2",
+        "url": "https://github.com/erigontech/erigon/releases/tag/v3.8.2"
+      },
+      "repository": "https://github.com/erigontech/erigon",
+      "requested": "erigontech/erigon:v3.8.2"
+    },
+    "go-ethereum_trace": {
+      "architecture": "amd64",
+      "build": {
+        "base_image": "alpine@sha256:469c9ea410b9215eaee7976ba6c0639039b444be8e5d638f7abbada189971eb2",
+        "binary_sha256": "d20511c7d257e24104510f122723c0868bfbafe7234563e58c1ced75c83131ca",
+        "cgo": false,
+        "dockerfile": "FROM alpine@sha256:469c9ea410b9215eaee7976ba6c0639039b444be8e5d638f7abbada189971eb2\nCOPY geth /usr/local/bin/geth\nENTRYPOINT [\"/usr/local/bin/geth\"]\n",
+        "script_sha256": "9c02426b222fd41b350d002ad3c485d2d7f4aabed143357b259bf0328035bbf6",
+        "toolchain": "go1.26.1"
+      },
+      "client": "go-ethereum",
+      "image_id": "sha256:54c270ad4b45d42ea1bd9c9c6d65d80e5f7e377f30aad82365f2a77ae20daea0",
+      "local_image": "trace-interop/geth-source:d20511c7d257e24104510f122723c0868bfbafe7234563e58c1ced75c83131ca",
+      "requested": "banteg/go-ethereum:feat/trace",
+      "source": {
+        "commit": "edbd5f17789fa31ad17a7c55a5e1072b0eee8548",
+        "dirty": false,
+        "repository": "https://github.com/banteg/go-ethereum",
+        "tree_sha256": "8844f32c986ea7fcb9a42112f72cf3b0a98695d10f762b85653234f2713c3c4b"
+      }
+    },
+    "nethermind_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "nethermind",
+      "created": "2026-11-25T14:18:50Z",
+      "digest": "nethermindeth/nethermind@sha256:82e2bf121122b916cacf26a09d4c02a5d929d380321db2b3d59985b7d611b3ca",
+      "image_id": "sha256:6bfbf6cc9ff869ec91e3f462466a4747a677074fdd70671defbeef07cb620db0",
+      "labels": {
+        "org.opencontainers.image.created": "2026-11-25T14:18:50Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "e2f069a658b58798fba678444271ec99ff6ff3c7",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.4.0-preview"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermindeth/nethermind:master"
+    },
+    "nethermind_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "nethermind",
+      "created": "2026-10-26T15:33:41Z",
+      "digest": "nethermind/nethermind@sha256:57df9bfaaf4d577919b35a2c7b1582ee5bd1812b36a812bdf8ac88ff7dba524d",
+      "image_id": "sha256:1c25df926e1db143d8e37bbd3e4b3a19cc48782488b892c3bcfdf942c59120a1",
+      "labels": {
+        "org.opencontainers.image.created": "2026-10-26T15:33:41Z",
+        "org.opencontainers.image.description": "A robust execution client for Ethereum node operators.",
+        "org.opencontainers.image.documentation": "https://docs.nethermind.io",
+        "org.opencontainers.image.licenses": "LGPL-3.0-only",
+        "org.opencontainers.image.revision": "be201120899ea9cdaab1444b89878c56d1a5a4ad",
+        "org.opencontainers.image.source": "https://github.com/NethermindEth/nethermind",
+        "org.opencontainers.image.title": "Nethermind",
+        "org.opencontainers.image.url": "https://nethermind.io/nethermind-client",
+        "org.opencontainers.image.vendor": "Demerzel Solutions Limited",
+        "org.opencontainers.image.version": "2.2.2"
+      },
+      "release": {
+        "published_at": "2026-10-26T16:59:58Z",
+        "tag": "2.2.2",
+        "url": "https://github.com/NethermindEth/nethermind/releases/tag/2.2.2"
+      },
+      "repository": "https://github.com/NethermindEth/nethermind",
+      "requested": "nethermind/nethermind:2.2.2"
+    },
+    "reth_development": {
+      "architecture": "amd64",
+      "channel": "development",
+      "client": "reth",
+      "created": "2026-11-25T01:18:55.435331274Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:2b1372a26c5ca7178c73f14b1ef4ade25a3a1a5e7af97f303de6e522abcbea5a",
+      "image_id": "sha256:22e49d2b7c95f308f8ecc5dae2f39a337f9c534d88b486df46fb0d43a200b265",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:nightly"
+    },
+    "reth_release": {
+      "architecture": "amd64",
+      "channel": "release",
+      "client": "reth",
+      "created": "2026-11-11T10:19:14.417381808Z",
+      "digest": "ghcr.io/paradigmxyz/reth@sha256:b3925840bbaaa63e58832deacf6bd05e080a47a3ded27e40d255de8f54a04b04",
+      "image_id": "sha256:92a28f95f976f9010d7cce0e22ee43c4530cf2c0de60942e04c4e747c467547f",
+      "labels": {
+        "org.opencontainers.image.version": "24.04"
+      },
+      "release": {
+        "published_at": "2026-11-11T10:47:00Z",
+        "tag": "v2.11.0",
+        "url": "https://github.com/paradigmxyz/reth/releases/tag/v2.11.0"
+      },
+      "repository": "https://github.com/paradigmxyz/reth",
+      "requested": "ghcr.io/paradigmxyz/reth:v2.11.0"
+    }
+  },
+  "corpus": "raw-validation",
+  "finished_at": "2026-11-25T15:22:20.314053+00:00",
+  "fixture_manifest_sha256": "442427b2b6bcca044ccad556b208a3c8c7cf9f005cf89d0c0384e6467373b66c",
+  "format": 1,
+  "head": {
+    "baseFeePerGas": "0x2da282a8",
+    "blobGasUsed": "0x0",
+    "blockAccessListHash": null,
+    "difficulty": "0x0",
+    "excessBlobGas": "0x0",
+    "extraData": "0x",
+    "gasLimit": "0x5f5e100",
+    "gasUsed": "0x0",
+    "hash": "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0x0000000000000000000000000000000000000000",
+    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": "0x0000000000000000",
+    "number": "0x2",
+    "parentBeaconBlockRoot": "0x2c809fbc7e3991c8ab560d1431fa8b6f25be4ab50977f0294dfeca9677866b6e",
+    "parentHash": "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b",
+    "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "slotNumber": null,
+    "stateRoot": "0x842ee32b527dc0e28b92a8479b9a8ec6b7bbdf85c5d055e1fafbac3c2d19b1a1",
+    "timestamp": "0x14",
+    "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"
+  },
+  "hive_binary_sha256": "6dd4a05f52a3f1d0a051fd81dbaf02a739189179496b7decec954ab263e09d83",
+  "hive_commit": "43ea47bef5761351e3da7b726050ea80ab362c52",
+  "replica": {
+    "anvil_development": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b",
+          "number": "0x1",
+          "same_hash": true
+        },
+        {
+          "differs": [],
+          "hash": "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956",
+          "number": "0x2",
+          "same_hash": true
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--accounts",
+        "0",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e": "0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e",
+        "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b": "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b",
+        "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956": "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956"
+      },
+      "parent_beacon_roots": true,
+      "version": "anvil Version: 1.10.1-nightly+50d75f19"
+    },
+    "anvil_release": {
+      "blocks": [
+        {
+          "differs": [],
+          "hash": "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b",
+          "number": "0x1",
+          "same_hash": true
+        },
+        {
+          "differs": [],
+          "hash": "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956",
+          "number": "0x2",
+          "same_hash": true
+        }
+      ],
+      "command": [
+        "anvil",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8545",
+        "--init",
+        "/chain/genesis.json",
+        "--accounts",
+        "0",
+        "--hardfork",
+        "prague",
+        "--chain-id",
+        "3503995874084926",
+        "--gas-limit",
+        "100000000",
+        "--order",
+        "fifo",
+        "--no-mining"
+      ],
+      "hashes": {
+        "0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e": "0x0b764c8bb1d7ec3f2cd696351aab3deb47b05ec6e3b1614391e02b461c47b65e",
+        "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b": "0x112d8dc6ab9c564c963233acc13ed1b382f42c42b1ddacd345a0b18a1c3e385b",
+        "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956": "0xece1ea9c0789c9e24dc1970864375ee1304b9627d389e4a6a519233b76cf7956"
+      },
+      "parent_beacon_roots": true,
+      "version": "anvil Version: 1.10.0+083e2299"
+    }
+  },
+  "replica_sha256": "2bee51bb825cf7cac318e4fa25afbf3000af43b5f5c027bb11e62bb4912d4e96",
+  "runner_exit_code": 1,
+  "runner_sha256": "ef650033c017892a38e6cb1f3fed4a2e55ccf013d8189fdb0e333ad7008bf6a9",
+  "selected_cases": [
+    {
+      "name": "_control/head",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "0x2",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/latest",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [
+          "latest",
+          false
+        ]
+      }
+    },
+    {
+      "name": "_control/version",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "web3_clientVersion",
+        "params": []
+      }
+    },
+    {
+      "name": "_control/chain-id",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_chainId",
+        "params": []
+      }
+    },
+    {
+      "name": "_control/sender-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/sender-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/sender-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/code-sender-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/code-sender-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/code-sender-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/delegated-sender-nonce",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionCount",
+        "params": [
+          "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/delegated-sender-balance",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getBalance",
+        "params": [
+          "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/delegated-sender-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/marker-code",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getCode",
+        "params": [
+          "0x0000000000000000000000000000000000001002",
+          "latest"
+        ]
+      }
+    },
+    {
+      "name": "_control/marker-storage",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "eth_getStorageAt",
+        "params": [
+          "0x0000000000000000000000000000000000001002",
+          "0x0",
+          "latest"
+        ]
+      }
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-valid-all",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a068ee9aa988adb25c24c1dd48868f13ac72615bd55e2b471953c8ee9c824e66fe",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-valid-trace",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a068ee9aa988adb25c24c1dd48868f13ac72615bd55e2b471953c8ee9c824e66fe",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-valid-stateDiff",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a068ee9aa988adb25c24c1dd48868f13ac72615bd55e2b471953c8ee9c824e66fe",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-valid-vmTrace",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0a2f62f19fe621aee70421dbc7406655686d0cff2bedd6aaccbddf7f94b497168a068ee9aa988adb25c24c1dd48868f13ac72615bd55e2b471953c8ee9c824e66fe",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_execution_error": true,
+      "expected_output": "0x",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-execution-oog-valid-all",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a0a842da282a982520894000000000000000000000000000000000000100201808718e5bb3abd109fa0438c25241c47cb30acced697295dbdc7efd1c51379f4d9a278676f0a234be35ba03a1865e41b9a3ae09cb8e900d0295dc60fa0d1412a2b6658dffc7498eb8ca34d",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x5208",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_execution_error": true,
+      "expected_output": "0x",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-execution-oog-valid-trace",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a0a842da282a982520894000000000000000000000000000000000000100201808718e5bb3abd109fa0438c25241c47cb30acced697295dbdc7efd1c51379f4d9a278676f0a234be35ba03a1865e41b9a3ae09cb8e900d0295dc60fa0d1412a2b6658dffc7498eb8ca34d",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x5208",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_execution_error": true,
+      "expected_output": "0x",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-execution-oog-valid-stateDiff",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a0a842da282a982520894000000000000000000000000000000000000100201808718e5bb3abd109fa0438c25241c47cb30acced697295dbdc7efd1c51379f4d9a278676f0a234be35ba03a1865e41b9a3ae09cb8e900d0295dc60fa0d1412a2b6658dffc7498eb8ca34d",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x5208",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_execution_error": true,
+      "expected_output": "0x",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-execution-oog-valid-vmTrace",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a0a842da282a982520894000000000000000000000000000000000000100201808718e5bb3abd109fa0438c25241c47cb30acced697295dbdc7efd1c51379f4d9a278676f0a234be35ba03a1865e41b9a3ae09cb8e900d0295dc60fa0d1412a2b6658dffc7498eb8ca34d",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x5208",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-delegated-sender-valid-all",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a0aa1b8729627d5a66946b22f6256be16265f68013b90e71720864ae4f4e1e8b44a017dcd6b45f65b0e48dbb962707ade5cd4de5909deefe038808a8dc243b44188a",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-delegated-sender-valid-trace",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a0aa1b8729627d5a66946b22f6256be16265f68013b90e71720864ae4f4e1e8b44a017dcd6b45f65b0e48dbb962707ade5cd4de5909deefe038808a8dc243b44188a",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-delegated-sender-valid-stateDiff",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a0aa1b8729627d5a66946b22f6256be16265f68013b90e71720864ae4f4e1e8b44a017dcd6b45f65b0e48dbb962707ade5cd4de5909deefe038808a8dc243b44188a",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-delegated-sender-valid-vmTrace",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a0aa1b8729627d5a66946b22f6256be16265f68013b90e71720864ae4f4e1e8b44a017dcd6b45f65b0e48dbb962707ade5cd4de5909deefe038808a8dc243b44188a",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x6813Eb9362372EEF6200f3b1dbC3f819671cBA69",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-nonce-low-all",
+      "reason": "nonce below selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b09842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a066622bd38bd8d2faf53fa011186688398c2035e1c6bc94c794a9331b79f37114a05369dcea2f88bced916b7e2729242b74c46574348380e5dcf7fd3be2bde48fbd",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 9,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-nonce-low-trace",
+      "reason": "nonce below selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b09842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a066622bd38bd8d2faf53fa011186688398c2035e1c6bc94c794a9331b79f37114a05369dcea2f88bced916b7e2729242b74c46574348380e5dcf7fd3be2bde48fbd",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 9,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-nonce-low-stateDiff",
+      "reason": "nonce below selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b09842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a066622bd38bd8d2faf53fa011186688398c2035e1c6bc94c794a9331b79f37114a05369dcea2f88bced916b7e2729242b74c46574348380e5dcf7fd3be2bde48fbd",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 9,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-nonce-low-vmTrace",
+      "reason": "nonce below selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b09842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a066622bd38bd8d2faf53fa011186688398c2035e1c6bc94c794a9331b79f37114a05369dcea2f88bced916b7e2729242b74c46574348380e5dcf7fd3be2bde48fbd",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 9,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-nonce-high-all",
+      "reason": "nonce above selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0b842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0cde86efe8d1780193d811c3aef88881a59c50bbb93d8e631339c79c9801145f3a00dddb7c31c0b032a1804f5cc09c46c20f824c7dd25e56aae7ba8354256a177e4",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 11,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-nonce-high-trace",
+      "reason": "nonce above selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0b842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0cde86efe8d1780193d811c3aef88881a59c50bbb93d8e631339c79c9801145f3a00dddb7c31c0b032a1804f5cc09c46c20f824c7dd25e56aae7ba8354256a177e4",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 11,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-nonce-high-stateDiff",
+      "reason": "nonce above selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0b842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0cde86efe8d1780193d811c3aef88881a59c50bbb93d8e631339c79c9801145f3a00dddb7c31c0b032a1804f5cc09c46c20f824c7dd25e56aae7ba8354256a177e4",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 11,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-nonce-high-vmTrace",
+      "reason": "nonce above selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0b842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa0cde86efe8d1780193d811c3aef88881a59c50bbb93d8e631339c79c9801145f3a00dddb7c31c0b032a1804f5cc09c46c20f824c7dd25e56aae7ba8354256a177e4",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 11,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-wrong-chain-all",
+      "reason": "wrong chain identity",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a1a0a9a71b4f058fd89aace7adbd5ee61eea3c2835bc1cc824d38ce04dbd2ebef001a03fada387bb48b772cd034614ca62886282abed9a436e4d6597823eef30208f07",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883f",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-wrong-chain-trace",
+      "reason": "wrong chain identity",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a1a0a9a71b4f058fd89aace7adbd5ee61eea3c2835bc1cc824d38ce04dbd2ebef001a03fada387bb48b772cd034614ca62886282abed9a436e4d6597823eef30208f07",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883f",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-wrong-chain-stateDiff",
+      "reason": "wrong chain identity",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a1a0a9a71b4f058fd89aace7adbd5ee61eea3c2835bc1cc824d38ce04dbd2ebef001a03fada387bb48b772cd034614ca62886282abed9a436e4d6597823eef30208f07",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883f",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-wrong-chain-vmTrace",
+      "reason": "wrong chain identity",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd10a1a0a9a71b4f058fd89aace7adbd5ee61eea3c2835bc1cc824d38ce04dbd2ebef001a03fada387bb48b772cd034614ca62886282abed9a436e4d6597823eef30208f07",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883f",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-funds-value-all",
+      "reason": "insufficient balance for value alone",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8730a842da282a9830186a0940000000000000000000000000000000000001002880de0b6b3a7640001808718e5bb3abd109fa045db63de254132f2e3ef3e798472b6afc3a97624aec0b0537f25f82a5b3585a4a03edc2ad5855f1d765a1ccc90d6326a3723bdd2c41b103b04bda7baeab5a5bae3",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0xde0b6b3a7640001"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-funds-value-trace",
+      "reason": "insufficient balance for value alone",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8730a842da282a9830186a0940000000000000000000000000000000000001002880de0b6b3a7640001808718e5bb3abd109fa045db63de254132f2e3ef3e798472b6afc3a97624aec0b0537f25f82a5b3585a4a03edc2ad5855f1d765a1ccc90d6326a3723bdd2c41b103b04bda7baeab5a5bae3",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0xde0b6b3a7640001"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-funds-value-stateDiff",
+      "reason": "insufficient balance for value alone",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8730a842da282a9830186a0940000000000000000000000000000000000001002880de0b6b3a7640001808718e5bb3abd109fa045db63de254132f2e3ef3e798472b6afc3a97624aec0b0537f25f82a5b3585a4a03edc2ad5855f1d765a1ccc90d6326a3723bdd2c41b103b04bda7baeab5a5bae3",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0xde0b6b3a7640001"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-funds-value-vmTrace",
+      "reason": "insufficient balance for value alone",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8730a842da282a9830186a0940000000000000000000000000000000000001002880de0b6b3a7640001808718e5bb3abd109fa045db63de254132f2e3ef3e798472b6afc3a97624aec0b0537f25f82a5b3585a4a03edc2ad5855f1d765a1ccc90d6326a3723bdd2c41b103b04bda7baeab5a5bae3",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0xde0b6b3a7640001"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-funds-gas-all",
+      "reason": "value is affordable but upfront gas plus value is not",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8730a842da282a9830186a0940000000000000000000000000000000000001002880de0b6b3a7640000808718e5bb3abd10a0a08d1dbb3889e631f39d0e1b3c5eb58bc2211229b1e8d400981345f2fe4523c3dda0604a32a2b5e1837b5fb05e9bb78186db1760297eacb2b865f4860f9816aae7f9",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0xde0b6b3a7640000"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-funds-gas-trace",
+      "reason": "value is affordable but upfront gas plus value is not",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8730a842da282a9830186a0940000000000000000000000000000000000001002880de0b6b3a7640000808718e5bb3abd10a0a08d1dbb3889e631f39d0e1b3c5eb58bc2211229b1e8d400981345f2fe4523c3dda0604a32a2b5e1837b5fb05e9bb78186db1760297eacb2b865f4860f9816aae7f9",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0xde0b6b3a7640000"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-funds-gas-stateDiff",
+      "reason": "value is affordable but upfront gas plus value is not",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8730a842da282a9830186a0940000000000000000000000000000000000001002880de0b6b3a7640000808718e5bb3abd10a0a08d1dbb3889e631f39d0e1b3c5eb58bc2211229b1e8d400981345f2fe4523c3dda0604a32a2b5e1837b5fb05e9bb78186db1760297eacb2b865f4860f9816aae7f9",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0xde0b6b3a7640000"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-funds-gas-vmTrace",
+      "reason": "value is affordable but upfront gas plus value is not",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8730a842da282a9830186a0940000000000000000000000000000000000001002880de0b6b3a7640000808718e5bb3abd10a0a08d1dbb3889e631f39d0e1b3c5eb58bc2211229b1e8d400981345f2fe4523c3dda0604a32a2b5e1837b5fb05e9bb78186db1760297eacb2b865f4860f9816aae7f9",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0xde0b6b3a7640000"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-intrinsic-gas-all",
+      "reason": "gas limit below 21000 intrinsic gas",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a0a842da282a982520794000000000000000000000000000000000000100201808718e5bb3abd10a0a03e2bb48ffdc3a7718afc598d928b473e31cb4f1757a33a884d91d0e2bacc3eb7a00ff33e7901b8f83ce9451b3a94d395953062ce98020698dea332741bd49e596c",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x5207",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-intrinsic-gas-trace",
+      "reason": "gas limit below 21000 intrinsic gas",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a0a842da282a982520794000000000000000000000000000000000000100201808718e5bb3abd10a0a03e2bb48ffdc3a7718afc598d928b473e31cb4f1757a33a884d91d0e2bacc3eb7a00ff33e7901b8f83ce9451b3a94d395953062ce98020698dea332741bd49e596c",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x5207",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-intrinsic-gas-stateDiff",
+      "reason": "gas limit below 21000 intrinsic gas",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a0a842da282a982520794000000000000000000000000000000000000100201808718e5bb3abd10a0a03e2bb48ffdc3a7718afc598d928b473e31cb4f1757a33a884d91d0e2bacc3eb7a00ff33e7901b8f83ce9451b3a94d395953062ce98020698dea332741bd49e596c",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x5207",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-intrinsic-gas-vmTrace",
+      "reason": "gas limit below 21000 intrinsic gas",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86a0a842da282a982520794000000000000000000000000000000000000100201808718e5bb3abd10a0a03e2bb48ffdc3a7718afc598d928b473e31cb4f1757a33a884d91d0e2bacc3eb7a00ff33e7901b8f83ce9451b3a94d395953062ce98020698dea332741bd49e596c",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x5207",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-below-basefee-all",
+      "reason": "gas price below selected block base fee",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a7830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a07848653cd9629ab7ae07a18eca2d43b09005c23eee0749e60660fe7825f88743a0281eb7c3cab9790d9d7f29b92f7457f58612499c7233f6dae068eb10a47bf837",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a7",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-below-basefee-trace",
+      "reason": "gas price below selected block base fee",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a7830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a07848653cd9629ab7ae07a18eca2d43b09005c23eee0749e60660fe7825f88743a0281eb7c3cab9790d9d7f29b92f7457f58612499c7233f6dae068eb10a47bf837",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a7",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-below-basefee-stateDiff",
+      "reason": "gas price below selected block base fee",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a7830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a07848653cd9629ab7ae07a18eca2d43b09005c23eee0749e60660fe7825f88743a0281eb7c3cab9790d9d7f29b92f7457f58612499c7233f6dae068eb10a47bf837",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a7",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-below-basefee-vmTrace",
+      "reason": "gas price below selected block base fee",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a7830186a094000000000000000000000000000000000000100201808718e5bb3abd10a0a07848653cd9629ab7ae07a18eca2d43b09005c23eee0749e60660fe7825f88743a0281eb7c3cab9790d9d7f29b92f7457f58612499c7233f6dae068eb10a47bf837",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a7",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-code-sender-all",
+      "reason": "EIP-3607 ordinary-code sender (not delegation)",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa094743fd3c647965db4f4a93a99df9f01fa1eb63ec9a9f8bd998ca6dbadee6110a03c16275b8dc73e8b639d3db3633f951e03347784a7554b6b55d86662d53b12ac",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-code-sender-trace",
+      "reason": "EIP-3607 ordinary-code sender (not delegation)",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa094743fd3c647965db4f4a93a99df9f01fa1eb63ec9a9f8bd998ca6dbadee6110a03c16275b8dc73e8b639d3db3633f951e03347784a7554b6b55d86662d53b12ac",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-code-sender-stateDiff",
+      "reason": "EIP-3607 ordinary-code sender (not delegation)",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa094743fd3c647965db4f4a93a99df9f01fa1eb63ec9a9f8bd998ca6dbadee6110a03c16275b8dc73e8b639d3db3633f951e03347784a7554b6b55d86662d53b12ac",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000000000000000000000000000000000000000002a",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-code-sender-vmTrace",
+      "reason": "EIP-3607 ordinary-code sender (not delegation)",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86b0a842da282a9830186a094000000000000000000000000000000000000100201808718e5bb3abd109fa094743fd3c647965db4f4a93a99df9f01fa1eb63ec9a9f8bd998ca6dbadee6110a03c16275b8dc73e8b639d3db3633f951e03347784a7554b6b55d86662d53b12ac",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x2B5AD5c4795c026514f8317c7a215E218DcCD6cF",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-valid-all",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8600a842da282a9830186a08001893060005260206000f38718e5bb3abd109fa0371d5f6be359abfc8aa07862de5609e2374dea339665f9fcfe54ebfeef4e5d53a00de19f45781c0c3903dca51e8da7bf4ac28cc805e9a63e27c4bf1ef1d00f951a",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-valid-trace",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8600a842da282a9830186a08001893060005260206000f38718e5bb3abd109fa0371d5f6be359abfc8aa07862de5609e2374dea339665f9fcfe54ebfeef4e5d53a00de19f45781c0c3903dca51e8da7bf4ac28cc805e9a63e27c4bf1ef1d00f951a",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-valid-stateDiff",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8600a842da282a9830186a08001893060005260206000f38718e5bb3abd109fa0371d5f6be359abfc8aa07862de5609e2374dea339665f9fcfe54ebfeef4e5d53a00de19f45781c0c3903dca51e8da7bf4ac28cc805e9a63e27c4bf1ef1d00f951a",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x00000000000000000000000000de48310d77a4d56aa400248b0b1613508f5b73",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-valid-vmTrace",
+      "reason": "",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8600a842da282a9830186a08001893060005260206000f38718e5bb3abd109fa0371d5f6be359abfc8aa07862de5609e2374dea339665f9fcfe54ebfeef4e5d53a00de19f45781c0c3903dca51e8da7bf4ac28cc805e9a63e27c4bf1ef1d00f951a",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 10,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "execute"
+    },
+    {
+      "expected_output": "0x00000000000000000000000066a15edcc3b50a663e72f1457ffd49b9ae284ddc",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-nonce-low-all",
+      "reason": "creation nonce below selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86009842da282a9830186a08001893060005260206000f38718e5bb3abd109fa0f79bc81b54de5c56b99760bc92863bb4742e555f6f81ff00d3d2b6b7e53fadcea055a3935137685afe3b9738bb7563deede6b29147ecb36f00519df0f94b08127b",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0x66a15edcC3b50a663e72F1457FFd49b9AE284dDc",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 9,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x00000000000000000000000066a15edcc3b50a663e72f1457ffd49b9ae284ddc",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-nonce-low-trace",
+      "reason": "creation nonce below selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86009842da282a9830186a08001893060005260206000f38718e5bb3abd109fa0f79bc81b54de5c56b99760bc92863bb4742e555f6f81ff00d3d2b6b7e53fadcea055a3935137685afe3b9738bb7563deede6b29147ecb36f00519df0f94b08127b",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0x66a15edcC3b50a663e72F1457FFd49b9AE284dDc",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 9,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x00000000000000000000000066a15edcc3b50a663e72f1457ffd49b9ae284ddc",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-nonce-low-stateDiff",
+      "reason": "creation nonce below selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86009842da282a9830186a08001893060005260206000f38718e5bb3abd109fa0f79bc81b54de5c56b99760bc92863bb4742e555f6f81ff00d3d2b6b7e53fadcea055a3935137685afe3b9738bb7563deede6b29147ecb36f00519df0f94b08127b",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0x66a15edcC3b50a663e72F1457FFd49b9AE284dDc",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 9,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x00000000000000000000000066a15edcc3b50a663e72f1457ffd49b9ae284ddc",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-nonce-low-vmTrace",
+      "reason": "creation nonce below selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf86009842da282a9830186a08001893060005260206000f38718e5bb3abd109fa0f79bc81b54de5c56b99760bc92863bb4742e555f6f81ff00d3d2b6b7e53fadcea055a3935137685afe3b9738bb7563deede6b29147ecb36f00519df0f94b08127b",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0x66a15edcC3b50a663e72F1457FFd49b9AE284dDc",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 9,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000e69a847cd5bc0c9480ada0b339d7f0a8cac2b667",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-nonce-high-all",
+      "reason": "creation nonce above selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8600b842da282a9830186a08001893060005260206000f38718e5bb3abd109fa039e023bf345822f1fa4fc0e026feff8f8d28dfe3dde86558cd11810158c225a8a052a88956c9496272b462ea3bd33db78d8227a41b89ee335d38174bcd53e16d35",
+          [
+            "trace",
+            "stateDiff",
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0xe69a847CD5BC0C9480adA0b339d7F0a8caC2B667",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 11,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000e69a847cd5bc0c9480ada0b339d7f0a8cac2b667",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-nonce-high-trace",
+      "reason": "creation nonce above selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8600b842da282a9830186a08001893060005260206000f38718e5bb3abd109fa039e023bf345822f1fa4fc0e026feff8f8d28dfe3dde86558cd11810158c225a8a052a88956c9496272b462ea3bd33db78d8227a41b89ee335d38174bcd53e16d35",
+          [
+            "trace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0xe69a847CD5BC0C9480adA0b339d7F0a8caC2B667",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 11,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000e69a847cd5bc0c9480ada0b339d7f0a8cac2b667",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-nonce-high-stateDiff",
+      "reason": "creation nonce above selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8600b842da282a9830186a08001893060005260206000f38718e5bb3abd109fa039e023bf345822f1fa4fc0e026feff8f8d28dfe3dde86558cd11810158c225a8a052a88956c9496272b462ea3bd33db78d8227a41b89ee335d38174bcd53e16d35",
+          [
+            "stateDiff"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0xe69a847CD5BC0C9480adA0b339d7F0a8caC2B667",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 11,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "reject"
+    },
+    {
+      "expected_output": "0x000000000000000000000000e69a847cd5bc0c9480ada0b339d7f0a8cac2b667",
+      "marker": "0x0000000000000000000000000000000000001002",
+      "name": "raw-validation-create-nonce-high-vmTrace",
+      "reason": "creation nonce above selected state",
+      "request": {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "trace_rawTransaction",
+        "params": [
+          "0xf8600b842da282a9830186a08001893060005260206000f38718e5bb3abd109fa039e023bf345822f1fa4fc0e026feff8f8d28dfe3dde86558cd11810158c225a8a052a88956c9496272b462ea3bd33db78d8227a41b89ee335d38174bcd53e16d35",
+          [
+            "vmTrace"
+          ]
+        ]
+      },
+      "sender": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+      "signed_create_address": "0xe69a847CD5BC0C9480adA0b339d7F0a8caC2B667",
+      "signed_fields": {
+        "chainId": "0xc72dd9d5e883e",
+        "gas": "0x186a0",
+        "gasPrice": "0x2da282a9",
+        "value": "0x1"
+      },
+      "signed_nonce": 11,
+      "state_create_address": "0x00De48310d77A4d56aa400248b0B1613508f5B73",
+      "state_nonce": 10,
+      "validation": "reject"
+    }
+  ],
+  "source_commit": "8e9f0c8faad5dc6348460a44f995394d8461d36e",
+  "source_dirty": false,
+  "spec": {
+    "branch": "feat/trace",
+    "commit": "794b655decb8980df6f02427f7e99a225d9eb46d",
+    "generated_sha256": "8826676898e13053b960ee3b133c94bead03d8883c906b231355a89a57383ef6",
+    "notes_sha256": "51893d5137591cc05448d680d489e9372699352e90b24d7065a47209f1b57185",
+    "repository": "https://github.com/banteg/execution-apis"
+  },
+  "started_at": "2026-11-25T15:21:16.177138+00:00"
+}

@@ -6,15 +6,15 @@
 
 | Build | Returned | Compared with draft | Evidence |
 | --- | --- | --- | --- |
-| [Besu · 26.11.0 · 0e595f9e](../../../clients/besu_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
-| [Besu · 26.11-develop · 3f41096a](../../../clients/besu_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
-| [Erigon · 3.8.1 · cf6f1413](../../../clients/erigon_release.md) | RPC error `-32001` | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
-| [Erigon · 3.9.0-dev · cf91acee](../../../clients/erigon_development.md) | RPC error `-32001` | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
-| [Geth draft fork · 1.17.11-unstable · e487da1e](../../../clients/go-ethereum_trace.md) | RPC error `-32001` | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
-| [Nethermind · 2.2.2 · be201120](../../../clients/nethermind_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
-| [Nethermind · 2.3.0-preview · 4079edfa](../../../clients/nethermind_development.md) | RPC error `-32001` | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
-| [Reth · 2.10.1 · 58ebce14](../../../clients/reth_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
-| [Reth · 2.10.1 · 5efe80f5](../../../clients/reth_development.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-11-09/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-09/eval/reorg-safe/manifest.json) |
+| [Besu · 26.11.2 · 09b9e94d](../../../clients/besu_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../evidence/2026-11-25/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-25/eval/reorg-safe/manifest.json) |
+| [Besu · 26.11-develop · f58f40e2](../../../clients/besu_development.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../evidence/2026-11-25/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-25/eval/reorg-safe/manifest.json) |
+| [Erigon · 3.8.2 · 8a3f3b2c](../../../clients/erigon_release.md) | RPC error `-32001` | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-25/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-25/eval/reorg-safe/manifest.json) |
+| [Erigon · 3.9.0-dev · e91aca7f](../../../clients/erigon_development.md) | RPC error `-32001` | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-25/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-25/eval/reorg-safe/manifest.json) |
+| [Geth draft fork · 1.17.11-unstable · edbd5f17](../../../clients/go-ethereum_trace.md) | RPC error `-32001` | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-25/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-25/eval/reorg-safe/manifest.json) |
+| [Nethermind · 2.2.2 · be201120](../../../clients/nethermind_release.md) | RPC error `-32000` | ⚠️ Differs | [Response](../../../../evidence/2026-11-25/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-25/eval/reorg-safe/manifest.json) |
+| [Nethermind · 2.4.0-preview · e2f069a6](../../../clients/nethermind_development.md) | RPC error `-32001` | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-25/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-25/eval/reorg-safe/manifest.json) |
+| [Reth · 2.11.0 · b9abbcc1](../../../clients/reth_release.md) | RPC error `-32602` | ⚠️ Differs | [Response](../../../../evidence/2026-11-25/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-25/eval/reorg-safe/manifest.json) |
+| [Reth · 2.11.0 · 7f5e740c](../../../clients/reth_development.md) | RPC error `-32001` | ✅ Checked cases agree | [Response](../../../../evidence/2026-11-25/eval/reorg-safe/observations.json.gz) · [Build/run](../../../../evidence/2026-11-25/eval/reorg-safe/manifest.json) |
 
 <details><summary>Request and assertion details</summary>
 
@@ -31,11 +31,11 @@
 }
 ```
 
-**Besu · 26.11-develop · 3f41096a** (`besu/v26.11-develop-3f41096/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11-develop · f58f40e2** (`besu/v26.11-develop-f58f40e/linux-x86_64/openjdk-java-25`)
 
 - [H33](../../../decisions/H33.md): After the switch to branch B, A’s block 0x2d is noncanonical: its hash is an error (-32001), never B’s [] or records. Rejected (-32000: Block not found); the code must be -32001.
 
-**Besu · 26.11.0 · 0e595f9e** (`besu/v26.11.0/linux-x86_64/openjdk-java-25`)
+**Besu · 26.11.2 · 09b9e94d** (`besu/v26.11.2/linux-x86_64/openjdk-java-25`)
 
 - [H33](../../../decisions/H33.md): After the switch to branch B, A’s block 0x2d is noncanonical: its hash is an error (-32001), never B’s [] or records. Rejected (-32000: Block not found); the code must be -32001.
 
@@ -43,11 +43,7 @@
 
 - [H33](../../../decisions/H33.md): After the switch to branch B, A’s block 0x2d is noncanonical: its hash is an error (-32001), never B’s [] or records. Rejected (-32000: 0xe6d9078b4964bc1b329fb12242254e21cf88ffa9a88058e515d6e79f7d8fce0d block is not canonical); the code must be -32001.
 
-**Reth · 2.10.1 · 5efe80f5** (`Reth Version: 2.10.1+5efe80f5`)
-
-- [H33](../../../decisions/H33.md): After the switch to branch B, A’s block 0x2d is noncanonical: its hash is an error (-32001), never B’s [] or records. Rejected (-32602: Invalid params); the code must be -32001.
-
-**Reth · 2.10.1 · 58ebce14** (`Reth Version: 2.10.1+58ebce14`)
+**Reth · 2.11.0 · b9abbcc1** (`Reth Version: 2.11.0+b9abbcc1`)
 
 - [H33](../../../decisions/H33.md): After the switch to branch B, A’s block 0x2d is noncanonical: its hash is an error (-32001), never B’s [] or records. Rejected (-32602: Invalid params); the code must be -32001.
 

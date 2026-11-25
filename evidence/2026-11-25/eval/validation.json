@@ -1,0 +1,17 @@
+{
+  "host": "Darwin arm64",
+  "capture_host": "Fedora x86_64",
+  "capture_source": "8e9f0c8faad5dc6348460a44f995394d8461d36e",
+  "assessment_source": "8e9f0c8f plus this commit's trace_callMany envelope rule change",
+  "check": {
+    "command": "bash scripts/check.sh",
+    "exit_code": 0,
+    "tests": 460,
+    "schemas": 9,
+    "generated_reports_stable": true
+  },
+  "report_assessment_sha256": "1d4f71c36d9c8fbde1c364a1000347e2cdf0cfd63c988acffe4d2b3b69b36142",
+  "files": {
+    "check.log.gz": "30985083c92cc0704a025db1efdccc98ee3d1f2bd5e8f8493f5aaf25f734e1af"
+  }
+}

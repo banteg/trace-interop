@@ -4,8 +4,7 @@
     "besu_release": "The same wrapped gasUsed as the development build."
   },
   "L03": {
-    "besu_development": "H22: a root call to a precompile reports empty frame output while the envelope carries the precompile’s return bytes.",
-    "besu_release": "H22, as in the development build."
+    "besu_release": "H22: a root call to a precompile reports empty frame output while the envelope carries the precompile’s return bytes."
   },
   "L07": {
     "nethermind_release": "The same suicide serialization as the development build."

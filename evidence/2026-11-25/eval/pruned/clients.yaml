@@ -1,0 +1,18 @@
+[
+  {
+    "build_args": {
+      "baseimage": "trace-interop/reth",
+      "tag": "22e49d2b7c95f308f8ecc5dae2f39a337f9c534d88b486df46fb0d43a200b265"
+    },
+    "client": "reth",
+    "nametag": "development"
+  },
+  {
+    "build_args": {
+      "baseimage": "trace-interop/reth",
+      "tag": "92a28f95f976f9010d7cce0e22ee43c4530cf2c0de60942e04c4e747c467547f"
+    },
+    "client": "reth",
+    "nametag": "release"
+  }
+]

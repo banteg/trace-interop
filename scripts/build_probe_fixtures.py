@@ -496,7 +496,35 @@ def prague():
         case(cases, name, 'trace_call', [creation(address, nonce=hex(supplied)), ['trace'], 'latest'], probes=[
             probe('H15', 'outputs', f'A supplied nonce {supplied} is ignored: the creation runs at the address of state nonce {nonce}.',
                   expected=[words(int(root, 16))])])
-    return {'description': 'Programs on the raw-validation chain: vmTrace push, store and code end; precheck failures, collision, reverted and undeployable CREATEs; callMany item isolation; call-object fields; blob fee and nonce handling.',
+    # Positional overrides (H15) are optional, so each takes effect or the request is rejected; an ignored override fails.
+    # State overrides give the codeless empty probe code; block overrides move NUMBER away from the selected block's.
+    overridden = lambda text, *outputs: probe('H15', 'outputs', text+' (-32602 recommended); it is never ignored.',
+                                               expected=list(outputs), or_rejected=-32602)
+    reached = dict(base, to=empty_probe)
+    read_self = lambda *read: asm(*read, 0, 'MSTORE', 32, 0, 'RETURN')
+    number = 0x1234
+    for name, override, output, text in [
+            ('code', {'code': '0x'+ret42}, words(42), 'overridden code runs and returns word 42'),
+            ('balance', {'code': '0x'+read_self('ADDRESS', 'BALANCE'), 'balance': hex(0x1234)}, words(0x1234),
+             'an overridden balance is what BALANCE reads'),
+            ('storage', {'code': '0x'+read_self(0, 'SLOAD'), 'stateDiff': {'0x'+word(0): '0x'+word(7)}}, words(7),
+             'a stateDiff slot is what SLOAD reads')]:
+        case(cases, f'override-state-{name}', 'trace_call', [reached, ['trace'], 'latest', {empty_probe: override}],
+             probes=[overridden(f'A positional state override map takes effect, so {text}, or the request is rejected', output)])
+    case(cases, 'override-state-many', 'trace_callMany', [[[reached, ['trace']], [reached, ['trace']]], 'latest', {empty_probe: {'code': '0x'+ret42}}],
+         probes=[overridden('A trace_callMany state override map applies once before the first item, so the overridden code returns word 42 '
+                            'in both items, or the request is rejected', words(42), words(42))])
+    numbered = dict(base, data='0x'+read_self('NUMBER'))
+    case(cases, 'override-block-number', 'trace_call', [numbered, ['trace'], 'latest', None, {'number': hex(number)}],
+         probes=[overridden(f'A positional block override replaces the block number, so NUMBER reads {hex(number)}, or the request is rejected',
+                            words(number))])
+    case(cases, 'override-block-number-many', 'trace_callMany', [[[numbered, ['trace']]], 'latest', None, {'number': hex(number)}],
+         probes=[overridden(f'A trace_callMany block override replaces the block number, so NUMBER reads {hex(number)}, or the request is rejected',
+                            words(number))])
+    case(cases, 'override-state-exclusive', 'trace_call',
+         [reached, ['trace'], 'latest', {empty_probe: {'code': '0x'+ret42, 'state': {}, 'stateDiff': {}}}],
+         probes=[probe('H14', 'error', 'An account override with both state and stateDiff is rejected (-32602 recommended).', recommended=-32602)])
+    return {'description': 'Programs on the raw-validation chain: vmTrace push, store and code end; precheck failures, collision, reverted and undeployable CREATEs; callMany item isolation; call-object fields; blob fee and nonce handling; positional overrides.',
                 'model_nonce': nonce, 'cases': cases}
 
 

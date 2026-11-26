@@ -919,3 +919,26 @@ class BlockHashTests(Probe):
         block = self.records(2, self.H2)
         checks = supplement(case, result(block[1:2]), {'filter-block-2-page': result(block[1:2])}, [], ['H33'])
         self.assertEqual([(c['topic'], c['status']) for c in checks], [('H33', 'matches')])
+
+
+class ReturnExTests(Probe):
+    """A RETURN keeps ex when only its code deposit fails, and has ex null when it halts itself (H20)."""
+
+    def vm(self, path, ex):
+        """A vmTrace with one operation along `path`, the last carrying `ex`."""
+        op = {'pc': path[-1], 'cost': 0, 'ex': ex, 'sub': None}
+        for pc in reversed(path[:-1]):
+            op = {'pc': pc, 'cost': 0, 'ex': {'used': 0, 'push': ['0x0'], 'mem': None, 'store': None},
+                  'sub': {'code': '0x', 'ops': [op]}}
+        return {'output': '0x', 'trace': [], 'vmTrace': {'code': '0x', 'ops': [op]}}
+
+    def test_only_a_halting_return_has_ex_null(self):
+        completed = {'used': 0, 'push': [], 'mem': None, 'store': None}
+        for name, halts in [('vm-return-deposit-oog', False), ('vm-return-deposit-oog-nested', False),
+                            ('vm-return-oog', True), ('vm-return-oog-nested', True)]:
+            case = PRAGUE[name]
+            path = max(case['probes'][0]['null'] + case['probes'][0]['object'], key=len)
+            self.assertMatches(case, result(self.vm(path, None if halts else completed)))
+            self.assertDiffers(case, result(self.vm(path, completed if halts else None)))
+            # The RETURN must be present.
+            self.assertDiffers(case, result(self.vm(path[:-1] + [path[-1]+1], None if halts else completed)))

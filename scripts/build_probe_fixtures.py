@@ -239,6 +239,23 @@ def prague():
             probe('H09', 'frame', requirement, select={'traceAddress': [0], 'type': 'create'}, expected={'error': label}),
             probe('H09', 'outputs', 'The caller sees CREATE push 0.', expected=[words(0)])])
 
+    # A RETURN completes before its code deposit fails, so it keeps ex; a RETURN that runs out of gas expanding
+    # memory halts, so it has ex null (H20). Each is traced as the root creation and as a child of one.
+    for name, init, root_gas, nested_gas, halts, requirement in [
+            ('vm-return-deposit-oog', asm(deposit_size, 0, 'RETURN'), 100_000, 1_300_000, False,
+             'A RETURN whose code deposit then fails completed, so it has ex; only the creation fails.'),
+            ('vm-return-oog', asm(0xffffffff, 0, 'RETURN'), 100_000, 1_300_000, True,
+             'A RETURN that runs out of gas expanding memory halted exceptionally, so it has ex null.')]:
+        assert 200*deposit_size > nested_gas > root_gas
+        nested = asm(int(init, 16), 0, 'MSTORE', len(init)//2, 32-len(init)//2, 0, 'CREATE', 0, 'MSTORE', 32, 0, 'RETURN')
+        for suffix, code, gas_limit, path in [('', init, root_gas, pcs(init, 'RETURN')),
+                                              ('-nested', nested, nested_gas, pcs(nested, 'CREATE')+pcs(init, 'RETURN'))]:
+            entered = [path[:1]] if suffix else []
+            case(cases, name+suffix, 'trace_call',
+                 [creation(code, gas=hex(intrinsic(code, True)+gas_limit)), ['trace', 'vmTrace'], 'latest'], probes=[
+                     probe('H20', 'ex', requirement + (' The CREATE that entered it has ex.' if suffix else ''),
+                           null=[path] if halts else [], object=entered + ([] if halts else [path]))])
+
     # trace_callMany item isolation (H16, H26): each item is a separate transaction.
     def item(fields, modes=('trace',)):
         return [dict({'from': sender, 'gas': gas, 'gasPrice': price}, **fields), list(modes)]

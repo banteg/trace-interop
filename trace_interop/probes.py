@@ -439,6 +439,21 @@ def assess(case, observation, peers):
             wrong += [pc for pc in probe['object'] if pc in by_pc and not isinstance(by_pc[pc].get('sub'), dict)]
             add(topic, not missing and not wrong, requirement,
                 f'Operations missing at pc {missing}; wrong sub at pc {wrong}.' if missing or wrong else '')
+        elif kind == 'ex':
+            def op_at(path):
+                trace, op = envelope(probe.get('index')).get('vmTrace'), None
+                for pc in path:
+                    op = next((o for o in sequence(mapping(trace).get('ops')) if mapping(o).get('pc') == pc), None)
+                    if op is None:
+                        return None
+                    trace = op.get('sub')
+                return op
+            ops = {tuple(path): op_at(path) for path in probe['null'] + probe['object']}
+            missing = [list(path) for path, op in ops.items() if op is None]
+            wrong = [path for path in probe['null'] if ops[tuple(path)] is not None and ops[tuple(path)].get('ex') is not None]
+            wrong += [path for path in probe['object'] if ops[tuple(path)] is not None and not isinstance(ops[tuple(path)].get('ex'), dict)]
+            add(topic, not missing and not wrong, requirement,
+                f'Operations missing at pc path {missing}; wrong ex at pc path {wrong}.' if missing or wrong else '')
         elif kind in ['push', 'store', 'end']:
             vm = mapping(mapping(result).get('vmTrace'))
             ops = vm.get('ops')

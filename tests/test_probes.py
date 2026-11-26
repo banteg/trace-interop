@@ -954,3 +954,14 @@ class ReturnExTests(Probe):
                 self.assertDiffers(case, result(self.vm(paths, lambda path: (completed if right(path) is None else None)
                                                         if path == flipped else right(path))))
                 self.assertDiffers(case, result(self.vm([p for p in paths if p != flipped], right)))
+
+    def test_undeployable_root_code_is_not_the_modelled_output(self):
+        # The model returns the creation's code; a root creation that cannot pay its deposit halts after RETURN.
+        for name, judged in [('vm-return-deposit-oog', False), ('vm-push-order', True)]:
+            case = dict(PRAGUE[name], context={})
+            call = case['request']['params'][0]
+            steps, output, _ = execute(call['data'], int(call['gas'], 16)-intrinsic(call['data'], True))
+            vm = {'code': call['data'], 'ops': [dict(step, sub=None) for step in steps['ops']]}
+            checks = supplement(case, result({'output': '0x', 'trace': [], 'vmTrace': vm}), {}, [], ['H08', 'H19', 'H20'])
+            self.assertEqual(any(c['requirement'].startswith('Modelled execution returns') for c in checks), judged, name)
+

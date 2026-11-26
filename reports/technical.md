@@ -41,7 +41,7 @@ Coverage below counts all selected trace observations, including missing respons
 
 | Coverage | Observations |
 | --- | --- |
-| 🔎 Assessed | 16583 |
+| 🔎 Assessed | 16649 |
 | 🟡 Partial | 39 |
 | ⚪ Unassessed | 0 |
 | 🚧 Blocked | 0 |
@@ -631,8 +631,14 @@ These cases returned results that differ from the draft schema. The case pages r
 | [probes-prague/create2-collision](cases/probes-prague/create2-collision.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
 | [probes-prague/precheck-call-value](cases/probes-prague/precheck-call-value.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
 | [probes-prague/precheck-create-value](cases/probes-prague/precheck-create-value.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
+| [probes-prague/vm-mcopy-deposit-oog](cases/probes-prague/vm-mcopy-deposit-oog.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
+| [probes-prague/vm-mcopy-deposit-oog-nested](cases/probes-prague/vm-mcopy-deposit-oog-nested.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
 | [probes-prague/vm-off-end](cases/probes-prague/vm-off-end.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
 | [probes-prague/vm-push-order](cases/probes-prague/vm-push-order.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
+| [probes-prague/vm-return-deposit-oog](cases/probes-prague/vm-return-deposit-oog.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
+| [probes-prague/vm-return-deposit-oog-nested](cases/probes-prague/vm-return-deposit-oog-nested.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
+| [probes-prague/vm-return-oog](cases/probes-prague/vm-return-oog.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
+| [probes-prague/vm-return-oog-nested](cases/probes-prague/vm-return-oog-nested.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
 | [probes-prague/vm-store](cases/probes-prague/vm-store.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
 | [probes-prague/vm-store-vm-only](cases/probes-prague/vm-store-vm-only.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
 | [raw-validation/raw-validation-create-valid-all](cases/raw-validation/raw-validation-create-valid-all.md) | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d, Nethermind 2.2.2 · be201120 |
@@ -676,7 +682,7 @@ Capture completeness records whether requests finished, not whether their result
 | [h30](../evidence/2026-11-25/eval/h30/manifest.json) | h30 | ✅ Yes |
 | [pending](../evidence/2026-11-25/eval/pending/manifest.json) | pending | ✅ Yes |
 | [raw-selector](../evidence/2026-11-25/eval/raw-selector/manifest.json) | raw-selector | ✅ Yes |
-| [probes-prague](../evidence/2026-11-25/eval/probes-prague/manifest.json) | probes-prague | ✅ Yes |
+| [probes-prague](../evidence/2026-11-26/return-ex/probes-prague/manifest.json) | probes-prague | ✅ Yes |
 | [probes-forks](../evidence/2026-11-25/eval/probes-forks/manifest.json) | probes-forks | ✅ Yes |
 | [mined-probes](../evidence/2026-11-25/eval/mined-probes/manifest.json) | mined-probes | ✅ Yes |
 | [reorg-safe](../evidence/2026-11-25/eval/reorg-safe/manifest.json) | reorg-safe | ✅ Yes |

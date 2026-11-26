@@ -10,10 +10,10 @@ Violations are reported here and are not decision verdicts: most repeat a differ
 
 | Law | Statement | Pairs checked | Builds with violations |
 | --- | --- | --- | --- |
-| **L01** Tree shape | Every frame list is a preorder tree: one root, unique dense paths, subtraces equal to the number of children, and no frame using more gas than it was given. | 8341 | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d |
+| **L01** Tree shape | Every frame list is a preorder tree: one root, unique dense paths, subtraces equal to the number of children, and no frame using more gas than it was given. | 8407 | Besu 26.11-develop · f58f40e2, Besu 26.11.2 · 09b9e94d |
 | **L02** Changed values | A stateDiff `*` entry changes its value: `from` differs from `to`. | 15351 | — |
 | **L03** Root output | A successful root call frame reports the envelope output. | 1574 | Besu 26.11.2 · 09b9e94d |
-| **L04** Selection is a projection | Requests that differ only in their trace types return the same output and the same value for every component both select. | 27891 | — |
+| **L04** Selection is a projection | Requests that differ only in their trace types return the same output and the same value for every component both select. | 27902 | — |
 | **L05** trace_get selects from trace_transaction | A record trace_get returns is one of the trace_transaction records, unchanged; under the trace profile it is the requested traceAddress, or null for an absent path. | 90 | — |
 | **L06** trace_transaction is a slice of trace_block | trace_transaction(tx) equals the trace_block records carrying its hash, in order. | 154 | — |
 | **L07** Stored and replayed frames agree | The frames of trace_transaction and trace_block equal the replayed trace of the same transaction, apart from localization fields. | 848 | Nethermind 2.2.2 · be201120 |

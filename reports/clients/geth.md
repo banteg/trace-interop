@@ -12,7 +12,7 @@ Each decision on the development build, grouped as in the [progress chart](../RE
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.17.11-unstable` | [`edbd5f17`](https://github.com/banteg/go-ethereum/commit/edbd5f17789fa31ad17a7c55a5e1072b0eee8548) | 2026-11-17 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json) |
+| `1.17.11-unstable` | [`edbd5f17`](https://github.com/banteg/go-ethereum/commit/edbd5f17789fa31ad17a7c55a5e1072b0eee8548) | 2026-11-17 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json)<br>[2026-11-26](../../evidence/2026-11-26/return-ex/probes-prague/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

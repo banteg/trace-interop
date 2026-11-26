@@ -6,7 +6,7 @@ Reth 2.9.0 · c9a780f4 replaced revm and revm-inspectors with evm2 (#25002), who
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.11.0` | [`b9abbcc1`](https://github.com/paradigmxyz/reth/commit/b9abbcc1b982755baa9021e6874e2e58936ca65f) | 2026-11-11 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json) |
+| `2.11.0` | [`b9abbcc1`](https://github.com/paradigmxyz/reth/commit/b9abbcc1b982755baa9021e6874e2e58936ca65f) | 2026-11-11 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json)<br>[2026-11-26](../../evidence/2026-11-26/return-ex/probes-prague/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

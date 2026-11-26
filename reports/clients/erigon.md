@@ -12,8 +12,8 @@ Each decision on the development build, grouped as in the [progress chart](../RE
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `3.8.2` | [`8a3f3b2c`](https://github.com/erigontech/erigon/commit/8a3f3b2c7a34429f101e9a9d05b861120c8e4d77) | 2026-11-19 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json) |
-| `3.9.0-dev` | [`e91aca7f`](https://github.com/erigontech/erigon/commit/e91aca7f9bfd776d4986b770e3914fe0e997f383) | 2026-11-25 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json) |
+| `3.8.2` | [`8a3f3b2c`](https://github.com/erigontech/erigon/commit/8a3f3b2c7a34429f101e9a9d05b861120c8e4d77) | 2026-11-19 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json)<br>[2026-11-26](../../evidence/2026-11-26/return-ex/probes-prague/manifest.json) |
+| `3.9.0-dev` | [`e91aca7f`](https://github.com/erigontech/erigon/commit/e91aca7f9bfd776d4986b770e3914fe0e997f383) | 2026-11-25 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json)<br>[2026-11-26](../../evidence/2026-11-26/return-ex/probes-prague/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

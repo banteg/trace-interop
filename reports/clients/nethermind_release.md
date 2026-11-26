@@ -6,7 +6,7 @@
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.2.2` | [`be201120`](https://github.com/NethermindEth/nethermind/commit/be201120899ea9cdaab1444b89878c56d1a5a4ad) | 2026-10-26 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json) |
+| `2.2.2` | [`be201120`](https://github.com/NethermindEth/nethermind/commit/be201120899ea9cdaab1444b89878c56d1a5a4ad) | 2026-10-26 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json)<br>[2026-11-26](../../evidence/2026-11-26/return-ex/probes-prague/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

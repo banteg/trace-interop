@@ -288,7 +288,13 @@ def properties(case, observation, peers, checks, expected):
                         pass
                 errors = differences(vm, steps)
                 add('H20', status == 'result' and not errors, 'Every modelled step has exact opcode cost, post-step gas, stack effects, memory writes and storage effects.', '; '.join(errors[:4]))
-                add('H08', obj(result).get('output') == returned, 'Modelled execution returns exactly the independently computed bytes.')
+                # A root creation whose returned code cannot be deposited halts after its RETURN, so the model's
+                # bytes are not its output.
+                deployed = bytes.fromhex(output[2:])
+                undeployable = 'to' not in call and not reverted and (
+                    len(deployed) > 0x6000 or deployed[:1] == b'\xef' or 200*len(deployed) > want['ops'][-1]['ex']['used'])
+                if not undeployable:
+                    add('H08', obj(result).get('output') == returned, 'Modelled execution returns exactly the independently computed bytes.')
                 if reverted:
                     root=next((f for f in frames if f.get('traceAddress')==[]),{})
                     used=gas-want['ops'][-1]['ex']['used']

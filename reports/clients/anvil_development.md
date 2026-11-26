@@ -6,7 +6,7 @@ Foundry’s development node, captured by replaying each chain instead of throug
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `1.10.1-nightly` | [`50d75f19`](https://github.com/foundry-rs/foundry/commit/50d75f19dbd7ac88fba3013c93cf4e220b1aad6c) | 2026-11-25 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json) |
+| `1.10.1-nightly` | [`50d75f19`](https://github.com/foundry-rs/foundry/commit/50d75f19dbd7ac88fba3013c93cf4e220b1aad6c) | 2026-11-25 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json)<br>[2026-11-26](../../evidence/2026-11-26/return-ex/probes-prague/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

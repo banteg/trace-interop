@@ -296,8 +296,8 @@
   {
     "complete": true,
     "corpus": "probes-prague",
-    "digest": "462c7bd491fef1da64bf69f394268b3b7f76898574b17ddd8e39f2df2aa121e9",
-    "manifest": "../evidence/2026-11-25/eval/probes-prague/manifest.json",
+    "digest": "8a4524fa1b7fabac8eceb53d25675b16088952e00c942dadd339e049cc97110c",
+    "manifest": "../evidence/2026-11-26/return-ex/probes-prague/manifest.json",
     "name": "probes-prague",
     "versions": {
       "anvil_development": "anvil Version: 1.10.1-nightly+50d75f19",

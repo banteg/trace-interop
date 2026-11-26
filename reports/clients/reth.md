@@ -12,8 +12,8 @@ Each decision on the development build, grouped as in the [progress chart](../RE
 
 | Tested version | Commit | Commit date (UTC) | Tested (UTC) |
 | --- | --- | --- | --- |
-| `2.11.0` | [`b9abbcc1`](https://github.com/paradigmxyz/reth/commit/b9abbcc1b982755baa9021e6874e2e58936ca65f) | 2026-11-11 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json) |
-| `2.11.0` | [`7f5e740c`](https://github.com/paradigmxyz/reth/commit/7f5e740cf2e9bf83a4d9a3f48319df15aac5f89c) | 2026-11-24 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json) |
+| `2.11.0` | [`b9abbcc1`](https://github.com/paradigmxyz/reth/commit/b9abbcc1b982755baa9021e6874e2e58936ca65f) | 2026-11-11 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json)<br>[2026-11-26](../../evidence/2026-11-26/return-ex/probes-prague/manifest.json) |
+| `2.11.0` | [`7f5e740c`](https://github.com/paradigmxyz/reth/commit/7f5e740cf2e9bf83a4d9a3f48319df15aac5f89c) | 2026-11-24 | [2026-11-25](../../evidence/2026-11-25/eval/initial/manifest.json)<br>[2026-11-26](../../evidence/2026-11-26/return-ex/probes-prague/manifest.json) |
 
 Code links use the tested development sources (or the Geth fork). These are proposed changes for the tested builds. “Checked cases agree” refers to the linked examples, not every behavior of a method. [Test status key](../technical.md#test-status-key).
 

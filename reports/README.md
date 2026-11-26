@@ -8,7 +8,7 @@ For verdicts that changed since the last capture, see [changes since the previou
 
 ## Progress
 
-Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **141 of 165** client decisions agree with the draft (+8 since the previous capture). 3 more have a submitted fix, and **19 differ with no fix yet**: 19 on converged decisions and 0 on decisions still under review. 9 agreements are in development builds but not yet in a stable release.
+Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **141 of 165** client decisions agree with the draft (+8 since the previous capture). 4 more have a submitted fix, and **18 differ with no fix yet**: 18 on converged decisions and 0 on decisions still under review. 9 agreements are in development builds but not yet in a stable release.
 
 ![Decision outcomes per client development build](progress.svg)
 
@@ -17,7 +17,7 @@ Across the Besu, Erigon, Nethermind, Reth and Anvil development builds, **141 of
 | [Besu](clients/besu.md) | 26.11-develop · f58f40e2 | 20 (+5) | 2 | 9 | 0 | 0 | 2 | 1 | 19 / 5 |
 | [Erigon](clients/erigon.md) | 3.9.0-dev · e91aca7f | 31 (-1) | 0 | 2 | 0 | 0 | 0 | 0 | 28 / 0 |
 | [Nethermind](clients/nethermind.md) | 2.4.0-preview · e2f069a6 | 32 (-1) | 0 | 1 | 0 | 0 | 0 | 5 | 51 / 0 |
-| [Reth](clients/reth.md) | 2.11.0 · 7f5e740c | 28 (+3) | 1 | 4 | 0 | 0 | 0 | 3 | 25 / 8 |
+| [Reth](clients/reth.md) | 2.11.0 · 7f5e740c | 28 (+3) | 2 | 3 | 0 | 0 | 0 | 3 | 25 / 9 |
 | [Anvil](clients/anvil.md) | 1.10.1-nightly · 50d75f19 | 30 (+2) | 0 | 3 | 0 | 0 | 0 | 0 | 16 / 0 |
 
 Each client has one outcome per decision on its development build. A difference with no submitted fix is the rough measure of pending work; one decision can need several changes, and a PR can cover part of a decision or several. “Converged” and “under review” refer to the decision’s policy status. “In dev, not stable” counts agreements that the stable release does not share yet. Fix PRs are upstream PRs attributed to the client, including its libraries; closed PRs are excluded. The Geth draft fork implements the proposal and is not counted. Anvil, Foundry’s development node, is captured by replaying the fixture chains, so its fork-transition and reorg scenarios stay unmeasured. [Status key](technical.md#test-status-key) · [Policy status](../decisions/README.md#status-key)

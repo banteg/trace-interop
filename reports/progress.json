@@ -127,8 +127,8 @@
       "client": "reth",
       "counts": {
         "agree": 28,
-        "converged": 4,
-        "fix": 1,
+        "converged": 3,
+        "fix": 2,
         "policy": 0,
         "review": 0,
         "unmeasured": 0
@@ -137,7 +137,7 @@
       "name": "Reth",
       "prs": {
         "merged": 25,
-        "open": 8
+        "open": 9
       }
     },
     {

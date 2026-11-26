@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-25",
+  "checked_at": "2026-11-26",
   "repositories": {
     "alloy-rs/alloy": "Alloy",
     "alloy-rs/evm": "Alloy EVM",
@@ -90,7 +90,7 @@
         "H20"
       ],
       "state": "open",
-      "draft": false,
+      "draft": true,
       "merged_at": null
     },
     {
@@ -3477,10 +3477,17 @@
       "partial": [
         "H15"
       ],
-      "state": "open",
+      "state": "merged",
       "draft": false,
-      "merged_at": null,
-      "note": "by lupin012, citing the #895 draft: a positional state override map decoded into an empty TraceConfig, so the call ran on unmodified state without an error; it now applies the map, keeps the stateOverrides wrapper, and rejects a map mixed with wrapper members with -32602. Positional block overrides and unknown wrapper members are left out"
+      "merged_at": "2026-11-26T12:25:44Z",
+      "note": "by lupin012, citing the #895 draft: a positional state override map decoded into an empty TraceConfig, so the call ran on unmodified state without an error; it now applies the map, keeps the stateOverrides wrapper, and rejects a map mixed with wrapper members with -32602. Positional block overrides and unknown wrapper members are left out",
+      "uptake": {
+        "merge_commit": "77d0cfbaeef1b12e71016ee64c78cf35a2bb163e",
+        "builds": {
+          "e91aca7f9bfd776d4986b770e3914fe0e997f383": false,
+          "8a3f3b2c7a34429f101e9a9d05b861120c8e4d77": false
+        }
+      }
     }
   ]
 }

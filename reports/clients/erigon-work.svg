@@ -89,8 +89,8 @@
 <text class="n-agree" x="427.5" y="201" text-anchor="middle">#24343</text>
 <rect class="b-agree edge partial" x="461" y="188" width="55" height="18" rx="4"/>
 <text class="n-agree" x="488.5" y="201" text-anchor="middle">#24352</text>
-<rect class="pr edge partial" x="522" y="188" width="55" height="18" rx="4"/>
-<text class="label" x="549.5" y="201" text-anchor="middle">#26785</text>
+<rect class="b-fix edge partial" x="522" y="188" width="55" height="18" rx="4"/>
+<text class="n-fix" x="549.5" y="201" text-anchor="middle">#26785</text>
 <rect class="b-agree" x="16" y="220" width="130" height="18" rx="4"/>
 <text class="n-agree" x="81" y="233" text-anchor="middle">in measured build</text>
 <rect class="b-fix" x="152" y="220" width="150" height="18" rx="4"/>

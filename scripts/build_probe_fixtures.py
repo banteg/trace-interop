@@ -37,7 +37,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OPS = {'STOP': 0x00, 'SUB': 0x03, 'ADDRESS': 0x30, 'DUP6': 0x85, 'ISZERO': 0x15, 'BALANCE': 0x31, 'CALLER': 0x33, 'CALLDATALOAD': 0x35,
        'CALLDATASIZE': 0x36, 'CODECOPY': 0x39, 'GASPRICE': 0x3a, 'EXTCODESIZE': 0x3b, 'RETURNDATASIZE': 0x3d, 'POP': 0x50,
        'NUMBER': 0x43, 'BASEFEE': 0x48, 'BLOBBASEFEE': 0x4a, 'MSTORE': 0x52, 'MSTORE8': 0x53, 'SLOAD': 0x54, 'SSTORE': 0x55, 'JUMPI': 0x57, 'GAS': 0x5a, 'JUMPDEST': 0x5b,
-       'TLOAD': 0x5c, 'TSTORE': 0x5d, 'DUP1': 0x80, 'SWAP1': 0x90, 'CREATE': 0xf0, 'CALL': 0xf1,
+       'TLOAD': 0x5c, 'TSTORE': 0x5d, 'MCOPY': 0x5e, 'DUP1': 0x80, 'SWAP1': 0x90, 'CREATE': 0xf0, 'CALL': 0xf1,
        'RETURN': 0xf3, 'CREATE2': 0xf5, 'REVERT': 0xfd, 'SELFDESTRUCT': 0xff}
 NAMES = {v: k for k, v in OPS.items()}
 
@@ -239,22 +239,24 @@ def prague():
             probe('H09', 'frame', requirement, select={'traceAddress': [0], 'type': 'create'}, expected={'error': label}),
             probe('H09', 'outputs', 'The caller sees CREATE push 0.', expected=[words(0)])])
 
-    # A RETURN completes before its code deposit fails, so it keeps ex; a RETURN that runs out of gas expanding
-    # memory halts, so it has ex null (H20). Each is traced as the root creation and as a child of one.
-    for name, init, root_gas, nested_gas, halts, requirement in [
-            ('vm-return-deposit-oog', asm(deposit_size, 0, 'RETURN'), 100_000, 1_300_000, False,
-             'A RETURN whose code deposit then fails completed, so it has ex; only the creation fails.'),
-            ('vm-return-oog', asm(0xffffffff, 0, 'RETURN'), 100_000, 1_300_000, True,
+    # A creation's operations complete before its code deposit fails, so they keep ex, the RETURN and the operation
+    # before it (MCOPY in one case) included; a RETURN that runs out of gas expanding memory halts, so it has ex null
+    # (H20). Each is traced as the root creation and as a child of one.
+    deposit = 'The operations of a creation whose code deposit fails completed, so they have ex, the RETURN and the operation before it included; only the creation fails.'
+    for name, init, halts, requirement in [
+            ('vm-return-deposit-oog', asm(deposit_size, 0, 'RETURN'), False, deposit),
+            ('vm-mcopy-deposit-oog', asm(deposit_size, 0, 32, 0, 32, 'MCOPY', 'RETURN'), False, deposit),
+            ('vm-return-oog', asm(0xffffffff, 0, 'RETURN'), True,
              'A RETURN that runs out of gas expanding memory halted exceptionally, so it has ex null.')]:
-        assert 200*deposit_size > nested_gas > root_gas
+        last = [[pc] for pc in pcs(init, 'RETURN')] if halts else [[op['pc']] for op in execute('0x'+init, 100_000)[0]['ops'][-2:]]
         nested = asm(int(init, 16), 0, 'MSTORE', len(init)//2, 32-len(init)//2, 0, 'CREATE', 0, 'MSTORE', 32, 0, 'RETURN')
-        for suffix, code, gas_limit, path in [('', init, root_gas, pcs(init, 'RETURN')),
-                                              ('-nested', nested, nested_gas, pcs(nested, 'CREATE')+pcs(init, 'RETURN'))]:
-            entered = [path[:1]] if suffix else []
+        for suffix, code, gas_limit, entered in [('', init, 100_000, []), ('-nested', nested, 1_300_000, pcs(nested, 'CREATE'))]:
+            assert 200*deposit_size > gas_limit
+            paths = [entered+path for path in last]
             case(cases, name+suffix, 'trace_call',
                  [creation(code, gas=hex(intrinsic(code, True)+gas_limit)), ['trace', 'vmTrace'], 'latest'], probes=[
                      probe('H20', 'ex', requirement + (' The CREATE that entered it has ex.' if suffix else ''),
-                           null=[path] if halts else [], object=entered + ([] if halts else [path]))])
+                           null=paths if halts else [], object=[entered]*bool(entered) + ([] if halts else paths))])
 
     # trace_callMany item isolation (H16, H26): each item is a separate transaction.
     def item(fields, modes=('trace',)):

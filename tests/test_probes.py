@@ -922,23 +922,35 @@ class BlockHashTests(Probe):
 
 
 class ReturnExTests(Probe):
-    """A RETURN keeps ex when only its code deposit fails, and has ex null when it halts itself (H20)."""
+    """A creation's operations keep ex when only its code deposit fails; a RETURN that halts has ex null (H20)."""
 
-    def vm(self, path, ex):
-        """A vmTrace with one operation along `path`, the last carrying `ex`."""
-        op = {'pc': path[-1], 'cost': 0, 'ex': ex, 'sub': None}
-        for pc in reversed(path[:-1]):
-            op = {'pc': pc, 'cost': 0, 'ex': {'used': 0, 'push': ['0x0'], 'mem': None, 'store': None},
-                  'sub': {'code': '0x', 'ops': [op]}}
-        return {'output': '0x', 'trace': [], 'vmTrace': {'code': '0x', 'ops': [op]}}
+    def vm(self, paths, ex):
+        """A vmTrace with an operation along each pc path, the path's last operation carrying ex(path)."""
+        root = {'code': '0x', 'ops': []}
+        for path in paths:
+            trace = root
+            for depth, pc in enumerate(path):
+                op = next((o for o in trace['ops'] if o['pc'] == pc), None)
+                if op is None:
+                    op = {'pc': pc, 'cost': 0, 'ex': None, 'sub': None}
+                    trace['ops'].append(op)
+                if depth == len(path)-1:
+                    op['ex'] = ex(path)
+                else:
+                    op['sub'] = op['sub'] or {'code': '0x', 'ops': []}
+                    trace = op['sub']
+        return {'output': '0x', 'trace': [], 'vmTrace': root}
 
     def test_only_a_halting_return_has_ex_null(self):
         completed = {'used': 0, 'push': [], 'mem': None, 'store': None}
-        for name, halts in [('vm-return-deposit-oog', False), ('vm-return-deposit-oog-nested', False),
-                            ('vm-return-oog', True), ('vm-return-oog-nested', True)]:
+        for name in [c for c in PRAGUE if c.startswith(('vm-return-', 'vm-mcopy-'))]:
             case = PRAGUE[name]
-            path = max(case['probes'][0]['null'] + case['probes'][0]['object'], key=len)
-            self.assertMatches(case, result(self.vm(path, None if halts else completed)))
-            self.assertDiffers(case, result(self.vm(path, completed if halts else None)))
-            # The RETURN must be present.
-            self.assertDiffers(case, result(self.vm(path[:-1] + [path[-1]+1], None if halts else completed)))
+            probe = case['probes'][0]
+            paths = probe['null'] + probe['object']
+            right = lambda path: None if path in probe['null'] else completed
+            self.assertMatches(case, result(self.vm(paths, right)))
+            # Each listed operation is judged: a flipped ex differs, and so does a missing operation.
+            for flipped in paths:
+                self.assertDiffers(case, result(self.vm(paths, lambda path: (completed if right(path) is None else None)
+                                                        if path == flipped else right(path))))
+                self.assertDiffers(case, result(self.vm([p for p in paths if p != flipped], right)))
